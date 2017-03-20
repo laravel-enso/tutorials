@@ -1,0 +1,23 @@
+{
+    "name": "laravel-enso/logmanager",
+    "description": "Library for LaravelEnso tutorials management",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mishu",
+            "email": "mishu@xtelecom.ro"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/framework": "5.4.*",
+        "laravel-enso/helpers": "1.0.*",
+        "laravel-enso/datatable": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelEnso\\TutorialManager\\": "src/"
+        }
+    }
+}
