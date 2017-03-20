@@ -2,6 +2,10 @@
 
 Library for LaravelEnso tutorials management
 
+# Requires
+
+BootstrapTour
+
 # Don't forget to
 
 php artisan vendor:publish --tag=tutorialmanager-migrations

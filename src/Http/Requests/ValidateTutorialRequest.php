@@ -16,28 +16,18 @@ class ValidateTutorialRequest extends FormRequest
     {
         $tutorial = $this->route('tutorial');
 
-        if ($this->_method == 'PATCH') {
+        $elementRule = $this->_method == 'PATCH'
+            ? 'required|unique:tutorials,element,' . $tutorial->id . ',id'
+            : 'required|unique:tutorials';
 
-            return [
+        return [
 
-                'permission_id' => 'required',
-                'element'       => 'required|unique:tutorials,element,' . $tutorial->id . ',id',
-                'title'         => 'required',
-                'content'       => 'required',
-                'placement'     => 'required',
-                'order'         => 'numeric',
-            ];
-        } else {
-
-            return [
-
-                'permission_id' => 'required',
-                'element'       => 'required|unique:tutorials',
-                'title'         => 'required',
-                'content'       => 'required',
-                'placement'     => 'required',
-                'order'         => 'numeric',
-            ];
-        }
+            'permission_id' => 'required',
+            'element'       => $elementRule,
+            'title'         => 'required',
+            'content'       => 'required',
+            'placement'     => 'required',
+            'order'         => 'numeric',
+        ];
     }
 }
