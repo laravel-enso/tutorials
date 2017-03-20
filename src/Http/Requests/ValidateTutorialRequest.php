@@ -15,7 +15,7 @@ class ValidateTutorialRequest extends FormRequest
     {
         $tutorial = $this->route('tutorial');
 
-        $elementRule = $this->_method == 'PATCH' ? 'required|unique:tutorials,element,' . $tutorial->id . ',id'
+        $elementRule = $this->_method == 'PATCH' ? 'required|unique:tutorials,element,'.$tutorial->id.',id'
             : 'required|unique:tutorials';
 
         return [
