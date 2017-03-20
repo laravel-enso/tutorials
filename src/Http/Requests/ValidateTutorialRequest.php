@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ValidateTutorialRequest extends FormRequest
 {
-
     public function authorize()
     {
         return true;
@@ -16,8 +15,7 @@ class ValidateTutorialRequest extends FormRequest
     {
         $tutorial = $this->route('tutorial');
 
-        $elementRule = $this->_method == 'PATCH'
-            ? 'required|unique:tutorials,element,' . $tutorial->id . ',id'
+        $elementRule = $this->_method == 'PATCH' ? 'required|unique:tutorials,element,' . $tutorial->id . ',id'
             : 'required|unique:tutorials';
 
         return [

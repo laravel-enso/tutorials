@@ -6,15 +6,14 @@ use LaravelEnso\Helpers\Classes\AbstractEnum;
 
 class TutorialPlacementEnum extends AbstractEnum
 {
-
     public function __construct()
-	{
-		$this->data = [
+    {
+        $this->data = [
 
-	        'top'    => __('top'),
-	        'bottom' => __('bottom'),
-	        'right'  => __('right'),
-	        'left'   => __('left'),
-	    ];
-	}
+            'top'    => __('top'),
+            'bottom' => __('bottom'),
+            'right'  => __('right'),
+            'left'   => __('left'),
+        ];
+    }
 }
