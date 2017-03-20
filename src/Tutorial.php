@@ -5,10 +5,10 @@ namespace LaravelEnso\TutorialManager;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Tutorial
+ * App\Tutorial.
  *
- * @property integer $id
- * @property integer $permission_id
+ * @property int $id
+ * @property int $permission_id
  * @property string $element
  * @property string $title
  * @property string $content
@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Permission $permission
+ *
  * @method static \Illuminate\Database\Query\Builder|\App\Tutorial whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Tutorial wherePermissionId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Tutorial whereElement($value)
@@ -28,7 +29,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tutorial extends Model
 {
-
     protected $fillable = ['permission_id', 'element', 'title', 'content', 'placement', 'order'];
 
     public function permission()

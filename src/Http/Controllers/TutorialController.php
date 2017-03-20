@@ -20,6 +20,7 @@ class TutorialController extends Controller
         $query = Tutorial::select(\DB::raw('tutorials.id as DT_RowId, permissions.name as permissionName, tutorials.element,
                 tutorials.title, tutorials.placement, tutorials.order, tutorials.created_at, tutorials.updated_at'))
             ->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
+
         return $query;
     }
 
@@ -40,9 +41,9 @@ class TutorialController extends Controller
      */
     public function create()
     {
-        $permissions    = Permission::all()->pluck('name', 'id');
-        $placementsEnum = new TutorialPlacementEnum;
-        $placements     = $placementsEnum->getData();
+        $permissions = Permission::all()->pluck('name', 'id');
+        $placementsEnum = new TutorialPlacementEnum();
+        $placements = $placementsEnum->getData();
 
         return view('tutorials::create', compact('permissions', 'placements'));
     }
@@ -51,7 +52,7 @@ class TutorialController extends Controller
      * Store a newly created resource in storage.
      *
      * @param ValidateTutorialRequest $request
-     * @param Tutorial $tutorial
+     * @param Tutorial                $tutorial
      *
      * @return \Illuminate\Http\Response
      */
@@ -60,9 +61,9 @@ class TutorialController extends Controller
         $tutorial->fill($request->all());
         $tutorial->save();
 
-        flash()->success(__("Tutorial Created"));
+        flash()->success(__('Tutorial Created'));
 
-        return redirect('system/tutorials/' . $tutorial->id . '/edit');
+        return redirect('system/tutorials/'.$tutorial->id.'/edit');
     }
 
     /**
@@ -74,9 +75,9 @@ class TutorialController extends Controller
      */
     public function edit(Tutorial $tutorial)
     {
-        $permissions    = Permission::all()->pluck('name', 'id');
-        $placementsEnum = new TutorialPlacementEnum;
-        $placements     = $placementsEnum->getData();
+        $permissions = Permission::all()->pluck('name', 'id');
+        $placementsEnum = new TutorialPlacementEnum();
+        $placements = $placementsEnum->getData();
 
         return view('tutorials::edit', compact('tutorial', 'permissions', 'placements'));
     }
@@ -85,7 +86,7 @@ class TutorialController extends Controller
      * Update the specified resource in storage.
      *
      * @param ValidateTutorialRequest $request
-     * @param Tutorial $tutorial
+     * @param Tutorial                $tutorial
      *
      * @return \Illuminate\Http\Response
      */
@@ -94,7 +95,7 @@ class TutorialController extends Controller
         $tutorial->fill($request->all());
         $tutorial->save();
 
-        flash()->success(__("The Changes have been saved!"));
+        flash()->success(__('The Changes have been saved!'));
 
         return back();
     }
@@ -105,16 +106,17 @@ class TutorialController extends Controller
 
         return [
             'level'   => 'success',
-            'message' => __("Operation was successfull"),
+            'message' => __('Operation was successfull'),
         ];
     }
 
     public function getTutorial($route)
     {
-        $homeTutorial  = Tutorial::wherePermissionId(1)->orderBy('order')->get();
+        $homeTutorial = Tutorial::wherePermissionId(1)->orderBy('order')->get();
         $localTutorial = Permission::whereName($route)->first()->tutorials->sortBy('order');
 
         $tutorial = $homeTutorial->merge($localTutorial);
+
         return $tutorial;
     }
 }
