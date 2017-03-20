@@ -1,5 +1,5 @@
 {
-    "name": "laravel-enso/logmanager",
+    "name": "laravel-enso/tutorialmanager",
     "description": "Library for LaravelEnso tutorials management",
     "type": "library",
     "license": "MIT",
