@@ -15,7 +15,7 @@ class TutorialManagerServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views/system/tutorials', 'tutorials');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'tutorials');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
@@ -24,8 +24,8 @@ class TutorialManagerServiceProvider extends ServiceProvider
         ], 'tutorials-migration');
 
         $this->publishes([
-            __DIR__.'/../resources' => base_path('resources'),
-        ], 'tutorials-resources');
+            __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-enso/tutorialmanager'),
+        ], 'tutorials-views');
     }
 
     /**
