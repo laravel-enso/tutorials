@@ -3,7 +3,7 @@
 namespace LaravelEnso\TutorialManager\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Permission;
+use LaravelEnso\Core\Models\Permission;
 use LaravelEnso\DataTable\Traits\DataTable;
 use LaravelEnso\TutorialManager\DataTable\TutorialsTableStructure;
 use LaravelEnso\TutorialManager\Enums\TutorialPlacementEnum;

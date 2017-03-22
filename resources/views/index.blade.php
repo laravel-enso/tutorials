@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('core::layouts.app')
 
 @section('pageTitle', __("Tutorials"))
 
@@ -8,14 +8,14 @@
     <a class="btn btn-primary" href="/system/tutorials/create">
         {{ __("Create Tutorial") }}
     </a>
-    @include('partials.breadcrumbs')
+    @include('core::partials.breadcrumbs')
 </section>
 <section class="content">
     <div class="row" v-cloak>
         <div class="col-md-12">
             <data-table source="/system/tutorials">
                 <span slot="data-table-title">{{ __("Tutorials") }}</span>
-                @include('partials.modal')
+                @include('core::partials.modal')
             </data-table>
         </div>
     </div>
@@ -24,5 +24,5 @@
 @endsection
 
 @push('scripts')
-<script type="text/javascript" src="{{ asset('/js/system/index.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/vendor/laravel-enso/pages/index.js') }}"></script>
 @endpush
