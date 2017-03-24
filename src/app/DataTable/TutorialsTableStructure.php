@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\TutorialManager\DataTable;
+namespace LaravelEnso\TutorialManager\App\DataTable;
 
-use LaravelEnso\DataTable\Abstracts\TableStructure;
+use LaravelEnso\DataTable\App\Classes\Abstracts\TableStructure;
 
 class TutorialsTableStructure extends TableStructure
 {

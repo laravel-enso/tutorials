@@ -1,4 +1,4 @@
-@extends('core::layouts.app')
+@extends('laravel-enso/core::layouts.app')
 
 @section('pageTitle', __("Tutorials"))
 
@@ -8,14 +8,14 @@
     <a class="btn btn-primary" href="/system/tutorials/create">
         {{ __("Create Tutorial") }}
     </a>
-    @include('core::partials.breadcrumbs')
+    @include('laravel-enso/core::partials.breadcrumbs')
 </section>
 <section class="content">
     <div class="row" v-cloak>
         <div class="col-md-12">
             <data-table source="/system/tutorials">
                 <span slot="data-table-title">{{ __("Tutorials") }}</span>
-                @include('core::partials.modal')
+                @include('laravel-enso/core::partials.modal')
             </data-table>
         </div>
     </div>

@@ -1,10 +1,10 @@
-@extends('core::layouts.app')
+@extends('laravel-enso/core::layouts.app')
 
 @section('pageTitle', __("Tutorials"))
 
 @section('content')
 <section class="content-header">
-    @include('core::partials.breadcrumbs')
+    @include('laravel-enso/core::partials.breadcrumbs')
 </section>
 <section class="content">
     <div class="row" v-cloak>
@@ -24,7 +24,7 @@
                 <div class="box-body">
                     {!! Form::open(['method' => 'POST', 'url' => '/system/tutorials']) !!}
                     <div class="row">
-                        @include('tutorials::form')
+                        @include('laravel-enso/tutorials::form')
                     </div>
                     <center>
                         {!! Form::submit(__("Save"), ['class' => 'btn btn-primary ']) !!}

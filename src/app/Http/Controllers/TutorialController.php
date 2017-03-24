@@ -1,14 +1,14 @@
 <?php
 
-namespace LaravelEnso\TutorialManager\Http\Controllers;
+namespace LaravelEnso\TutorialManager\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\Core\Models\Permission;
-use LaravelEnso\DataTable\Traits\DataTable;
-use LaravelEnso\TutorialManager\DataTable\TutorialsTableStructure;
-use LaravelEnso\TutorialManager\Enums\TutorialPlacementEnum;
-use LaravelEnso\TutorialManager\Http\Requests\ValidateTutorialRequest;
-use LaravelEnso\TutorialManager\Tutorial;
+use LaravelEnso\Core\App\Models\Permission;
+use LaravelEnso\DataTable\App\Traits\DataTable;
+use LaravelEnso\TutorialManager\App\DataTable\TutorialsTableStructure;
+use LaravelEnso\TutorialManager\App\Enums\TutorialPlacementEnum;
+use LaravelEnso\TutorialManager\App\Http\Requests\ValidateTutorialRequest;
+use LaravelEnso\TutorialManager\App\Models\Tutorial;
 
 class TutorialController extends Controller
 {
@@ -31,7 +31,7 @@ class TutorialController extends Controller
      */
     public function index()
     {
-        return view('tutorials::index');
+        return view('laravel-enso/tutorials::index');
     }
 
     /**
@@ -45,7 +45,7 @@ class TutorialController extends Controller
         $placementsEnum = new TutorialPlacementEnum();
         $placements = $placementsEnum->getData();
 
-        return view('tutorials::create', compact('permissions', 'placements'));
+        return view('laravel-enso/tutorials::create', compact('permissions', 'placements'));
     }
 
     /**
@@ -79,7 +79,7 @@ class TutorialController extends Controller
         $placementsEnum = new TutorialPlacementEnum();
         $placements = $placementsEnum->getData();
 
-        return view('tutorials::edit', compact('tutorial', 'permissions', 'placements'));
+        return view('laravel-enso/tutorials::edit', compact('tutorial', 'permissions', 'placements'));
     }
 
     /**

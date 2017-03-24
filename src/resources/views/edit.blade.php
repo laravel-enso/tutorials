@@ -1,4 +1,4 @@
-@extends('core::layouts.app')
+@extends('laravel-enso/core::layouts.app')
 
 @section('pageTitle', __("Tutorials"))
 
@@ -7,7 +7,7 @@
     <a class="btn btn-primary" href="/system/tutorials/create">
         {{ __("Create Tutorial") }}
     </a>
-    @include('core::partials.breadcrumbs')
+    @include('laravel-enso/core::partials.breadcrumbs')
 </section>
 <section class="content">
     <div class="row" v-cloak>
@@ -27,7 +27,7 @@
                 <div class="box-body">
                     {!! Form::model($tutorial, ['method' => 'PATCH', 'url' => '/system/tutorials/'.$tutorial->id]) !!}
                     <div class="row">
-                        @include('tutorials::form')
+                        @include('laravel-enso/tutorials::form')
                     </div>
                     <center class="margin-bottom">
                         {!! Form::submit(__("Save"), ['class' => 'btn btn-primary ']) !!}
