@@ -1,17 +1,14 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use LaravelEnso\Core\App\Classes\StructureManager\StructureSupport;
+use LaravelEnso\Core\App\Classes\StructureManager\StructureMigration;
 
-class CreateStructureForTutorialManager extends Migration
+class CreateStructureForTutorialManager extends StructureMigration
 {
-    use StructureSupport;
-
-    private $permissionsGroup = [
+    protected $permissionsGroup = [
         'name' => 'system.tutorials', 'description' => 'Tuturials Permissions Group',
     ];
 
-    private $permissions = [
+    protected $permissions = [
         ['name' => 'system.tutorials.getTableData', 'description' => 'Get table data for tutorials', 'type' => 0],
         ['name' => 'system.tutorials.initTable', 'description' => 'Init table data for tutorials', 'type' => 0],
         ['name' => 'system.tutorials.create', 'description' => 'Create Tutorial', 'type' => 1],
@@ -23,10 +20,9 @@ class CreateStructureForTutorialManager extends Migration
         ['name' => 'system.tutorials.destroy', 'description' => 'Delete Tutorial', 'type' => 1],
     ];
 
-    private $menu = [
+    protected $menu = [
         'name' => 'Tutorials', 'icon' => 'fa fa-fw fa-book', 'link' => 'system/tutorials', 'has_children' => 0,
     ];
 
-    private $parentMenu = 'System';
-    private $roles;
+    protected $parentMenu = 'System';
 }
