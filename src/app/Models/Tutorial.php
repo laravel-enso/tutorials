@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\TutorialManager\App\Models;
+namespace LaravelEnso\TutorialManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Tutorial extends Model
 
     public function permission()
     {
-        return $this->belongsTo('LaravelEnso\Core\App\Models\Permission');
+        return $this->belongsTo('LaravelEnso\Core\app\Models\Permission');
     }
 }

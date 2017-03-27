@@ -1,14 +1,14 @@
 <?php
 
-namespace LaravelEnso\TutorialManager\App\Http\Controllers;
+namespace LaravelEnso\TutorialManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\Core\App\Models\Permission;
-use LaravelEnso\DataTable\App\Traits\DataTable;
-use LaravelEnso\TutorialManager\App\DataTable\TutorialsTableStructure;
-use LaravelEnso\TutorialManager\App\Enums\TutorialPlacementEnum;
-use LaravelEnso\TutorialManager\App\Http\Requests\ValidateTutorialRequest;
-use LaravelEnso\TutorialManager\App\Models\Tutorial;
+use LaravelEnso\Core\app\Models\Permission;
+use LaravelEnso\DataTable\app\Traits\DataTable;
+use LaravelEnso\TutorialManager\app\DataTable\TutorialsTableStructure;
+use LaravelEnso\TutorialManager\app\Enums\TutorialPlacementEnum;
+use LaravelEnso\TutorialManager\app\Http\Requests\ValidateTutorialRequest;
+use LaravelEnso\TutorialManager\app\Models\Tutorial;
 
 class TutorialController extends Controller
 {
