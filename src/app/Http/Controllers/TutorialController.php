@@ -113,8 +113,8 @@ class TutorialController extends Controller
     public function getTutorial($route)
     {
         $homeTutorial = Tutorial::wherePermissionId(1)->orderBy('order')->get();
-        $localTutorial = Permission::whereName($route)->first()->tutorials->sortBy('order');
-
+        $permission = Permission::whereName($route)->first();
+        $localTutorial = $permission ? $permission->tutorials->sortBy('order') : null;
         $tutorial = $homeTutorial->merge($localTutorial);
 
         return $tutorial;
