@@ -115,8 +115,18 @@ class TutorialController extends Controller
         $homeTutorial = Tutorial::wherePermissionId(1)->orderBy('order')->get();
         $permission = Permission::whereName($route)->first();
         $localTutorial = $permission ? $permission->tutorials->sortBy('order') : null;
-        $tutorial = $homeTutorial->merge($localTutorial);
+        $tutorials = $homeTutorial->merge($localTutorial);
 
-        return $tutorial;
+        return $this->translateTutorial($tutorials);
+    }
+
+    private function translateTutorial($tutorials)
+    {
+        $tutorials->each(function($tutorial) {
+            $tutorial->title = __($tutorial->title);
+            $tutorial->content = __($tutorial->content);
+        });
+
+        return $tutorials;
     }
 }
