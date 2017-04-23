@@ -122,7 +122,7 @@ class TutorialController extends Controller
 
     private function translateTutorial($tutorials)
     {
-        $tutorials->each(function($tutorial) {
+        $tutorials->each(function ($tutorial) {
             $tutorial->title = __($tutorial->title);
             $tutorial->content = __($tutorial->content);
         });
