@@ -9,14 +9,14 @@ class TutorialsTableStructure extends TableStructure
     public function __construct()
     {
         $this->data = [
-            'crtNo'         => __('#'),
-            'actionButtons' => __('Actions'),
-            'notSearchable' => [5, 6],
-            'render'        => [5, 6],
-            'headerAlign'   => 'center',
-            'bodyAlign'     => 'center',
-            'tableClass'    => 'table display compact',
-            'dom'           => 'lfrtip',
+            'crtNo'           => __('#'),
+            'actionButtons'   => __('Actions'),
+            'notSearchable'   => [5, 6],
+            'render'          => [5, 6],
+            'headerAlign'     => 'center',
+            'bodyAlign'       => 'center',
+            'tableClass'      => 'table display compact',
+            'dom'             => 'lfrtip',
             'columns'         => [
                 0 => [
                     'label' => __('Permission Name'),

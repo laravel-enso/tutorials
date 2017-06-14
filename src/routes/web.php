@@ -1,8 +1,8 @@
 <?php
 
 Route::group([
-	'namespace' => 'LaravelEnso\TutorialManager\app\Http\Controllers',
-	'middleware' => ['web', 'auth', 'core']
+    'namespace'  => 'LaravelEnso\TutorialManager\app\Http\Controllers',
+    'middleware' => ['web', 'auth', 'core'],
 ], function () {
     Route::group(['prefix' => 'system/tutorials', 'as' => 'system.tutorials.'], function () {
         Route::get('initTable', 'TutorialController@initTable')->name('initTable');
