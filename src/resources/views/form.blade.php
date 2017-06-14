@@ -31,7 +31,7 @@
         <small class="text-danger" style="float:right;">
             {{ $errors->first('placement') }}
         </small>
-        {!! Form::select('placement', $placements, null, ['class' => 'form-control select']) !!}
+        {!! Form::select('placement', $positions, null, ['class' => 'form-control select']) !!}
     </div>
 </div>
 <div class="col-sm-6">

@@ -13,15 +13,9 @@ class ValidateTutorialRequest extends FormRequest
 
     public function rules()
     {
-        $tutorial = $this->route('tutorial');
-
-        $elementRule = $this->_method == 'PATCH' ? 'required|unique:tutorials,element,'.$tutorial->id.',id'
-            : 'required|unique:tutorials';
-
         return [
-
             'permission_id' => 'required',
-            'element'       => $elementRule,
+            'element'       => 'required',
             'title'         => 'required',
             'content'       => 'required',
             'placement'     => 'required',

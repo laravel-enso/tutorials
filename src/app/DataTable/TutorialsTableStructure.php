@@ -2,14 +2,13 @@
 
 namespace LaravelEnso\TutorialManager\app\DataTable;
 
-use LaravelEnso\DataTable\app\Classes\Abstracts\TableStructure;
+use LaravelEnso\DataTable\app\Classes\TableStructure;
 
 class TutorialsTableStructure extends TableStructure
 {
     public function __construct()
     {
         $this->data = [
-
             'crtNo'         => __('#'),
             'actionButtons' => __('Actions'),
             'notSearchable' => [5, 6],
@@ -18,7 +17,6 @@ class TutorialsTableStructure extends TableStructure
             'bodyAlign'     => 'center',
             'tableClass'    => 'table display compact',
             'dom'           => 'lfrtip',
-
             'columns'         => [
                 0 => [
                     'label' => __('Permission Name'),

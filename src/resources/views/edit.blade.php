@@ -45,7 +45,7 @@
 @push('scripts')
 
     <script>
-        var vue = new Vue({
+        let vm = new Vue({
             el: '#app'
         });
     </script>

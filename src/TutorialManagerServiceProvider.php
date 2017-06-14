@@ -6,11 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class TutorialManagerServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         $this->publishesAll();
@@ -20,12 +15,16 @@ class TutorialManagerServiceProvider extends ServiceProvider
     private function publishesAll()
     {
         $this->publishes([
-            __DIR__.'/database/migrations' => database_path('migrations'),
-        ], 'tutorials-migration');
-
-        $this->publishes([
             __DIR__.'/resources/views' => resource_path('views/vendor/laravel-enso/tutorialmanager'),
         ], 'tutorials-views');
+
+        $this->publishes([
+            __DIR__.'/resources/assets/js/components' => resource_path('assets/js/vendor/laravel-enso/components'),
+        ], 'tutorials-component');
+
+        $this->publishes([
+            __DIR__.'/resources/assets/js/components' => resource_path('assets/js/vendor/laravel-enso/components'),
+        ], 'update');
     }
 
     private function loadDependencies()
@@ -35,11 +34,6 @@ class TutorialManagerServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
     public function register()
     {
         //

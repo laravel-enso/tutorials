@@ -14,8 +14,8 @@ class CreateTutorialsTable extends Migration
     {
         Schema::create('tutorials', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('permission_id')->unsigned()->index('permission_id');
-            $table->foreign('permission_id')->references('id')->on('permissions')->onUpdate('restrict')->onDelete('restrict');
+            $table->integer('permission_id')->unsigned()->index();
+            $table->foreign('permission_id')->references('id')->on('permissions')->onUpdate('cascade')->onDelete('cascade');
             $table->string('element');
             $table->string('title');
             $table->text('content', 65535);

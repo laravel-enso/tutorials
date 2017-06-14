@@ -13,88 +13,53 @@ use LaravelEnso\TutorialManager\app\Models\Tutorial;
 class TutorialController extends Controller
 {
     use DataTable;
+
     protected $tableStructureClass = TutorialsTableStructure::class;
+
+    private const HomePermissionId = 1;
 
     public static function getTableQuery()
     {
-        $query = Tutorial::select(\DB::raw('tutorials.id as DT_RowId, permissions.name as permissionName, tutorials.element,
-                tutorials.title, tutorials.placement, tutorials.order, tutorials.created_at, tutorials.updated_at'))
+        $query = Tutorial::select(\DB::raw('tutorials.id as DT_RowId, permissions.name as permissionName,
+                tutorials.element, tutorials.title, tutorials.placement, tutorials.order,
+                tutorials.created_at, tutorials.updated_at'))
             ->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
 
         return $query;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('laravel-enso/tutorials::index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $permissions = Permission::all()->pluck('name', 'id');
-        $placementsEnum = new TutorialPlacementEnum();
-        $placements = $placementsEnum->getData();
+        $positions = (new TutorialPlacementEnum())->getData();
 
-        return view('laravel-enso/tutorials::create', compact('permissions', 'placements'));
+        return view('laravel-enso/tutorials::create', compact('permissions', 'positions'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param ValidateTutorialRequest $request
-     * @param Tutorial                $tutorial
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(ValidateTutorialRequest $request, Tutorial $tutorial)
     {
-        $tutorial->fill($request->all());
-        $tutorial->save();
-
+        $tutorial = $tutorial->create($request->all());
         flash()->success(__('Tutorial Created'));
 
         return redirect('system/tutorials/'.$tutorial->id.'/edit');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Tutorial $tutorial
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Tutorial $tutorial)
     {
         $permissions = Permission::all()->pluck('name', 'id');
-        $placementsEnum = new TutorialPlacementEnum();
-        $placements = $placementsEnum->getData();
+        $positions = (new TutorialPlacementEnum())->getData();
 
-        return view('laravel-enso/tutorials::edit', compact('tutorial', 'permissions', 'placements'));
+        return view('laravel-enso/tutorials::edit', compact('tutorial', 'permissions', 'positions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param ValidateTutorialRequest $request
-     * @param Tutorial                $tutorial
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function update(ValidateTutorialRequest $request, Tutorial $tutorial)
     {
-        $tutorial->fill($request->all());
-        $tutorial->save();
-
+        $tutorial->update($request->all());
         flash()->success(__('The Changes have been saved!'));
 
         return back();
@@ -103,30 +68,22 @@ class TutorialController extends Controller
     public function destroy(Tutorial $tutorial)
     {
         $tutorial->delete();
-
-        return [
-            'level'   => 'success',
-            'message' => __('Operation was successfull'),
-        ];
     }
 
     public function getTutorial($route)
     {
-        $homeTutorial = Tutorial::wherePermissionId(1)->orderBy('order')->get();
+        $homeTutorials = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
         $permission = Permission::whereName($route)->first();
-        $localTutorial = $permission ? $permission->tutorials->sortBy('order') : null;
-        $tutorials = $homeTutorial->merge($localTutorial);
+        $localTutorials = $permission ? $permission->tutorials->sortBy('order') : collect();
 
-        return $this->translateTutorial($tutorials);
+        return $this->translateTutorial($homeTutorials->merge($localTutorials));
     }
 
     private function translateTutorial($tutorials)
     {
-        $tutorials->each(function ($tutorial) {
+        return $tutorials->each(function ($tutorial) {
             $tutorial->title = __($tutorial->title);
             $tutorial->content = __($tutorial->content);
         });
-
-        return $tutorials;
     }
 }
