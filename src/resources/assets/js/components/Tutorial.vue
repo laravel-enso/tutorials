@@ -52,9 +52,7 @@
 
 					return this.firstTime ? this.tour.start() : this.tour.restart();
 			    }).catch(error => {
-		    		if (error.response.data.level) {
-		    			toastr[error.response.data.level](error.response.data.message);
-		    		}
+		    		this.reportEnsoException(error);
 		    	});
 			},
 			init() {
@@ -71,7 +69,7 @@
 				return this.tour ? this.tour.restart() : this.get();
 			},
 		    isFirstTimeOnRoute() {
-		    	return document.cookie.indexOf("tour_end") == -1;
+		    	return localStorage.tour_end !== "yes";
 		    }
 		},
 
