@@ -47,7 +47,7 @@ class TutorialsTest extends TestCase
     {
         $this->post('/system/tutorials', $this->postParams());
         $tutorial = Tutorial::first();
-        $response = $this->get('/system/tutorials/' . $tutorial->id . '/edit');
+        $response = $this->get('/system/tutorials/'.$tutorial->id.'/edit');
         $response->assertStatus(200);
         $response->assertViewHas('tutorial', $tutorial);
     }
@@ -59,7 +59,7 @@ class TutorialsTest extends TestCase
         $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
-        $response = $this->patch('/system/tutorials/' . $tutorial->id, $tutorial->toArray());
+        $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
         $response->assertStatus(302);
         $this->assertTrue($this->tutorialWasUpdated());
     }
@@ -70,7 +70,7 @@ class TutorialsTest extends TestCase
         $postParams = $this->postParams();
         $this->post('/system/tutorials', $postParams);
         $tutorial = Tutorial::whereTitle($postParams['title'])->first();
-        $response = $this->delete('/system/tutorials/' . $tutorial->id);
+        $response = $this->delete('/system/tutorials/'.$tutorial->id);
         $response->assertStatus(200);
     }
 
@@ -81,7 +81,7 @@ class TutorialsTest extends TestCase
         $secondTutorial = $this->secondTutorial($permission->id);
         $this->post('/system/tutorials', $this->postParams());
         $this->post('/system/tutorials', $secondTutorial);
-        $response = $this->get('system/tutorials/getTutorial/' . $permission->name);
+        $response = $this->get('system/tutorials/getTutorial/'.$permission->name);
         unset($secondTutorial['_method']);
         $response->assertJsonFragment($secondTutorial);
     }
@@ -92,12 +92,12 @@ class TutorialsTest extends TestCase
 
         return [
             'permission_id' => "$permission->id",
-            'element' => 'testElement',
-            'title' => "testTutorial",
-            'content' => "testTutorialContent",
-            'placement' => "1",
-            'order' => "1",
-            '_method' => 'POST',
+            'element'       => 'testElement',
+            'title'         => 'testTutorial',
+            'content'       => 'testTutorialContent',
+            'placement'     => '1',
+            'order'         => '1',
+            '_method'       => 'POST',
         ];
     }
 
@@ -105,7 +105,7 @@ class TutorialsTest extends TestCase
     {
         $tutorial = Tutorial::first();
 
-        return $tutorial->title === "testTutorial";
+        return $tutorial->title === 'testTutorial';
     }
 
     private function tutorialWasUpdated()
@@ -119,12 +119,12 @@ class TutorialsTest extends TestCase
     {
         return [
             'permission_id' => "$id",
-            'element' => 'testElement',
-            'title' => 'secondPermission',
-            'content' => 'secondTutorialContent',
-            'placement' => "1",
-            'order' => "1",
-            '_method' => 'POST',
+            'element'       => 'testElement',
+            'title'         => 'secondPermission',
+            'content'       => 'secondTutorialContent',
+            'placement'     => '1',
+            'order'         => '1',
+            '_method'       => 'POST',
         ];
     }
 }
