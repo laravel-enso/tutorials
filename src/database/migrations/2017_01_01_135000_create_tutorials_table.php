@@ -19,7 +19,7 @@ class CreateTutorialsTable extends Migration
             $table->string('element');
             $table->string('title');
             $table->text('content', 65535);
-            $table->string('placement');
+            $table->tinyInteger('placement');
             $table->integer('order')->default(1);
             $table->timestamps();
         });

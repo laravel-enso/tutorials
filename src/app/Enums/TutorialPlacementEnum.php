@@ -9,10 +9,10 @@ class TutorialPlacementEnum extends AbstractEnum
     public function __construct()
     {
         $this->data = [
-            'top'    => __('top'),
-            'bottom' => __('bottom'),
-            'right'  => __('right'),
-            'left'   => __('left'),
+            0 => __('top'),
+            1 => __('bottom'),
+            2 => __('right'),
+            3 => __('left'),
         ];
     }
 }

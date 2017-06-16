@@ -18,7 +18,7 @@ class ValidateTutorialRequest extends FormRequest
             'element'       => 'required',
             'title'         => 'required',
             'content'       => 'required',
-            'placement'     => 'required',
+            'placement'     => 'required|numeric',
             'order'         => 'numeric',
         ];
     }

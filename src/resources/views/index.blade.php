@@ -34,11 +34,12 @@
 
                     switch(column) {
                         case 'created_at':
-                            return moment(data).format("DD-MM-YYYY");
                         case 'updated_at':
                             return moment(data).format("DD-MM-YYYY");
+                        case 'placement':
+                            return '<span class="label bg-orange">' + data + '</span';
                         default:
-                            console.log('render for column ' + column + ' is not defined.' );
+                            toastr.warning('render for column ' + column + ' is not defined.' );
                             return data;
                     }
                 }
