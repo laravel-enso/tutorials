@@ -39,7 +39,6 @@
 			return {
 				template: tutorialTemplate,
 				tutorialSteps: [],
-				firstTime: false,
 				tour: null
 			}
 		},
@@ -49,8 +48,6 @@
 				axios.get('/system/tutorials/getTutorial/' + this.route).then(response => {
 					this.tutorialSteps = response.data;
 					this.init();
-
-					return this.firstTime ? this.tour.start() : this.tour.restart();
 			    }).catch(error => {
 		    		this.reportEnsoException(error);
 		    	});
@@ -64,6 +61,8 @@
 		        });
 
 		        this.tour.addSteps(self.tutorialSteps);
+
+		        return this.isFirstTimeOnRoute() ? this.tour.start() : this.tour.restart();
 			},
 			restart() {
 				return this.tour ? this.tour.restart() : this.get();
@@ -74,9 +73,7 @@
 		},
 
 		mounted() {
-			this.firstTime = this.isFirstTimeOnRoute();
-
-			if (this.firstTime) {
+			if (this.isFirstTimeOnRoute()) {
 				this.get();
 			}
 		}
