@@ -1,47 +1,39 @@
 <?php
-
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use LaravelEnso\Core\app\Models\Permission;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
 use Tests\TestCase;
-
 class TutorialsTest extends TestCase
 {
     use DatabaseMigrations;
-
     private $user;
-
     protected function setUp()
     {
         parent::setUp();
-
         $this->user = User::first();
-        $this->be($this->user);
+        $this->actingAs($this->user);
     }
-
     /** @test */
     public function index()
     {
         $response = $this->get('/system/tutorials');
         $response->assertStatus(200);
     }
-
     /** @test */
     public function create()
     {
         $response = $this->get('/system/tutorials/create');
         $response->assertStatus(200);
     }
-
     /** @test */
     public function store()
     {
         $response = $this->post('/system/tutorials', $this->postParams());
-        $response->assertStatus(302);
+        $id = Tutorial::latest()->first()->id;
+        $response->assertRedirect('/system/tutorials/' . $id . '/edit');
         $this->assertTrue($this->tutorialWasCreated());
     }
-
     /** @test */
     public function edit()
     {
@@ -51,7 +43,6 @@ class TutorialsTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewHas('tutorial', $tutorial);
     }
-
     /** @test */
     public function update()
     {
@@ -60,10 +51,9 @@ class TutorialsTest extends TestCase
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
         $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
-        $response->assertStatus(302);
+        $response->assertRedirect(config("APP_URL"));
         $this->assertTrue($this->tutorialWasUpdated());
     }
-
     /** @test */
     public function destroy()
     {
@@ -73,7 +63,6 @@ class TutorialsTest extends TestCase
         $response = $this->delete('/system/tutorials/'.$tutorial->id);
         $response->assertStatus(200);
     }
-
     /** @test */
     public function getTutorial()
     {
@@ -85,11 +74,9 @@ class TutorialsTest extends TestCase
         unset($secondTutorial['_method']);
         $response->assertJsonFragment($secondTutorial);
     }
-
     private function postParams()
     {
         $permission = Permission::first();
-
         return [
             'permission_id' => "$permission->id",
             'element'       => 'testElement',
@@ -100,21 +87,16 @@ class TutorialsTest extends TestCase
             '_method'       => 'POST',
         ];
     }
-
     private function tutorialWasCreated()
     {
         $tutorial = Tutorial::first();
-
         return $tutorial->title === 'testTutorial';
     }
-
     private function tutorialWasUpdated()
     {
         $tutorial = Tutorial::first();
-
         return $tutorial->title === 'edited';
     }
-
     private function secondTutorial($id)
     {
         return [
