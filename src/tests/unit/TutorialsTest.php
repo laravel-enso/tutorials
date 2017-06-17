@@ -44,7 +44,7 @@ class TutorialsTest extends TestCase
 
         $response = $this->post('/system/tutorials', $factory->toArray());
         $id = Tutorial::latest()->first()->id;
-        $response->assertRedirect('/system/tutorials/' . $id . '/edit');
+        $response->assertRedirect('/system/tutorials/'.$id.'/edit');
         $this->assertTrue($this->tutorialWasCreated($factory));
     }
 
@@ -54,10 +54,10 @@ class TutorialsTest extends TestCase
         $factory = factory(Tutorial::class)->make([
             'permission_id' => Permission::first()->id,
         ]);
-        
+
         $this->post('/system/tutorials', $factory->toArray());
         $tutorial = Tutorial::first();
-        $response = $this->get('/system/tutorials/' . $tutorial->id . '/edit');
+        $response = $this->get('/system/tutorials/'.$tutorial->id.'/edit');
         $response->assertStatus(200);
         $response->assertViewHas('tutorial', $tutorial);
     }
@@ -87,7 +87,7 @@ class TutorialsTest extends TestCase
 
         $this->post('/system/tutorials', $factory->toArray());
         $tutorial = Tutorial::whereTitle($factory['title'])->first();
-        $response = $this->delete('/system/tutorials/' . $tutorial->id);
+        $response = $this->delete('/system/tutorials/'.$tutorial->id);
         $response->assertStatus(200);
     }
 
@@ -105,7 +105,7 @@ class TutorialsTest extends TestCase
 
         $this->post('/system/tutorials', $firstTutorial->toArray());
         $this->post('/system/tutorials', $secondTutorial->toArray());
-        $response = $this->get('system/tutorials/getTutorial/' . $permission->name);
+        $response = $this->get('system/tutorials/getTutorial/'.$permission->name);
 
         unset($secondTutorial['_method']);
 
