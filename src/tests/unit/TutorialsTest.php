@@ -9,15 +9,13 @@ use Tests\TestCase;
 class TutorialsTest extends TestCase
 {
     use DatabaseMigrations;
-
     private $user;
 
     protected function setUp()
     {
         parent::setUp();
-
         $this->user = User::first();
-        $this->be($this->user);
+        $this->actingAs($this->user);
     }
 
     /** @test */
@@ -38,7 +36,8 @@ class TutorialsTest extends TestCase
     public function store()
     {
         $response = $this->post('/system/tutorials', $this->postParams());
-        $response->assertStatus(302);
+        $id = Tutorial::latest()->first()->id;
+        $response->assertRedirect('/system/tutorials/'.$id.'/edit');
         $this->assertTrue($this->tutorialWasCreated());
     }
 
@@ -60,7 +59,7 @@ class TutorialsTest extends TestCase
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
         $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
-        $response->assertStatus(302);
+        $response->assertRedirect(config('APP_URL'));
         $this->assertTrue($this->tutorialWasUpdated());
     }
 
