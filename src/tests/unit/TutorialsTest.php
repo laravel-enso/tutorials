@@ -73,8 +73,7 @@ class TutorialsTest extends TestCase
         $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
-
-        $response = $this->patch('/system/tutorials/' . $tutorial->id, $tutorial->toArray());
+        $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
         $response->assertRedirect(config('APP_URL'));
         $this->assertTrue($this->tutorialWasUpdated());
     }
