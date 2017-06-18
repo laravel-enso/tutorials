@@ -1,8 +1,13 @@
 <template>
-	<i class="pull-right fa fa-question"
-		style="cursor: pointer;"
-		@click="restart()">
-	</i>
+
+	<label class="control-sidebar-subheading">
+		{{ label }}
+		<i class="pull-right fa fa-question"
+			style="cursor: pointer;"
+			@click="restart()">
+		</i>
+	</label>
+
 </template>
 
 <script>
@@ -30,6 +35,10 @@
 
 		props: {
 			route: {
+				type: String,
+				required: true
+			},
+			label: {
 				type: String,
 				required: true
 			}
