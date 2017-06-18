@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use LaravelEnso\Core\app\Models\Permission;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
@@ -17,7 +18,7 @@ class TutorialsTest extends TestCase
         parent::setUp();
 
         $this->user = User::first();
-        $this->be($this->user);
+        $this->actingAs($this->user);
     }
 
     /** @test */
@@ -37,15 +38,24 @@ class TutorialsTest extends TestCase
     /** @test */
     public function store()
     {
-        $response = $this->post('/system/tutorials', $this->postParams());
-        $response->assertStatus(302);
-        $this->assertTrue($this->tutorialWasCreated());
+        $factory = factory(Tutorial::class)->make([
+            'permission_id' => Permission::first()->id,
+        ]);
+
+        $response = $this->post('/system/tutorials', $factory->toArray());
+        $id = Tutorial::latest()->first()->id;
+        $response->assertRedirect('/system/tutorials/'.$id.'/edit');
+        $this->assertTrue($this->tutorialWasCreated($factory));
     }
 
     /** @test */
     public function edit()
     {
-        $this->post('/system/tutorials', $this->postParams());
+        $factory = factory(Tutorial::class)->make([
+            'permission_id' => Permission::first()->id,
+        ]);
+
+        $this->post('/system/tutorials', $factory->toArray());
         $tutorial = Tutorial::first();
         $response = $this->get('/system/tutorials/'.$tutorial->id.'/edit');
         $response->assertStatus(200);
@@ -55,21 +65,28 @@ class TutorialsTest extends TestCase
     /** @test */
     public function update()
     {
-        $this->post('/system/tutorials', $this->postParams());
+        $factory = factory(Tutorial::class)->make([
+            'permission_id' => Permission::first()->id,
+        ]);
+
+        $this->post('/system/tutorials', $factory->toArray());
         $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
         $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
-        $response->assertStatus(302);
+        $response->assertRedirect(config('APP_URL'));
         $this->assertTrue($this->tutorialWasUpdated());
     }
 
     /** @test */
     public function destroy()
     {
-        $postParams = $this->postParams();
-        $this->post('/system/tutorials', $postParams);
-        $tutorial = Tutorial::whereTitle($postParams['title'])->first();
+        $factory = factory(Tutorial::class)->make([
+            'permission_id' => Permission::first()->id,
+        ]);
+
+        $this->post('/system/tutorials', $factory->toArray());
+        $tutorial = Tutorial::whereTitle($factory['title'])->first();
         $response = $this->delete('/system/tutorials/'.$tutorial->id);
         $response->assertStatus(200);
     }
@@ -77,35 +94,29 @@ class TutorialsTest extends TestCase
     /** @test */
     public function getTutorial()
     {
+        $firstTutorial = factory(Tutorial::class)->make([
+            'permission_id' => Permission::first()->id,
+        ]);
+
         $permission = Permission::take(2)->get()->last();
-        $secondTutorial = $this->secondTutorial($permission->id);
-        $this->post('/system/tutorials', $this->postParams());
-        $this->post('/system/tutorials', $secondTutorial);
-        $response = $this->get('system/tutorials/getTutorial/'.$permission->name);
-        unset($secondTutorial['_method']);
-        $response->assertJsonFragment($secondTutorial);
-    }
-
-    private function postParams()
-    {
-        $permission = Permission::first();
-
-        return [
+        $secondTutorial = factory(Tutorial::class)->make([
             'permission_id' => "$permission->id",
-            'element'       => 'testElement',
-            'title'         => 'testTutorial',
-            'content'       => 'testTutorialContent',
-            'placement'     => '1',
-            'order'         => '1',
-            '_method'       => 'POST',
-        ];
+        ]);
+
+        $this->post('/system/tutorials', $firstTutorial->toArray());
+        $this->post('/system/tutorials', $secondTutorial->toArray());
+        $response = $this->get('system/tutorials/getTutorial/'.$permission->name);
+
+        unset($secondTutorial['_method']);
+
+        $response->assertJsonFragment($secondTutorial->toArray());
     }
 
-    private function tutorialWasCreated()
+    private function tutorialWasCreated($factory)
     {
         $tutorial = Tutorial::first();
 
-        return $tutorial->title === 'testTutorial';
+        return $tutorial->title === $factory['title'];
     }
 
     private function tutorialWasUpdated()
@@ -113,18 +124,5 @@ class TutorialsTest extends TestCase
         $tutorial = Tutorial::first();
 
         return $tutorial->title === 'edited';
-    }
-
-    private function secondTutorial($id)
-    {
-        return [
-            'permission_id' => "$id",
-            'element'       => 'testElement',
-            'title'         => 'secondPermission',
-            'content'       => 'secondTutorialContent',
-            'placement'     => '1',
-            'order'         => '1',
-            '_method'       => 'POST',
-        ];
     }
 }
