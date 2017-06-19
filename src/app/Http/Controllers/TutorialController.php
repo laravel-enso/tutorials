@@ -18,7 +18,7 @@ class TutorialController extends Controller
 
     private const HomePermissionId = 1;
 
-    public static function getTableQuery()
+    public function getTableQuery()
     {
         $query = Tutorial::select(\DB::raw('tutorials.id as DT_RowId, permissions.name as permissionName,
                 tutorials.element, tutorials.title, tutorials.placement, tutorials.order,

@@ -9,15 +9,15 @@ class CreateStructureForTutorialManager extends StructureMigration
     ];
 
     protected $permissions = [
-        ['name' => 'system.tutorials.getTableData', 'description' => 'Get table data for tutorials', 'type' => 0],
-        ['name' => 'system.tutorials.initTable', 'description' => 'Init table data for tutorials', 'type' => 0],
-        ['name' => 'system.tutorials.create', 'description' => 'Create Tutorial', 'type' => 1],
-        ['name' => 'system.tutorials.edit', 'description' => 'Edit Tutorial', 'type' => 1],
-        ['name' => 'system.tutorials.index', 'description' => 'List Tutorials', 'type' => 0],
-        ['name' => 'system.tutorials.store', 'description' => 'Save Tutorial', 'type' => 1],
-        ['name' => 'system.tutorials.update', 'description' => 'Update Tutorial', 'type' => 1],
-        ['name' => 'system.tutorials.getTutorial', 'description' => 'Load Tutorial', 'type' => 0],
-        ['name' => 'system.tutorials.destroy', 'description' => 'Delete Tutorial', 'type' => 1],
+        ['name' => 'system.tutorials.getTableData', 'description' => 'Get table data for tutorials', 'type' => 0, 'default' => false],
+        ['name' => 'system.tutorials.initTable', 'description' => 'Init table data for tutorials', 'type' => 0, 'default' => false],
+        ['name' => 'system.tutorials.create', 'description' => 'Create Tutorial', 'type' => 1, 'default' => false],
+        ['name' => 'system.tutorials.edit', 'description' => 'Edit Tutorial', 'type' => 1, 'default' => false],
+        ['name' => 'system.tutorials.index', 'description' => 'List Tutorials', 'type' => 0, 'default' => false],
+        ['name' => 'system.tutorials.store', 'description' => 'Save Tutorial', 'type' => 1, 'default' => false],
+        ['name' => 'system.tutorials.update', 'description' => 'Update Tutorial', 'type' => 1, 'default' => false],
+        ['name' => 'system.tutorials.getTutorial', 'description' => 'Load Tutorial', 'type' => 0, 'default' => true],
+        ['name' => 'system.tutorials.destroy', 'description' => 'Delete Tutorial', 'type' => 1, 'default' => false],
     ];
 
     protected $menu = [
