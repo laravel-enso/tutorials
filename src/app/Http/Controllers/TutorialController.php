@@ -3,7 +3,7 @@
 namespace LaravelEnso\TutorialManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\Core\app\Models\Permission;
+use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\DataTable\app\Traits\DataTable;
 use LaravelEnso\TutorialManager\app\DataTable\TutorialsTableStructure;
 use LaravelEnso\TutorialManager\app\Enums\TutorialPlacementEnum;
@@ -35,7 +35,7 @@ class TutorialController extends Controller
 
     public function create()
     {
-        $permissions = Permission::all()->pluck('name', 'id');
+        $permissions = Permission::pluck('name', 'id');
         $positions = (new TutorialPlacementEnum())->getData();
 
         return view('laravel-enso/tutorials::create', compact('permissions', 'positions'));
@@ -51,7 +51,7 @@ class TutorialController extends Controller
 
     public function edit(Tutorial $tutorial)
     {
-        $permissions = Permission::all()->pluck('name', 'id');
+        $permissions = Permission::pluck('name', 'id');
         $positions = (new TutorialPlacementEnum())->getData();
 
         return view('laravel-enso/tutorials::edit', compact('tutorial', 'permissions', 'positions'));
@@ -68,6 +68,8 @@ class TutorialController extends Controller
     public function destroy(Tutorial $tutorial)
     {
         $tutorial->delete();
+
+        return ['message' => __('Operation was successfull')];
     }
 
     public function getTutorial($route)

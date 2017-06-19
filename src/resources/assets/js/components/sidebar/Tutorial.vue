@@ -34,10 +34,6 @@
 	export default {
 
 		props: {
-			route: {
-				type: String,
-				required: true
-			},
 			label: {
 				type: String,
 				required: true
@@ -46,6 +42,7 @@
 
 		data() {
 			return {
+				route: Store.route,
 				template: tutorialTemplate,
 				tutorialSteps: [],
 				tour: null

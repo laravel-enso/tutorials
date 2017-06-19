@@ -3,7 +3,7 @@
 use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use LaravelEnso\Core\app\Models\Permission;
+use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
 use Tests\TestCase;
 

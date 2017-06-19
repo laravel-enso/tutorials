@@ -10,6 +10,6 @@ class Tutorial extends Model
 
     public function permission()
     {
-        return $this->belongsTo('LaravelEnso\Core\app\Models\Permission');
+        return $this->belongsTo('LaravelEnso\PermissionManager\app\Models\Permission');
     }
 }
