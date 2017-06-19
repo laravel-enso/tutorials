@@ -1,4 +1,4 @@
-# Log Manager
+# Tutorial Manager
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/282735fb74e647c4b630056271b66d77)](https://www.codacy.com/app/laravel-enso/TutorialManager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/TutorialManager&amp;utm_campaign=Badge_Grade)
 [![StyleCI](https://styleci.io/repos/85628545/shield?branch=master)](https://styleci.io/repos/85628545)
 [![Total Downloads](https://poser.pugx.org/laravel-enso/tutorialmanager/downloads)](https://packagist.org/packages/laravel-enso/tutorialmanager)
@@ -9,8 +9,6 @@ Library for LaravelEnso tutorials management
 ### Use
 
 Included in LaravelEnso Core
-
-If you need to customize the views you can publish them with `php artisan vendor:publish --tag=tutorials-views`
 
 ### Contributions
 
