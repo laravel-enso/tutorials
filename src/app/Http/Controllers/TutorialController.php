@@ -3,8 +3,8 @@
 namespace LaravelEnso\TutorialManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\DataTable\app\Traits\DataTable;
+use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\TutorialManager\app\DataTable\TutorialsTableStructure;
 use LaravelEnso\TutorialManager\app\Enums\TutorialPlacementEnum;
 use LaravelEnso\TutorialManager\app\Http\Requests\ValidateTutorialRequest;
