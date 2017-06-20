@@ -37,7 +37,7 @@
                         case 'updated_at':
                             return moment(data).format("DD-MM-YYYY");
                         case 'placement':
-                            return '<span class="label bg-orange">' + data + '</span';
+                            return '<span class="label bg-blue">' + data + '</span';
                         default:
                             toastr.warning('render for column ' + column + ' is not defined.' );
                             return data;
