@@ -74,12 +74,11 @@ class TutorialsTest extends TestCase
     /** @test */
     public function destroy()
     {
-        $postParams = $this->postParams();
-        $this->post('/system/tutorials', $postParams);
-        $tutorial = Tutorial::whereTitle($postParams['title'])->first();
+        $this->post('/system/tutorials', $this->postParams());
+        $tutorial = Tutorial::first();
         $response = $this->delete('/system/tutorials/'.$tutorial->id);
-        $response->assertStatus(200);
         $this->hasJsonConfirmation($response);
+        $response->assertStatus(200);
     }
 
     /** @test */
@@ -118,8 +117,6 @@ class TutorialsTest extends TestCase
 
     private function tutorialWasCreated()
     {
-        $tutorial = Tutorial::first();
-
         return Tutorial::all()->count() === 1;
     }
 
