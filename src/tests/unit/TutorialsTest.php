@@ -43,7 +43,7 @@ class TutorialsTest extends TestCase
     {
         $response = $this->post('/system/tutorials', $this->postParams());
         $tutorial = Tutorial::first(['id']);
-        $response->assertRedirect('/system/tutorials/' . $tutorial->id . '/edit');
+        $response->assertRedirect('/system/tutorials/'.$tutorial->id.'/edit');
         $this->hasSessionConfirmation($response);
         $this->assertTrue($this->tutorialWasCreated());
     }
@@ -53,7 +53,7 @@ class TutorialsTest extends TestCase
     {
         $this->post('/system/tutorials', $this->postParams());
         $tutorial = Tutorial::first();
-        $response = $this->get('/system/tutorials/' . $tutorial->id . '/edit');
+        $response = $this->get('/system/tutorials/'.$tutorial->id.'/edit');
         $response->assertStatus(200);
         $response->assertViewHas('tutorial', $tutorial);
     }
@@ -65,7 +65,7 @@ class TutorialsTest extends TestCase
         $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
-        $response = $this->patch('/system/tutorials/' . $tutorial->id, $tutorial->toArray());
+        $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
         $response->assertRedirect(config('APP_URL'));
         $this->hasSessionConfirmation($response);
         $this->assertTrue($this->tutorialWasUpdated());
@@ -77,7 +77,7 @@ class TutorialsTest extends TestCase
         $postParams = $this->postParams();
         $this->post('/system/tutorials', $postParams);
         $tutorial = Tutorial::whereTitle($postParams['title'])->first();
-        $response = $this->delete('/system/tutorials/' . $tutorial->id);
+        $response = $this->delete('/system/tutorials/'.$tutorial->id);
         $response->assertStatus(200);
         $this->hasJsonConfirmation($response);
     }
@@ -94,7 +94,7 @@ class TutorialsTest extends TestCase
         $this->post('/system/tutorials', $firstTutorial);
         $this->post('/system/tutorials', $secondTutorial);
 
-        $response = $this->get('system/tutorials/getTutorial/' . $permission->name);
+        $response = $this->get('system/tutorials/getTutorial/'.$permission->name);
 
         unset($firstTutorial['_method']);
         unset($secondTutorial['_method']);
@@ -107,12 +107,12 @@ class TutorialsTest extends TestCase
     {
         return [
             'permission_id' => "$this->permissionId",
-            'element' => $this->faker->word,
-            'title' => $this->faker->word,
-            'content' => $this->faker->sentence,
-            'placement' => '1',
-            'order' => '1',
-            '_method' => 'POST',
+            'element'       => $this->faker->word,
+            'title'         => $this->faker->word,
+            'content'       => $this->faker->sentence,
+            'placement'     => '1',
+            'order'         => '1',
+            '_method'       => 'POST',
         ];
     }
 
@@ -137,6 +137,6 @@ class TutorialsTest extends TestCase
 
     private function hasSessionConfirmation($response)
     {
-        return $response->assertSessionHas("flash_notification.message");
+        return $response->assertSessionHas('flash_notification.message');
     }
 }
