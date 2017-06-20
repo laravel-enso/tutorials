@@ -50,7 +50,7 @@ class TutorialService
         $tutorial = $tutorial->create($this->request->all());
         flash()->success(__('Tutorial Created'));
 
-        return redirect('system/tutorials/' . $tutorial->id . '/edit');
+        return redirect('system/tutorials/'.$tutorial->id.'/edit');
     }
 
     public function edit(Tutorial $tutorial)
