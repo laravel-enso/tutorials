@@ -1,7 +1,7 @@
 {
     "name": "laravel-enso/tutorialmanager",
-    "description": "Library for LaravelEnso tutorials management",
-    "type": "library",
+    "description": "Laravel Enso tutorials management dependency",
+    "type": "dependency",
     "license": "MIT",
     "authors": [
         {

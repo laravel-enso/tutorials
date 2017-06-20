@@ -4,7 +4,7 @@ namespace LaravelEnso\TutorialManager\app\Enums;
 
 use LaravelEnso\Helpers\Classes\AbstractEnum;
 
-class TutorialPlacementEnum extends AbstractEnum
+class TutorialPlacement extends AbstractEnum
 {
     public function __construct()
     {

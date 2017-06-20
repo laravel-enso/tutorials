@@ -3,7 +3,7 @@
 namespace LaravelEnso\TutorialManager\app\DataTable;
 
 use LaravelEnso\DataTable\app\Classes\TableStructure;
-use LaravelEnso\TutorialManager\app\Enums\TutorialPlacementEnum;
+use LaravelEnso\TutorialManager\app\Enums\TutorialPlacement;
 
 class TutorialsTableStructure extends TableStructure
 {
@@ -19,7 +19,7 @@ class TutorialsTableStructure extends TableStructure
             'tableClass'      => 'table display compact',
             'dom'             => 'lfrtip',
             'enumMappings'    => [
-                'placement' => TutorialPlacementEnum::class,
+                'placement' => TutorialPlacement::class,
             ],
             'render'          => [3, 5, 6],
             'columns'         => [
