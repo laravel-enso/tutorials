@@ -13,7 +13,7 @@ class TutorialsTableStructure extends TableStructure
             'crtNo'           => __('#'),
             'actionButtons'   => __('Actions'),
             'notSearchable'   => [5, 6],
-            'render'          => [5, 6],
+            'render'          => [3],
             'headerAlign'     => 'center',
             'bodyAlign'       => 'center',
             'tableClass'      => 'table display compact',
@@ -21,7 +21,6 @@ class TutorialsTableStructure extends TableStructure
             'enumMappings'    => [
                 'placement' => TutorialPlacement::class,
             ],
-            'render'          => [3, 5, 6],
             'columns'         => [
                 0 => [
                     'label' => __('Permission Name'),

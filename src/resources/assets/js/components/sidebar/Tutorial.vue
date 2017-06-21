@@ -86,3 +86,42 @@
 	 }
 
 </script>
+
+<style>
+
+	.popover.tour-tour {
+		background: #22262e;
+		color: white;
+		border-radius: 0px;
+		opacity: 0.9;
+		box-shadow: 0 -2px 10px #888888;
+	}
+
+	.popover-title {
+		background: #22262e;
+		color: white;
+		text-align: center;
+		font-size: 13px;
+	}
+
+	.popover-content {
+		font-size: 13px;
+	}
+
+	.popover.bottom > .arrow:after {
+		border-bottom-color: red;
+	}
+
+	.popover.top > .arrow:after {
+		border-top-color: red;
+	}
+
+	.popover.left > .arrow:after {
+		border-left-color: red;
+	}
+
+	.popover.right > .arrow:after {
+		border-right-color: red;
+	}
+
+</style>

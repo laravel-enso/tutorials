@@ -30,12 +30,8 @@
             el: '#app',
             methods: {
 
-                customRender: function(column, data, type, row, meta) {
-
+                customRender(column, data, type, row, meta) {
                     switch(column) {
-                        case 'created_at':
-                        case 'updated_at':
-                            return moment(data).format("DD-MM-YYYY");
                         case 'placement':
                             return '<span class="label bg-blue">' + data + '</span';
                         default:
