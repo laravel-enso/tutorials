@@ -7,7 +7,7 @@ use LaravelEnso\Helpers\Traits\DMYTimestamps;
 
 class Tutorial extends Model
 {
-	use DMYTimestamps;
+    use DMYTimestamps;
 
     protected $fillable = ['permission_id', 'element', 'title', 'content', 'placement', 'order'];
 
