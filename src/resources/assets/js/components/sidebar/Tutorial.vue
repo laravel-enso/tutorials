@@ -4,7 +4,7 @@
 		{{ label }}
 		<i class="pull-right fa fa-question"
 			style="cursor: pointer;"
-			@click="restart()">
+			@click="get()">
 		</i>
 	</label>
 
@@ -70,11 +70,8 @@
 
 		        return this.isFirstTimeOnRoute() ? this.tour.start() : this.tour.restart();
 			},
-			restart() {
-				return this.tour ? this.tour.restart() : this.get();
-			},
 		    isFirstTimeOnRoute() {
-		    	return localStorage.tour_end !== "yes";
+		    	return localStorage.getItem('tour_end') !== "yes";
 		    }
 		},
 

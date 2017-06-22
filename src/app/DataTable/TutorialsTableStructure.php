@@ -16,8 +16,6 @@ class TutorialsTableStructure extends TableStructure
             'render'          => [3],
             'headerAlign'     => 'center',
             'bodyAlign'       => 'center',
-            'tableClass'      => 'table display compact',
-            'dom'             => 'lfrtip',
             'enumMappings'    => [
                 'placement' => TutorialPlacement::class,
             ],
