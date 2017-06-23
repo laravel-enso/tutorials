@@ -3,11 +3,11 @@
 namespace LaravelEnso\TutorialManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\Helpers\Traits\DMYTimestamps;
+use LaravelEnso\Helpers\Traits\FormattedTimestamps;
 
 class Tutorial extends Model
 {
-    use DMYTimestamps;
+    use FormattedTimestamps;
 
     protected $fillable = ['permission_id', 'element', 'title', 'content', 'placement', 'order'];
 
