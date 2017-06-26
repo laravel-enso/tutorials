@@ -55,7 +55,7 @@ class TutorialsTest extends TestCase
     {
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first();
-        $response = $this->get('/system/tutorials/' . $tutorial->id . '/edit');
+        $response = $this->get('/system/tutorials/'.$tutorial->id.'/edit');
         $response->assertStatus(200);
         $response->assertViewHas('tutorial', $tutorial);
     }
@@ -63,12 +63,11 @@ class TutorialsTest extends TestCase
     /** @test */
     public function update()
     {
-
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
-        $response = $this->patch('/system/tutorials/' . $tutorial->id, $tutorial->toArray());
+        $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
         $response->assertStatus(302);
         $this->hasSessionConfirmation($response);
         $this->assertTrue($this->tutorialWasUpdated());
@@ -77,10 +76,9 @@ class TutorialsTest extends TestCase
     /** @test */
     public function destroy()
     {
-
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first(['id']);
-        $response = $this->delete('/system/tutorials/' . $tutorial->id);
+        $response = $this->delete('/system/tutorials/'.$tutorial->id);
         $this->hasJsonConfirmation($response);
         $response->assertStatus(200);
     }
@@ -97,7 +95,7 @@ class TutorialsTest extends TestCase
         $secondTutorial['permission_id'] = strval($secondPermission->id);
         Tutorial::create($secondTutorial);
 
-        $response = $this->get('system/tutorials/getTutorial/' . $secondPermission->name);
+        $response = $this->get('system/tutorials/getTutorial/'.$secondPermission->name);
 
         unset($firstTutorial['_method']);
         unset($secondTutorial['_method']);
@@ -110,12 +108,12 @@ class TutorialsTest extends TestCase
     {
         return [
             'permission_id' => strval($this->homePermission->id),
-            'element' => $this->faker->word,
-            'title' => $this->faker->word,
-            'content' => $this->faker->sentence,
-            'placement' => '1',
-            'order' => '1',
-            '_method' => 'POST',
+            'element'       => $this->faker->word,
+            'title'         => $this->faker->word,
+            'content'       => $this->faker->sentence,
+            'placement'     => '1',
+            'order'         => '1',
+            '_method'       => 'POST',
         ];
     }
 
