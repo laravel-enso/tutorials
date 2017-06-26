@@ -17,7 +17,7 @@ class TutorialsTest extends TestCase
     {
         parent::setUp();
 
-        $this->disableExceptionHandling();
+        // $this->disableExceptionHandling();
         $this->user = User::first();
         $this->faker = Factory::create();
         $this->homePermission = Permission::whereName('home')->first();
@@ -55,7 +55,7 @@ class TutorialsTest extends TestCase
     {
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first();
-        $response = $this->get('/system/tutorials/'.$tutorial->id.'/edit');
+        $response = $this->get('/system/tutorials/' . $tutorial->id . '/edit');
         $response->assertStatus(200);
         $response->assertViewHas('tutorial', $tutorial);
     }
@@ -63,11 +63,12 @@ class TutorialsTest extends TestCase
     /** @test */
     public function update()
     {
+
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
-        $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
+        $response = $this->patch('/system/tutorials/' . $tutorial->id, $tutorial->toArray());
         $response->assertStatus(302);
         $this->hasSessionConfirmation($response);
         $this->assertTrue($this->tutorialWasUpdated());
@@ -76,9 +77,10 @@ class TutorialsTest extends TestCase
     /** @test */
     public function destroy()
     {
+
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first(['id']);
-        $response = $this->delete('/system/tutorials/'.$tutorial->id);
+        $response = $this->delete('/system/tutorials/' . $tutorial->id);
         $this->hasJsonConfirmation($response);
         $response->assertStatus(200);
     }
@@ -90,31 +92,18 @@ class TutorialsTest extends TestCase
 
         Tutorial::create($firstTutorial);
 
-        $secondPermission = Permission::take(2)->latest()->first();
+        $secondPermission = Permission::latest()->first();
         $secondTutorial = $this->postParams();
-        $secondTutorial['permission_id'] = strval($secondPermission->id);
+        $secondTutorial['permission_id'] = $secondPermission->id;
         Tutorial::create($secondTutorial);
 
-        $response = $this->get('system/tutorials/getTutorial/'.$secondPermission->name);
+        $response = $this->get('system/tutorials/getTutorial/' . $secondPermission->name);
 
-        unset($firstTutorial['_method']);
-        unset($secondTutorial['_method']);
+        unset($firstTutorial['permission_id'], $firstTutorial['_method']);
+        unset($secondTutorial['permission_id'], $secondTutorial['_method']);
 
         $response->assertJsonFragment($firstTutorial);
         $response->assertJsonFragment($secondTutorial);
-    }
-
-    private function postParams()
-    {
-        return [
-            'permission_id' => strval($this->homePermission->id),
-            'element'       => $this->faker->word,
-            'title'         => $this->faker->word,
-            'content'       => $this->faker->sentence,
-            'placement'     => '1',
-            'order'         => '1',
-            '_method'       => 'POST',
-        ];
     }
 
     private function tutorialWasCreated()
@@ -137,5 +126,18 @@ class TutorialsTest extends TestCase
     private function hasSessionConfirmation($response)
     {
         return $response->assertSessionHas('flash_notification');
+    }
+
+    private function postParams()
+    {
+        return [
+            'permission_id' => $this->homePermission->id,
+            'element' => $this->faker->word,
+            'title' => $this->faker->word,
+            'content' => $this->faker->sentence,
+            'placement' => '1',
+            'order' => '1',
+            '_method' => 'POST',
+        ];
     }
 }
