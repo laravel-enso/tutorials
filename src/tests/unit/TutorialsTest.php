@@ -44,7 +44,8 @@ class TutorialsTest extends TestCase
     {
         $response = $this->post('/system/tutorials', $this->postParams());
         $tutorial = Tutorial::first(['id']);
-        $response->assertRedirect('/system/tutorials/' . $tutorial->id . '/edit');
+
+        $response->assertRedirect('/system/tutorials/'.$tutorial->id.'/edit');
         $this->hasSessionConfirmation($response);
         $this->assertTrue($this->tutorialWasCreated());
     }
@@ -62,6 +63,7 @@ class TutorialsTest extends TestCase
     /** @test */
     public function update()
     {
+
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
@@ -75,6 +77,7 @@ class TutorialsTest extends TestCase
     /** @test */
     public function destroy()
     {
+
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first(['id']);
         $response = $this->delete('/system/tutorials/' . $tutorial->id);
@@ -86,6 +89,7 @@ class TutorialsTest extends TestCase
     public function getTutorial()
     {
         $firstTutorial = $this->postParams();
+
         Tutorial::create($firstTutorial);
 
         $secondPermission = Permission::take(2)->latest()->first();
