@@ -4,12 +4,17 @@
 [![Total Downloads](https://poser.pugx.org/laravel-enso/tutorialmanager/downloads)](https://packagist.org/packages/laravel-enso/tutorialmanager)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/tutorialmanager/version)](https://packagist.org/packages/laravel-enso/tutorialmanager)
 
-Laravel Enso tutorials management dependency
+[Laravel Enso](https://github.com/laravel-enso/Enso) tutorials management dependency
 
 ### Use
 
-Included in LaravelEnso Core
+Included in [LaravelEnso Core](https://github.com/laravel-enso/Core)
+
+### Can publish
+- `php artisan vendor:publish --tag=tutorials-component` - the VueJS component
+- `php artisan vendor:publish --tag=update` - a common alias for when wanting to update the VueJS component, 
+once a newer version is released
 
 ### Contributions
 
-...are welcome
+are welcome
