@@ -6,6 +6,12 @@
 
 Tutorial management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso).
 
+### Details
+
+- allows for a user friendly way of teaching users how to use the interface of the application
+- permits adding, updating and deleting tutorial entries that can be then automatically shown for the selected route
+- tutorial entries are displayed using [Bootstrap Tour](http://bootstraptour.com)
+
 ### Publishes
 - `php artisan vendor:publish --tag=tutorials-component` - the VueJS component
 - `php artisan vendor:publish --tag=enso-update` - a common alias for when wanting to update the VueJS component, 
