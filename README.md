@@ -8,6 +8,9 @@ Tutorial management dependency for [Laravel Enso](https://github.com/laravel-ens
 
 ![Screenshot](https://laravel-enso.github.io/tutorialmanager/screenshots/Selection_023.png)
 
+[![Watch the demo](https://laravel-enso.github.io/tutorialmanager/screenshots/Selection_026.png)](https://laravel-enso.github.io/tutorialmanager/videos/demo_01.webm)
+<sup>click on the photo to view a short demo in compatible browsers</sup>
+
 ### Details
 
 - allows for a user friendly way of teaching users how to use the interface of the application
