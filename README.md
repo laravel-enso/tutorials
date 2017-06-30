@@ -6,6 +6,8 @@
 
 Tutorial management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso).
 
+![Screenshot](https://laravel-enso.github.io/tutorialmanager/screenshots/Selection_023.png)
+
 ### Details
 
 - allows for a user friendly way of teaching users how to use the interface of the application
