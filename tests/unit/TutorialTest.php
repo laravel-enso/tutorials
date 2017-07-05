@@ -7,7 +7,7 @@ use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
 use Tests\TestCase;
 
-class TutorialsTest extends TestCase
+class TutorialTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -29,6 +29,7 @@ class TutorialsTest extends TestCase
     public function index()
     {
         $response = $this->get('/system/tutorials');
+
         $response->assertStatus(200);
     }
 
@@ -36,6 +37,7 @@ class TutorialsTest extends TestCase
     public function create()
     {
         $response = $this->get('/system/tutorials/create');
+
         $response->assertStatus(200);
     }
 
@@ -46,8 +48,9 @@ class TutorialsTest extends TestCase
         $tutorial = Tutorial::first(['id']);
 
         $response->assertRedirect('/system/tutorials/'.$tutorial->id.'/edit');
+
         $this->hasSessionConfirmation($response);
-        $this->assertTrue($this->tutorialWasCreated());
+        $this->assertTrue($this->wasCreated());
     }
 
     /** @test */
@@ -55,7 +58,9 @@ class TutorialsTest extends TestCase
     {
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first();
+
         $response = $this->get('/system/tutorials/'.$tutorial->id.'/edit');
+
         $response->assertStatus(200);
         $response->assertViewHas('tutorial', $tutorial);
     }
@@ -67,10 +72,12 @@ class TutorialsTest extends TestCase
         $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
+
         $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
+
         $response->assertStatus(302);
         $this->hasSessionConfirmation($response);
-        $this->assertTrue($this->tutorialWasUpdated());
+        $this->assertTrue($this->wasUpdated());
     }
 
     /** @test */
@@ -78,8 +85,11 @@ class TutorialsTest extends TestCase
     {
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first(['id']);
+
         $response = $this->delete('/system/tutorials/'.$tutorial->id);
+
         $this->hasJsonConfirmation($response);
+        $this->wasDeleted();
         $response->assertStatus(200);
     }
 
@@ -104,16 +114,21 @@ class TutorialsTest extends TestCase
         $response->assertJsonFragment($secondTutorial);
     }
 
-    private function tutorialWasCreated()
+    private function wasCreated()
     {
         return Tutorial::count() === 1;
     }
 
-    private function tutorialWasUpdated()
+    private function wasUpdated()
     {
         $tutorial = Tutorial::first(['title']);
 
         return $tutorial->title === 'edited';
+    }
+
+    private function wasDeleted()
+    {
+        return $this->assertNull(Tutorial::first());
     }
 
     private function hasJsonConfirmation($response)
