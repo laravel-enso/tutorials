@@ -100,7 +100,7 @@ class TutorialTest extends TestCase
 
         Tutorial::create($firstTutorial);
 
-        $secondPermission = Permission::latest()->first();
+        $secondPermission = Permission::orderBy('id', 'desc')->first();
         $secondTutorial = $this->postParams();
         $secondTutorial['permission_id'] = $secondPermission->id;
         Tutorial::create($secondTutorial);
