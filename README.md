@@ -1,4 +1,4 @@
-<!--h--> 
+<!--h-->
 # Tutorial Manager
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/282735fb74e647c4b630056271b66d77)](https://www.codacy.com/app/laravel-enso/TutorialManager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/TutorialManager&amp;utm_campaign=Badge_Grade)
@@ -10,9 +10,9 @@
 
 Tutorial management dependency for [Laravel Enso](https://github.com/laravel-enso/Enso).
 
-![Screenshot](https://laravel-enso.github.io/tutorialmanager/screenshots/Selection_023.png)
+[![Screenshot](https://laravel-enso.github.io/tutorialmanager/screenshots/Selection_023_thumb.png)](https://laravel-enso.github.io/tutorialmanager/screenshots/Selection_023.png)
 
-[![Watch the demo](https://laravel-enso.github.io/tutorialmanager/screenshots/Selection_026.png)](https://laravel-enso.github.io/tutorialmanager/videos/demo_01.webm)
+[![Watch the demo](https://laravel-enso.github.io/tutorialmanager/screenshots/Selection_026_thumb.png)](https://laravel-enso.github.io/tutorialmanager/videos/demo_01.webm)
 <sup>click on the photo to view a short demo in compatible browsers</sup>
 
 ### Features
@@ -33,7 +33,7 @@ Tutorial management dependency for [Laravel Enso](https://github.com/laravel-ens
 
 ### Publishes
 - `php artisan vendor:publish --tag=tutorials-component` - the VueJS component
-- `php artisan vendor:publish --tag=enso-update` - a common alias for when wanting to update the VueJS component, 
+- `php artisan vendor:publish --tag=enso-update` - a common alias for when wanting to update the VueJS component,
 once a newer version is released
 
 ### Notes
