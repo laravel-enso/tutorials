@@ -73,7 +73,7 @@ class TutorialService
     {
         $tutorial->delete();
 
-        return ['message' => __('Operation was successfull')];
+        return ['message' => __('Operation was successful')];
     }
 
     public function getTutorial($route)
