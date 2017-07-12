@@ -18,14 +18,6 @@
             "role": "Developer"
         }
     ],
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Mishu",
-            "email": "mishu@xtelecom.ro"
-        }
-    ],
     "require": {
         "php": ">=7.1.0",
         "laravel/framework": "5.4.*",
