@@ -1,16 +1,23 @@
 <?php
 
-Route::group([
-    'namespace'  => 'LaravelEnso\TutorialManager\app\Http\Controllers',
-    'middleware' => ['web', 'auth', 'core'],
-], function () {
-    Route::group(['prefix' => 'system/tutorials', 'as' => 'system.tutorials.'], function () {
-        Route::get('initTable', 'TutorialController@initTable')->name('initTable');
-        Route::get('getTableData', 'TutorialController@getTableData')->name('getTableData');
-        Route::get('getTutorial/{route}', 'TutorialController@getTutorial')->name('getTutorial');
-    });
+Route::middleware(['web', 'auth', 'core'])
+    ->namespace('LaravelEnso\TutorialManager\app\Http\Controllers')
+    ->group(function () {
+        Route::prefix('system/tutorials')->as('system.tutorials.')
+            ->group(function () {
+                Route::get('initTable', 'TutorialController@initTable')
+                    ->name('initTable');
+                Route::get('getTableData', 'TutorialController@getTableData')
+                    ->name('getTableData');
+                Route::get('exportExcel', 'TutorialController@exportExcel')
+                    ->name('exportExcel');
 
-    Route::group(['prefix' => 'system', 'as' => 'system.'], function () {
-        Route::resource('tutorials', 'TutorialController');
+                Route::get('getTutorial/{route}', 'TutorialController@getTutorial')
+                    ->name('getTutorial');
+            });
+
+        Route::prefix('system')->as('system.')
+            ->group(function () {
+                Route::resource('tutorials', 'TutorialController', ['except' => ['show']]);
+            });
     });
-});

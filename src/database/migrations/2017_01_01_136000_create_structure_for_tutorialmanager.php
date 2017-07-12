@@ -10,6 +10,7 @@ class CreateStructureForTutorialManager extends StructureMigration
 
     protected $permissions = [
         ['name' => 'system.tutorials.getTableData', 'description' => 'Get table data for tutorials', 'type' => 0, 'default' => false],
+        ['name' => 'system.tutorials.exportExcel', 'description' => 'Export excel for tutorials', 'type' => 0, 'default' => false],
         ['name' => 'system.tutorials.initTable', 'description' => 'Init table data for tutorials', 'type' => 0, 'default' => false],
         ['name' => 'system.tutorials.create', 'description' => 'Create tutorial', 'type' => 1, 'default' => false],
         ['name' => 'system.tutorials.edit', 'description' => 'Edit tutorial', 'type' => 1, 'default' => false],
