@@ -11,7 +11,7 @@ class TutorialsTableStructure extends TableStructure
     {
         $this->data = [
             'crtNo'         => __('#'),
-            'tableName'     => __("Tutorials"),
+            'tableName'     => __('Tutorials'),
             'actionButtons' => __('Actions'),
             'notSearchable' => [5, 6],
             'render'        => [3],
