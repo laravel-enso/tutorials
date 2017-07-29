@@ -10,16 +10,17 @@ class TutorialsTableStructure extends TableStructure
     public function __construct()
     {
         $this->data = [
-            'crtNo'           => __('#'),
-            'actionButtons'   => __('Actions'),
-            'notSearchable'   => [5, 6],
-            'render'          => [3],
-            'headerAlign'     => 'center',
-            'bodyAlign'       => 'center',
-            'enumMappings'    => [
+            'crtNo'         => __('#'),
+            'tableName'     => __("Tutorials"),
+            'actionButtons' => __('Actions'),
+            'notSearchable' => [5, 6],
+            'render'        => [3],
+            'headerAlign'   => 'center',
+            'bodyAlign'     => 'center',
+            'enumMappings'  => [
                 'placement' => TutorialPlacement::class,
             ],
-            'columns'         => [
+            'columns'       => [
                 0 => [
                     'label' => __('Permission Name'),
                     'data'  => 'permissionName',
