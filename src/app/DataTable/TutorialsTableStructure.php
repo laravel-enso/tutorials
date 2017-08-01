@@ -10,8 +10,8 @@ class TutorialsTableStructure extends TableStructure
     public function __construct()
     {
         $this->data = [
-            'crtNo'         => __('#'),
             'tableName'     => __('Tutorials'),
+            'crtNo'         => __('#'),
             'actionButtons' => __('Actions'),
             'notSearchable' => [5, 6],
             'render'        => [3],

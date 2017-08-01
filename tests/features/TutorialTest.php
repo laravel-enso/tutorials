@@ -94,7 +94,7 @@ class TutorialTest extends TestCase
     }
 
     /** @test */
-    public function getTutorial()
+    public function show()
     {
         $firstTutorial = $this->postParams();
 
@@ -105,7 +105,7 @@ class TutorialTest extends TestCase
         $secondTutorial['permission_id'] = $secondPermission->id;
         Tutorial::create($secondTutorial);
 
-        $response = $this->get('system/tutorials/getTutorial/'.$secondPermission->name);
+        $response = $this->get('system/tutorials/'.$secondPermission->name);
 
         unset($firstTutorial['permission_id'], $firstTutorial['_method']);
         unset($secondTutorial['permission_id'], $secondTutorial['_method']);

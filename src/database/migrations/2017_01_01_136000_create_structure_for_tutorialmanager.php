@@ -17,7 +17,7 @@ class CreateStructureForTutorialManager extends StructureMigration
         ['name' => 'system.tutorials.index', 'description' => 'Show tutorials index', 'type' => 0, 'default' => false],
         ['name' => 'system.tutorials.store', 'description' => 'Store newly created tutorial', 'type' => 1, 'default' => false],
         ['name' => 'system.tutorials.update', 'description' => 'Update edited tutorial', 'type' => 1, 'default' => false],
-        ['name' => 'system.tutorials.getTutorial', 'description' => 'Load tutorial', 'type' => 0, 'default' => true],
+        ['name' => 'system.tutorials.show', 'description' => 'Load tutorial', 'type' => 0, 'default' => true],
         ['name' => 'system.tutorials.destroy', 'description' => 'Delete tutorial', 'type' => 1, 'default' => false],
     ];
 

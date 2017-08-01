@@ -24,14 +24,6 @@ class TutorialService
         $this->request = $request;
     }
 
-    public function getTableQuery()
-    {
-        return Tutorial::select(\DB::raw('tutorials.id as DT_RowId, permissions.name as permissionName,
-                tutorials.element, tutorials.title, tutorials.placement, tutorials.order,
-                tutorials.created_at, tutorials.updated_at'))
-            ->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
-    }
-
     public function index()
     {
         return view('laravel-enso/tutorials::index');
@@ -64,7 +56,7 @@ class TutorialService
     public function update(Tutorial $tutorial)
     {
         $tutorial->update($this->request->all());
-        flash()->success(__('The Changes have been saved!'));
+        flash()->success(__(config('labels.savedChanges')));
 
         return back();
     }
@@ -73,10 +65,10 @@ class TutorialService
     {
         $tutorial->delete();
 
-        return ['message' => __('Operation was successful')];
+        return ['message' => __(config('labels.successfulOperation'))];
     }
 
-    public function getTutorial($route)
+    public function show($route)
     {
         $homeTutorials = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
         $permission = Permission::whereName($route)->first();

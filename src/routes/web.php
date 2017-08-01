@@ -5,19 +5,16 @@ Route::middleware(['web', 'auth', 'core'])
     ->group(function () {
         Route::prefix('system/tutorials')->as('system.tutorials.')
             ->group(function () {
-                Route::get('initTable', 'TutorialController@initTable')
+                Route::get('initTable', 'TutorialTableController@initTable')
                     ->name('initTable');
-                Route::get('getTableData', 'TutorialController@getTableData')
+                Route::get('getTableData', 'TutorialTableController@getTableData')
                     ->name('getTableData');
-                Route::get('exportExcel', 'TutorialController@exportExcel')
+                Route::get('exportExcel', 'TutorialTableController@exportExcel')
                     ->name('exportExcel');
-
-                Route::get('getTutorial/{route}', 'TutorialController@getTutorial')
-                    ->name('getTutorial');
             });
 
         Route::prefix('system')->as('system.')
             ->group(function () {
-                Route::resource('tutorials', 'TutorialController', ['except' => ['show']]);
+                Route::resource('tutorials', 'TutorialController');
             });
     });

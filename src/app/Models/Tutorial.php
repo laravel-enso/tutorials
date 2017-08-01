@@ -4,6 +4,7 @@ namespace LaravelEnso\TutorialManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\Helpers\Traits\FormattedTimestamps;
+use LaravelEnso\PermissionManager\app\Models\Permission;
 
 class Tutorial extends Model
 {
@@ -15,6 +16,6 @@ class Tutorial extends Model
 
     public function permission()
     {
-        return $this->belongsTo('LaravelEnso\PermissionManager\app\Models\Permission');
+        return $this->belongsTo(Permission::class);
     }
 }
