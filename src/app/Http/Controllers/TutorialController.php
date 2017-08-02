@@ -19,7 +19,7 @@ class TutorialController extends Controller
 
     public function index()
     {
-        return $this->tutorials->index();
+        return view('laravel-enso/tutorials::index');
     }
 
     public function create()

@@ -24,11 +24,6 @@ class TutorialService
         $this->request = $request;
     }
 
-    public function index()
-    {
-        return view('laravel-enso/tutorials::index');
-    }
-
     public function create()
     {
         $permissions = Permission::pluck('name', 'id');
