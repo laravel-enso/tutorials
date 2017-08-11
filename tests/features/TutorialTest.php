@@ -50,7 +50,7 @@ class TutorialTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonFragment([
             'message' => 'The tutorial was created!',
-            'redirect'=>'/system/tutorials/'.$tutorial->id.'/edit'
+            'redirect'=> '/system/tutorials/'.$tutorial->id.'/edit',
         ]);
 
         $this->assertTrue($this->wasCreated());

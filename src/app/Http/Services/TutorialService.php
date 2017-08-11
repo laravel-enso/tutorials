@@ -44,7 +44,7 @@ class TutorialService
 
         return [
             'message'  => __('The tutorial was created!'),
-            'redirect' => '/system/tutorials/' . $tutorial->id . '/edit',
+            'redirect' => '/system/tutorials/'.$tutorial->id.'/edit',
         ];
     }
 
@@ -53,7 +53,7 @@ class TutorialService
         $form = (new FormBuilder(__DIR__.'/../../Forms/tutorial.json', $tutorial))
             ->setAction('PATCH')
             ->setTitle('Edit Tutorial')
-            ->setUrl('/system/tutorials/' . $tutorial->id)
+            ->setUrl('/system/tutorials/'.$tutorial->id)
             ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
             ->setSelectOptions('placement', (new TutorialPlacement())->getData())
             ->getData();
