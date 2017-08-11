@@ -1,0 +1,62 @@
+{
+    "title": null,
+    "action": null,
+    "url": null,
+    "wrapperClass": "col-md-6",
+    "theme": "success",
+    "solid": false,
+    "storeSubmit": "Create",
+    "updateSubmit": "Save",
+    "deleteSubmit": "Delete",
+    "attributes": [{
+        "label": "Permission",
+        "column": "permission_id",
+        "value": null,
+        "config": {
+            "type": "select",
+            "multiple": false,
+            "options": null
+        }
+    }, {
+        "label": "Element",
+        "column": "element",
+        "value": null,
+        "config": {
+            "type": "input",
+            "content": "text"
+        }
+    }, {
+        "label": "Title",
+        "column": "title",
+        "value": null,
+        "config": {
+            "type": "input",
+            "content": "text"
+        }
+    }, {
+        "label": "Placement",
+        "column": "placement",
+        "value": null,
+        "config": {
+            "type": "select",
+            "multiple": false,
+            "options": null
+        }
+    }, {
+        "label": "Order",
+        "column": "order",
+        "value": false,
+        "config": {
+            "type": "input",
+            "content": "number"
+        }
+    }, {
+        "label": "Content",
+        "column": "content",
+        "value": null,
+        "config": {
+            "type": "textarea",
+            "rows": 5
+        }
+    }]
+}

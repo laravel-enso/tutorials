@@ -4,21 +4,19 @@
 
 @section('content')
 
-    <section class="content-header">
-        <a class="btn btn-primary" href="/system/tutorials/create">
-            {{ __("Create Tutorial") }}
-        </a>
-        @include('laravel-enso/menumanager::breadcrumbs')
-    </section>
-    <section class="content">
-        <div class="row" v-cloak>
-            <div class="col-md-12">
-                <data-table source="/system/tutorials"
-                    id="tutorials">
-                </data-table>
-            </div>
+    <page :custom-render="customRender"
+        v-cloak>
+        <span slot="header">
+            <a class="btn btn-primary" href="/system/tutorials/create">
+                {{ __("Create Tutorial") }}
+            </a>
+        </span>
+        <div class="col-md-12">
+            <data-table source="/system/tutorials"
+                id="tutorials">
+            </data-table>
         </div>
-    </section>
+    </page>
 
 @endsection
 

@@ -47,9 +47,12 @@ class TutorialTest extends TestCase
         $response = $this->post('/system/tutorials', $this->postParams());
         $tutorial = Tutorial::first(['id']);
 
-        $response->assertRedirect('/system/tutorials/'.$tutorial->id.'/edit');
+        $response->assertStatus(200)
+            ->assertJsonFragment([
+            'message' => 'The tutorial was created!',
+            'redirect'=>'/system/tutorials/'.$tutorial->id.'/edit'
+        ]);
 
-        $this->hasSessionConfirmation($response);
         $this->assertTrue($this->wasCreated());
     }
 
@@ -62,7 +65,7 @@ class TutorialTest extends TestCase
         $response = $this->get('/system/tutorials/'.$tutorial->id.'/edit');
 
         $response->assertStatus(200);
-        $response->assertViewHas('tutorial', $tutorial);
+        $response->assertViewHas('form');
     }
 
     /** @test */
@@ -73,10 +76,10 @@ class TutorialTest extends TestCase
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
 
-        $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray());
+        $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray())
+            ->assertStatus(200)
+            ->assertJson(['message' => __(config('labels.savedChanges'))]);
 
-        $response->assertStatus(302);
-        $this->hasSessionConfirmation($response);
         $this->assertTrue($this->wasUpdated());
     }
 

@@ -4,6 +4,7 @@ namespace LaravelEnso\TutorialManager\app\Http\Services;
 
 use Illuminate\Http\Request;
 use LaravelEnso\DataTable\app\Traits\DataTable;
+use LaravelEnso\FormBuilder\app\Classes\FormBuilder;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\TutorialManager\app\DataTable\TutorialsTableStructure;
 use LaravelEnso\TutorialManager\app\Enums\TutorialPlacement;
@@ -26,34 +27,47 @@ class TutorialService
 
     public function create()
     {
-        $permissions = Permission::pluck('name', 'id');
-        $positions = (new TutorialPlacement())->getData();
+        $form = (new FormBuilder(__DIR__.'/../../Forms/tutorial.json'))
+            ->setAction('POST')
+            ->setTitle('Create Tutorial')
+            ->setUrl('/system/tutorials')
+            ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
+            ->setSelectOptions('placement', (new TutorialPlacement())->getData())
+            ->getData();
 
-        return view('laravel-enso/tutorials::create', compact('permissions', 'positions'));
+        return view('laravel-enso/tutorials::create', compact('form'));
     }
 
     public function store(Tutorial $tutorial)
     {
         $tutorial = $tutorial->create($this->request->all());
-        flash()->success(__('Tutorial Created'));
 
-        return redirect('system/tutorials/'.$tutorial->id.'/edit');
+        return [
+            'message'  => __('The tutorial was created!'),
+            'redirect' => '/system/tutorials/' . $tutorial->id . '/edit',
+        ];
     }
 
     public function edit(Tutorial $tutorial)
     {
-        $permissions = Permission::pluck('name', 'id');
-        $positions = (new TutorialPlacement())->getData();
+        $form = (new FormBuilder(__DIR__.'/../../Forms/tutorial.json', $tutorial))
+            ->setAction('PATCH')
+            ->setTitle('Edit Tutorial')
+            ->setUrl('/system/tutorials/' . $tutorial->id)
+            ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
+            ->setSelectOptions('placement', (new TutorialPlacement())->getData())
+            ->getData();
 
-        return view('laravel-enso/tutorials::edit', compact('tutorial', 'permissions', 'positions'));
+        return view('laravel-enso/tutorials::edit', compact('form'));
     }
 
     public function update(Tutorial $tutorial)
     {
         $tutorial->update($this->request->all());
-        flash()->success(__(config('labels.savedChanges')));
 
-        return back();
+        return [
+            'message' => __(config('labels.savedChanges')),
+        ];
     }
 
     public function destroy(Tutorial $tutorial)
