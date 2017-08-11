@@ -76,7 +76,7 @@ class TutorialTest extends TestCase
         $tutorial->title = 'edited';
         $tutorial->_method = 'PATCH';
 
-        $response = $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray())
+        $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray())
             ->assertStatus(200)
             ->assertJson(['message' => __(config('labels.savedChanges'))]);
 
@@ -137,11 +137,6 @@ class TutorialTest extends TestCase
     private function hasJsonConfirmation($response)
     {
         return $response->assertJsonFragment(['message']);
-    }
-
-    private function hasSessionConfirmation($response)
-    {
-        return $response->assertSessionHas('flash_notification');
     }
 
     private function postParams()
