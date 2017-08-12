@@ -4,41 +4,42 @@ use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use LaravelEnso\PermissionManager\app\Models\Permission;
+use LaravelEnso\TestHelper\app\Classes\TestHelper;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
-use Tests\TestCase;
 
-class TutorialTest extends TestCase
+class TutorialTest extends TestHelper
 {
     use DatabaseMigrations;
 
-    private $user;
+    protected $faker;
+    protected $homePermission;
 
     protected function setUp()
     {
         parent::setUp();
 
         // $this->disableExceptionHandling();
-        $this->user = User::first();
-        $this->faker = Factory::create();
+        $this->faker          = Factory::create();
         $this->homePermission = Permission::whereName('home')->first();
 
-        $this->actingAs($this->user);
+        $this->signIn(User::first());
     }
 
     /** @test */
     public function index()
     {
-        $response = $this->get('/system/tutorials');
-
-        $response->assertStatus(200);
+        $this->get('/system/tutorials')
+            ->assertStatus(200)
+            ->assertViewIs('laravel-enso/tutorials::index');
     }
 
     /** @test */
     public function create()
     {
-        $response = $this->get('/system/tutorials/create');
-
-        $response->assertStatus(200);
+        $this->get('/system/tutorials/create')
+            ->assertStatus(200)
+            ->assertViewIs('laravel-enso/tutorials::create')
+            ->assertViewHas('form');
     }
 
     /** @test */
@@ -49,11 +50,9 @@ class TutorialTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonFragment([
-            'message' => 'The tutorial was created!',
-            'redirect'=> '/system/tutorials/'.$tutorial->id.'/edit',
-        ]);
-
-        $this->assertTrue($this->wasCreated());
+                'message'  => 'The tutorial was created!',
+                'redirect' => '/system/tutorials/' . $tutorial->id . '/edit',
+            ]);
     }
 
     /** @test */
@@ -62,25 +61,24 @@ class TutorialTest extends TestCase
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first();
 
-        $response = $this->get('/system/tutorials/'.$tutorial->id.'/edit');
-
-        $response->assertStatus(200);
-        $response->assertViewHas('form');
+        $this->get('/system/tutorials/' . $tutorial->id . '/edit')
+            ->assertStatus(200)
+            ->assertViewIs('laravel-enso/tutorials::edit')
+            ->assertViewHas('form');
     }
 
     /** @test */
     public function update()
     {
         Tutorial::create($this->postParams());
-        $tutorial = Tutorial::first();
+        $tutorial        = Tutorial::first();
         $tutorial->title = 'edited';
-        $tutorial->_method = 'PATCH';
 
-        $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray())
+        $this->patch('/system/tutorials/' . $tutorial->id, $tutorial->toArray())
             ->assertStatus(200)
             ->assertJson(['message' => __(config('labels.savedChanges'))]);
 
-        $this->assertTrue($this->wasUpdated());
+        $this->assertEquals('edited', Tutorial::first(['title'])->title);
     }
 
     /** @test */
@@ -89,54 +87,28 @@ class TutorialTest extends TestCase
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first(['id']);
 
-        $response = $this->delete('/system/tutorials/'.$tutorial->id);
+        $this->delete('/system/tutorials/' . $tutorial->id)
+            ->assertStatus(200)
+            ->assertJsonFragment(['message']);
 
-        $this->hasJsonConfirmation($response);
-        $this->wasDeleted();
-        $response->assertStatus(200);
+        $this->assertNull($tutorial->fresh());
     }
 
     /** @test */
     public function show()
     {
         $firstTutorial = $this->postParams();
-
         Tutorial::create($firstTutorial);
 
         $secondPermission = Permission::orderBy('id', 'desc')->first();
-        $secondTutorial = $this->postParams();
+        $secondTutorial   = $this->postParams();
+
         $secondTutorial['permission_id'] = $secondPermission->id;
         Tutorial::create($secondTutorial);
 
-        $response = $this->get('system/tutorials/'.$secondPermission->name);
-
-        unset($firstTutorial['permission_id'], $firstTutorial['_method']);
-        unset($secondTutorial['permission_id'], $secondTutorial['_method']);
-
-        $response->assertJsonFragment($firstTutorial);
-        $response->assertJsonFragment($secondTutorial);
-    }
-
-    private function wasCreated()
-    {
-        return Tutorial::count() === 1;
-    }
-
-    private function wasUpdated()
-    {
-        $tutorial = Tutorial::first(['title']);
-
-        return $tutorial->title === 'edited';
-    }
-
-    private function wasDeleted()
-    {
-        return $this->assertNull(Tutorial::first());
-    }
-
-    private function hasJsonConfirmation($response)
-    {
-        return $response->assertJsonFragment(['message']);
+        $this->get('system/tutorials/' . $secondPermission->name)
+            ->assertJsonFragment([$firstTutorial['element']])
+            ->assertJsonFragment([$secondTutorial['element']]);
     }
 
     private function postParams()
@@ -147,8 +119,7 @@ class TutorialTest extends TestCase
             'title'         => $this->faker->word,
             'content'       => $this->faker->sentence,
             'placement'     => '1',
-            'order'         => '1',
-            '_method'       => 'POST',
+            'order'         => '1'
         ];
     }
 }
