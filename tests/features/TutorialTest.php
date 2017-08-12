@@ -19,7 +19,7 @@ class TutorialTest extends TestHelper
         parent::setUp();
 
         // $this->disableExceptionHandling();
-        $this->faker          = Factory::create();
+        $this->faker = Factory::create();
         $this->homePermission = Permission::whereName('home')->first();
 
         $this->signIn(User::first());
@@ -51,7 +51,7 @@ class TutorialTest extends TestHelper
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'message'  => 'The tutorial was created!',
-                'redirect' => '/system/tutorials/' . $tutorial->id . '/edit',
+                'redirect' => '/system/tutorials/'.$tutorial->id.'/edit',
             ]);
     }
 
@@ -61,7 +61,7 @@ class TutorialTest extends TestHelper
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first();
 
-        $this->get('/system/tutorials/' . $tutorial->id . '/edit')
+        $this->get('/system/tutorials/'.$tutorial->id.'/edit')
             ->assertStatus(200)
             ->assertViewIs('laravel-enso/tutorials::edit')
             ->assertViewHas('form');
@@ -71,10 +71,10 @@ class TutorialTest extends TestHelper
     public function update()
     {
         Tutorial::create($this->postParams());
-        $tutorial        = Tutorial::first();
+        $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
 
-        $this->patch('/system/tutorials/' . $tutorial->id, $tutorial->toArray())
+        $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray())
             ->assertStatus(200)
             ->assertJson(['message' => __(config('labels.savedChanges'))]);
 
@@ -87,7 +87,7 @@ class TutorialTest extends TestHelper
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first(['id']);
 
-        $this->delete('/system/tutorials/' . $tutorial->id)
+        $this->delete('/system/tutorials/'.$tutorial->id)
             ->assertStatus(200)
             ->assertJsonFragment(['message']);
 
@@ -101,12 +101,12 @@ class TutorialTest extends TestHelper
         Tutorial::create($firstTutorial);
 
         $secondPermission = Permission::orderBy('id', 'desc')->first();
-        $secondTutorial   = $this->postParams();
+        $secondTutorial = $this->postParams();
 
         $secondTutorial['permission_id'] = $secondPermission->id;
         Tutorial::create($secondTutorial);
 
-        $this->get('system/tutorials/' . $secondPermission->name)
+        $this->get('system/tutorials/'.$secondPermission->name)
             ->assertJsonFragment([$firstTutorial['element']])
             ->assertJsonFragment([$secondTutorial['element']]);
     }
@@ -119,7 +119,7 @@ class TutorialTest extends TestHelper
             'title'         => $this->faker->word,
             'content'       => $this->faker->sentence,
             'placement'     => '1',
-            'order'         => '1'
+            'order'         => '1',
         ];
     }
 }
