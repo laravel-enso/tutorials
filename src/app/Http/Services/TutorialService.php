@@ -32,7 +32,7 @@ class TutorialService
             ->setTitle('Create Tutorial')
             ->setUrl('/system/tutorials')
             ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
-            ->setSelectOptions('placement', (new TutorialPlacement())->getData())
+            ->setSelectOptions('placement', (object) (new TutorialPlacement())->getData())
             ->getData();
 
         return view('laravel-enso/tutorials::create', compact('form'));
@@ -55,7 +55,7 @@ class TutorialService
             ->setTitle('Edit Tutorial')
             ->setUrl('/system/tutorials/'.$tutorial->id)
             ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
-            ->setSelectOptions('placement', (new TutorialPlacement())->getData())
+            ->setSelectOptions('placement', (object) (new TutorialPlacement())->getData())
             ->getData();
 
         return view('laravel-enso/tutorials::edit', compact('form'));
