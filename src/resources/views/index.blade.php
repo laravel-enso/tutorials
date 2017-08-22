@@ -4,8 +4,7 @@
 
 @section('content')
 
-    <page :custom-render="customRender"
-        v-cloak>
+    <page v-cloak>
         <span slot="header">
             <a class="btn btn-primary" href="/system/tutorials/create">
                 {{ __("Create Tutorial") }}
@@ -13,6 +12,7 @@
         </span>
         <div class="col-md-12">
             <data-table source="/system/tutorials"
+                :custom-render="customRender"
                 id="tutorials">
             </data-table>
         </div>
