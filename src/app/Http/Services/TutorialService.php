@@ -3,70 +3,64 @@
 namespace LaravelEnso\TutorialManager\app\Http\Services;
 
 use Illuminate\Http\Request;
-use LaravelEnso\DataTable\app\Traits\DataTable;
 use LaravelEnso\FormBuilder\app\Classes\FormBuilder;
 use LaravelEnso\PermissionManager\app\Models\Permission;
-use LaravelEnso\TutorialManager\app\DataTable\TutorialsTableStructure;
 use LaravelEnso\TutorialManager\app\Enums\TutorialPlacement;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
 
 class TutorialService
 {
-    use DataTable;
-
-    protected $tableStructureClass = TutorialsTableStructure::class;
-
     private const HomePermissionId = 1;
-
-    private $request;
-
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }
 
     public function create()
     {
-        $form = (new FormBuilder(__DIR__.'/../../Forms/tutorial.json'))
-            ->setAction('POST')
+        $form = (new FormBuilder(__DIR__ . '/../../Forms/tutorial.json'))
+            ->setMethod('POST')
             ->setTitle('Create Tutorial')
-            ->setUrl('/system/tutorials')
             ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
             ->setSelectOptions('placement', (object) (new TutorialPlacement())->getData())
             ->getData();
 
-        return view('laravel-enso/tutorials::create', compact('form'));
+        return compact('form');
     }
 
-    public function store(Tutorial $tutorial)
+    public function store(Request $request)
     {
-        $tutorial = $tutorial->create($this->request->all());
+        $tutorial = Tutorial::create($request->all());
 
         return [
             'message'  => __('The tutorial was created!'),
-            'redirect' => '/system/tutorials/'.$tutorial->id.'/edit',
+            'redirect' => route('system.tutorials.edit', $tutorial->id, false),
         ];
+    }
+
+    public function show($route)
+    {
+        $homeTutorials  = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
+        $permission     = Permission::whereName($route)->first();
+        $localTutorials = $permission ? $permission->tutorials->sortBy('order') : collect();
+
+        return $this->prepareTutorial($homeTutorials->merge($localTutorials));
     }
 
     public function edit(Tutorial $tutorial)
     {
-        $form = (new FormBuilder(__DIR__.'/../../Forms/tutorial.json', $tutorial))
-            ->setAction('PATCH')
+        $form = (new FormBuilder(__DIR__ . '/../../Forms/tutorial.json', $tutorial))
+            ->setMethod('PATCH')
             ->setTitle('Edit Tutorial')
-            ->setUrl('/system/tutorials/'.$tutorial->id)
             ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
             ->setSelectOptions('placement', (object) (new TutorialPlacement())->getData())
             ->getData();
 
-        return view('laravel-enso/tutorials::edit', compact('form'));
+        return compact('form');
     }
 
-    public function update(Tutorial $tutorial)
+    public function update(Request $request, Tutorial $tutorial)
     {
-        $tutorial->update($this->request->all());
+        $tutorial->update($request->all());
 
         return [
-            'message' => __(config('labels.savedChanges')),
+            'message' => __(config('enso.labels.savedChanges')),
         ];
     }
 
@@ -74,23 +68,24 @@ class TutorialService
     {
         $tutorial->delete();
 
-        return ['message' => __(config('labels.successfulOperation'))];
+        return [
+            'message'  => __(config('enso.labels.successfulOperation')),
+            'redirect' => route('system.tutorials.index', [], false)
+        ];
     }
 
-    public function show($route)
+    private function prepareTutorial($tutorials)
     {
-        $homeTutorials = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
-        $permission = Permission::whereName($route)->first();
-        $localTutorials = $permission ? $permission->tutorials->sortBy('order') : collect();
+        $placement = new TutorialPlacement();
+        return $tutorials->reduce(function ($tutorials, $tutorial) use ($placement) {
+            $tutorials->push([
+                'intro'    => __($tutorial->content),
+                'element'  => $tutorial->element,
+                'position' => $placement->getValueByKey($tutorial->placement),
+                'disable-interaction' => true
+            ]);
 
-        return $this->translateTutorial($homeTutorials->merge($localTutorials));
-    }
-
-    private function translateTutorial($tutorials)
-    {
-        return $tutorials->each(function ($tutorial) {
-            $tutorial->title = __($tutorial->title);
-            $tutorial->content = __($tutorial->content);
-        });
+            return $tutorials;
+        }, collect());
     }
 }

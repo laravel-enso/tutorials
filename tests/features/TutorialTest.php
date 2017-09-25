@@ -5,20 +5,23 @@ use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\TestHelper\app\Classes\TestHelper;
+use LaravelEnso\TestHelper\app\Traits\TestCreateForm;
+use LaravelEnso\TestHelper\app\Traits\TestDataTable;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
 
 class TutorialTest extends TestHelper
 {
-    use DatabaseMigrations;
+    use DatabaseMigrations, TestDataTable, TestCreateForm;
 
-    protected $faker;
-    protected $homePermission;
+    private $faker;
+    private $homePermission;
+    private $prefix = 'system.tutorials';
 
     protected function setUp()
     {
         parent::setUp();
 
-        // $this->disableExceptionHandling();
+        $this->disableExceptionHandling();
         $this->faker = Factory::create();
         $this->homePermission = Permission::whereName('home')->first();
 
@@ -26,26 +29,9 @@ class TutorialTest extends TestHelper
     }
 
     /** @test */
-    public function index()
-    {
-        $this->get('/system/tutorials')
-            ->assertStatus(200)
-            ->assertViewIs('laravel-enso/tutorials::index');
-    }
-
-    /** @test */
-    public function create()
-    {
-        $this->get('/system/tutorials/create')
-            ->assertStatus(200)
-            ->assertViewIs('laravel-enso/tutorials::create')
-            ->assertViewHas('form');
-    }
-
-    /** @test */
     public function store()
     {
-        $response = $this->post('/system/tutorials', $this->postParams());
+        $response = $this->post(route('system.tutorials.store', [], false), $this->postParams());
         $tutorial = Tutorial::first(['id']);
 
         $response->assertStatus(200)
@@ -61,10 +47,9 @@ class TutorialTest extends TestHelper
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first();
 
-        $this->get('/system/tutorials/'.$tutorial->id.'/edit')
+        $this->get(route('system.tutorials.edit', $tutorial->id, false))
             ->assertStatus(200)
-            ->assertViewIs('laravel-enso/tutorials::edit')
-            ->assertViewHas('form');
+            ->assertJsonStructure(['form']);
     }
 
     /** @test */
@@ -74,9 +59,9 @@ class TutorialTest extends TestHelper
         $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
 
-        $this->patch('/system/tutorials/'.$tutorial->id, $tutorial->toArray())
+        $this->patch(route('system.tutorials.update', $tutorial->id, false), $tutorial->toArray())
             ->assertStatus(200)
-            ->assertJson(['message' => __(config('labels.savedChanges'))]);
+            ->assertJson(['message' => __(config('enso.labels.savedChanges'))]);
 
         $this->assertEquals('edited', Tutorial::first(['title'])->title);
     }
@@ -87,7 +72,7 @@ class TutorialTest extends TestHelper
         Tutorial::create($this->postParams());
         $tutorial = Tutorial::first(['id']);
 
-        $this->delete('/system/tutorials/'.$tutorial->id)
+        $this->delete(route('system.tutorials.destroy', $tutorial->id, false))
             ->assertStatus(200)
             ->assertJsonFragment(['message']);
 
@@ -106,7 +91,7 @@ class TutorialTest extends TestHelper
         $secondTutorial['permission_id'] = $secondPermission->id;
         Tutorial::create($secondTutorial);
 
-        $this->get('system/tutorials/'.$secondPermission->name)
+        $this->get(route('system.tutorials.show', $secondPermission->name, false))
             ->assertJsonFragment([$firstTutorial['element']])
             ->assertJsonFragment([$secondTutorial['element']]);
     }

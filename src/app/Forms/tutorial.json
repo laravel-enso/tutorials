@@ -1,19 +1,14 @@
 {
     "title": null,
-    "action": null,
-    "url": null,
+    "method": null,
+    "prefix": "system.tutorials",
     "icon": "fa fa-book",
-    "wrapperClass": "col-md-6",
-    "theme": "success",
-    "solid": false,
-    "submitStore": "Create",
-    "submitUpdate": "Save",
-    "submitDelete": "Delete",
-    "attributes": [{
+    "columns": "1",
+    "fields": [{
         "label": "Permission",
         "column": "permission_id",
         "value": null,
-        "config": {
+        "meta": {
             "type": "select",
             "multiple": false,
             "options": null
@@ -22,7 +17,7 @@
         "label": "Element",
         "column": "element",
         "value": null,
-        "config": {
+        "meta": {
             "type": "input",
             "content": "text"
         }
@@ -30,7 +25,7 @@
         "label": "Title",
         "column": "title",
         "value": null,
-        "config": {
+        "meta": {
             "type": "input",
             "content": "text"
         }
@@ -38,7 +33,7 @@
         "label": "Placement",
         "column": "placement",
         "value": null,
-        "config": {
+        "meta": {
             "type": "select",
             "multiple": false,
             "options": null
@@ -47,7 +42,7 @@
         "label": "Order",
         "column": "order",
         "value": false,
-        "config": {
+        "meta": {
             "type": "input",
             "content": "number"
         }
@@ -55,7 +50,7 @@
         "label": "Content",
         "column": "content",
         "value": null,
-        "config": {
+        "meta": {
             "type": "textarea",
             "rows": 5
         }

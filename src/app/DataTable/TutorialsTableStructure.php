@@ -10,9 +10,12 @@ class TutorialsTableStructure extends TableStructure
     public function __construct()
     {
         $this->data = [
-            'tableName'     => __('Tutorials'),
+            'name'          => __('Tutorials'),
+            'icon'          => 'fa fa-book',
             'crtNo'         => __('#'),
-            'actionButtons' => __('Actions'),
+            'actions'       => __('Actions'),
+            'actionButtons' => ['edit', 'destroy'],
+            'headerButtons' => ['create', 'exportExcel'],
             'notSearchable' => [5, 6],
             'render'        => [3],
             'headerAlign'   => 'center',
