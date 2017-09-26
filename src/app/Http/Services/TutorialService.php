@@ -14,7 +14,7 @@ class TutorialService
 
     public function create()
     {
-        $form = (new FormBuilder(__DIR__ . '/../../Forms/tutorial.json'))
+        $form = (new FormBuilder(__DIR__.'/../../Forms/tutorial.json'))
             ->setMethod('POST')
             ->setTitle('Create Tutorial')
             ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
@@ -36,8 +36,8 @@ class TutorialService
 
     public function show($route)
     {
-        $homeTutorials  = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
-        $permission     = Permission::whereName($route)->first();
+        $homeTutorials = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
+        $permission = Permission::whereName($route)->first();
         $localTutorials = $permission ? $permission->tutorials->sortBy('order') : collect();
 
         return $this->prepareTutorial($homeTutorials->merge($localTutorials));
@@ -45,7 +45,7 @@ class TutorialService
 
     public function edit(Tutorial $tutorial)
     {
-        $form = (new FormBuilder(__DIR__ . '/../../Forms/tutorial.json', $tutorial))
+        $form = (new FormBuilder(__DIR__.'/../../Forms/tutorial.json', $tutorial))
             ->setMethod('PATCH')
             ->setTitle('Edit Tutorial')
             ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
@@ -70,19 +70,20 @@ class TutorialService
 
         return [
             'message'  => __(config('enso.labels.successfulOperation')),
-            'redirect' => route('system.tutorials.index', [], false)
+            'redirect' => route('system.tutorials.index', [], false),
         ];
     }
 
     private function prepareTutorial($tutorials)
     {
         $placement = new TutorialPlacement();
+
         return $tutorials->reduce(function ($tutorials, $tutorial) use ($placement) {
             $tutorials->push([
-                'intro'    => __($tutorial->content),
-                'element'  => $tutorial->element,
-                'position' => $placement->getValueByKey($tutorial->placement),
-                'disable-interaction' => true
+                'intro'               => __($tutorial->content),
+                'element'             => $tutorial->element,
+                'position'            => $placement->getValueByKey($tutorial->placement),
+                'disable-interaction' => true,
             ]);
 
             return $tutorials;
