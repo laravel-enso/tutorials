@@ -10,6 +10,14 @@ class TutorialsServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
+        $this->publishes([
+            __DIR__.'/resources/assets/js' => resource_path('assets/js'),
+        ], 'tutorials-assets');
+
+        $this->publishes([
+            __DIR__.'/resources/assets/js' => resource_path('assets/js'),
+        ], 'enso-assets');
     }
 
     public function register()
