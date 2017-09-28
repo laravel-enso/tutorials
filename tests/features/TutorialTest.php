@@ -2,16 +2,17 @@
 
 use App\User;
 use Faker\Factory;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use LaravelEnso\PermissionManager\app\Models\Permission;
-use LaravelEnso\TestHelper\app\Classes\TestHelper;
+use LaravelEnso\TestHelper\app\Traits\SignIn;
 use LaravelEnso\TestHelper\app\Traits\TestCreateForm;
 use LaravelEnso\TestHelper\app\Traits\TestDataTable;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
+use Tests\TestCase;
 
-class TutorialTest extends TestHelper
+class TutorialTest extends TestCase
 {
-    use DatabaseMigrations, TestDataTable, TestCreateForm;
+    use RefreshDatabase, SignIn, TestDataTable, TestCreateForm;
 
     private $faker;
     private $homePermission;
@@ -21,8 +22,8 @@ class TutorialTest extends TestHelper
     {
         parent::setUp();
 
-        $this->disableExceptionHandling();
-        $this->faker = Factory::create();
+        // $this->withoutExceptionHandling();
+        $this->faker          = Factory::create();
         $this->homePermission = Permission::whereName('home')->first();
 
         $this->signIn(User::first());
@@ -37,7 +38,7 @@ class TutorialTest extends TestHelper
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'message'  => 'The tutorial was created!',
-                'redirect' => '/system/tutorials/'.$tutorial->id.'/edit',
+                'redirect' => '/system/tutorials/' . $tutorial->id . '/edit',
             ]);
     }
 
@@ -56,7 +57,7 @@ class TutorialTest extends TestHelper
     public function update()
     {
         Tutorial::create($this->postParams());
-        $tutorial = Tutorial::first();
+        $tutorial        = Tutorial::first();
         $tutorial->title = 'edited';
 
         $this->patch(route('system.tutorials.update', $tutorial->id, false), $tutorial->toArray())
@@ -86,7 +87,7 @@ class TutorialTest extends TestHelper
         Tutorial::create($firstTutorial);
 
         $secondPermission = Permission::orderBy('id', 'desc')->first();
-        $secondTutorial = $this->postParams();
+        $secondTutorial   = $this->postParams();
 
         $secondTutorial['permission_id'] = $secondPermission->id;
         Tutorial::create($secondTutorial);
