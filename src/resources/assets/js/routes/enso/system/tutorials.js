@@ -4,7 +4,7 @@ import { Edit } from './tutorials/edit';
 
 export const Tutorials = {
     path: 'tutorials',
-    component: require('../../components/enso/layout/Router.vue'),
+    component: require('../../../pages/enso/layout/Router.vue'),
     meta: {
         breadcrumb: 'tutorials',
         route: 'system.tutorials.index',

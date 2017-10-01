@@ -9,7 +9,7 @@
 
 <script>
 
-	import Datatable from '../../../components/enso/datatable/Datatable.vue';
+	import Datatable from '../../../../components/enso/datatable/Datatable.vue';
 
     export default {
     	components: { Datatable },

@@ -10,11 +10,13 @@ use LaravelEnso\TutorialManager\app\Models\Tutorial;
 
 class TutorialService
 {
-    private const HomePermissionId = 1;
+    const HomePermissionId = 1;
+
+    const FormPath = __DIR__ . '/../../Forms/tutorial.json';
 
     public function create()
     {
-        $form = (new FormBuilder(__DIR__.'/../../Forms/tutorial.json'))
+        $form = (new FormBuilder(self::FormPath))
             ->setMethod('POST')
             ->setTitle('Create Tutorial')
             ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
@@ -30,14 +32,15 @@ class TutorialService
 
         return [
             'message'  => __('The tutorial was created!'),
-            'redirect' => route('system.tutorials.edit', $tutorial->id, false),
+            'redirect' => 'system.tutorials.edit',
+            'id'       => $tutorial->id,
         ];
     }
 
     public function show($route)
     {
-        $homeTutorials = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
-        $permission = Permission::whereName($route)->first();
+        $homeTutorials  = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
+        $permission     = Permission::whereName($route)->first();
         $localTutorials = $permission ? $permission->tutorials->sortBy('order') : collect();
 
         return $this->prepareTutorial($homeTutorials->merge($localTutorials));
@@ -45,7 +48,7 @@ class TutorialService
 
     public function edit(Tutorial $tutorial)
     {
-        $form = (new FormBuilder(__DIR__.'/../../Forms/tutorial.json', $tutorial))
+        $form = (new FormBuilder(self::FormPath, $tutorial))
             ->setMethod('PATCH')
             ->setTitle('Edit Tutorial')
             ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
@@ -70,7 +73,7 @@ class TutorialService
 
         return [
             'message'  => __(config('enso.labels.successfulOperation')),
-            'redirect' => route('system.tutorials.index', [], false),
+            'redirect' => 'system.tutorials.index',
         ];
     }
 

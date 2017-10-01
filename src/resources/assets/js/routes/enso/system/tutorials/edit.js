@@ -1,7 +1,7 @@
 export const Edit = {
     name: 'system.tutorials.edit',
-    path: ':role/edit',
-    component: require('../../../pages/system/tutorials/Edit.vue'),
+    path: ':id/edit',
+    component: require('../../../../pages/enso/system/tutorials/Edit.vue'),
     meta: {
         breadcrumb: 'edit',
         title: 'Edit Tutorial'
