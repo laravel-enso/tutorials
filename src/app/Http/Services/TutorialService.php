@@ -12,7 +12,7 @@ class TutorialService
 {
     const HomePermissionId = 1;
 
-    const FormPath = __DIR__ . '/../../Forms/tutorial.json';
+    const FormPath = __DIR__.'/../../Forms/tutorial.json';
 
     public function create()
     {
@@ -39,8 +39,8 @@ class TutorialService
 
     public function show($route)
     {
-        $homeTutorials  = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
-        $permission     = Permission::whereName($route)->first();
+        $homeTutorials = Tutorial::wherePermissionId(self::HomePermissionId)->orderBy('order')->get();
+        $permission = Permission::whereName($route)->first();
         $localTutorials = $permission ? $permission->tutorials->sortBy('order') : collect();
 
         return $this->prepareTutorial($homeTutorials->merge($localTutorials));

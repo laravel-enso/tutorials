@@ -23,7 +23,7 @@ class TutorialTest extends TestCase
         parent::setUp();
 
         // $this->withoutExceptionHandling();
-        $this->faker          = Factory::create();
+        $this->faker = Factory::create();
         $this->homePermission = Permission::whereName('home')->first();
 
         $this->signIn(User::first());
@@ -58,7 +58,7 @@ class TutorialTest extends TestCase
     public function update()
     {
         Tutorial::create($this->postParams());
-        $tutorial        = Tutorial::first();
+        $tutorial = Tutorial::first();
         $tutorial->title = 'edited';
 
         $this->patch(route('system.tutorials.update', $tutorial->id, false), $tutorial->toArray())
@@ -88,7 +88,7 @@ class TutorialTest extends TestCase
         Tutorial::create($firstTutorial);
 
         $secondPermission = Permission::orderBy('id', 'desc')->first();
-        $secondTutorial   = $this->postParams();
+        $secondTutorial = $this->postParams();
 
         $secondTutorial['permission_id'] = $secondPermission->id;
         Tutorial::create($secondTutorial);
