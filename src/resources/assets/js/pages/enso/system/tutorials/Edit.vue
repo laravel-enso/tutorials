@@ -33,8 +33,6 @@
 				this.form = response.data.form;
 				this.role = response.data.role;
 				this.initialised = true;
-			}).catch(error => {
-				this.handleError(error);
 			});
 		}
 	};
