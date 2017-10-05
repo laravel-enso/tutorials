@@ -24,7 +24,7 @@ class TutorialTest extends TestCase
 
         // $this->withoutExceptionHandling();
         $this->faker = Factory::create();
-        $this->homePermission = Permission::whereName('home')->first();
+        $this->homePermission = Permission::whereName('core.home.welcome')->first();
 
         $this->signIn(User::first());
     }
