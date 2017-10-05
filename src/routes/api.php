@@ -1,10 +1,10 @@
 <?php
 
-Route::middleware(['auth:api', 'api', 'core'])
-    ->prefix('api')
+Route::middleware(['web', 'auth', 'core'])
+    ->prefix('api/system')->as('system.')
     ->namespace('LaravelEnso\TutorialManager\app\Http\Controllers')
     ->group(function () {
-        Route::prefix('system/tutorials')->as('system.tutorials.')
+        Route::prefix('tutorials')->as('tutorials.')
             ->group(function () {
                 Route::get('initTable', 'TutorialTableController@initTable')
                     ->name('initTable');
@@ -14,8 +14,5 @@ Route::middleware(['auth:api', 'api', 'core'])
                     ->name('exportExcel');
             });
 
-        Route::prefix('system')->as('system.')
-            ->group(function () {
-                Route::resource('tutorials', 'TutorialController');
-            });
+        Route::resource('tutorials', 'TutorialController');
     });
