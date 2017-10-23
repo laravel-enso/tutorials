@@ -18,9 +18,8 @@ Tutorial management dependency for [Laravel Enso](https://github.com/laravel-ens
 ### Features
 
 - allows for a user friendly way of teaching users how to use the interface of the application
-- permits adding, updating and deleting tutorial entries that can be then automatically shown for the selected route
-- tutorials start automatically the first time you visit a page that has any tutorial entries set
-- the tutorial functionality may be restarted from the right-hand sidebar, using the `?` button
+- permits adding, updating and deleting tutorial entries that can then be automatically shown for the selected route
+- the tutorial functionality may be started/restarted from the right-hand sidebar, using the `?` button
 
 ### Under the Hood
 
@@ -29,16 +28,24 @@ Tutorial management dependency for [Laravel Enso](https://github.com/laravel-ens
    - `element` - identifies the element within the DOM, and may be an id, in which case it should be prefixed with a `#` or a class, in which case it should be prefixed with `.`
    - `placement` -  sets the position of the tutorial dialog, relative to the DOM element, and can be: top, bottom, left sau right.
    - `order` - gives the order in which a particular tutorial element should be displayed, in the context of the available tutorials for a certain page.
-- tutorial entries are displayed using [Bootstrap Tour](http://bootstraptour.com)
+- tutorial entries are displayed using [Intro.js](http://introjs.com)
 
 ### Publishes
-- `php artisan vendor:publish --tag=tutorials-component` - the VueJS component
-- `php artisan vendor:publish --tag=enso-update` - a common alias for when wanting to update the VueJS component,
-once a newer version is released
+- `php artisan vendor:publish --tag=tutorials-assets` - the VueJS pages and components
+- `php artisan vendor:publish --tag=enso-assets` - a common alias for when wanting to update the VueJS assets,
+once a newer version is released, can be used with the `--force` flag
 
 ### Notes
 
 The [Laravel Enso Core](https://github.com/laravel-enso/Core) package comes with this package included.
+
+Depends on:
+ - [Datatable](https://github.com/laravel-enso/Datatable) for displaying the list of tutorial entries
+ - [FormBuilder](https://github.com/laravel-enso/FormBuilder) for creating the forms when managing tutorials
+ - [Helpers](https://github.com/laravel-enso/Helpers) for utility classes and traits
+ - [PermissionManager](https://github.com/laravel-enso/PermissionManager) for using permissions and routes to determine what tutorials to load 
+ - [StructureManager](https://github.com/laravel-enso/StructureManager) for the migrations
+
 
 <!--h-->
 ### Contributions
