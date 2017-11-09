@@ -23,7 +23,7 @@ class TutorialsTableStructure extends TableStructure
             'enumMappings'  => [
                 'placement' => TutorialPlacement::class,
             ],
-            'columns'       => [
+            'columns' => [
                 0 => [
                     'label' => __('Permission Name'),
                     'data'  => 'permissionName',
