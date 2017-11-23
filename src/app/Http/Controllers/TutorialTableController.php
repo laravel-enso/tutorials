@@ -3,21 +3,22 @@
 namespace LaravelEnso\TutorialManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\DataTable\app\Traits\DataTable;
-use LaravelEnso\TutorialManager\app\DataTable\TutorialsTableStructure;
+use LaravelEnso\VueDatatable\app\Traits\Excel;
+use LaravelEnso\VueDatatable\app\Traits\Datatable;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
 
 class TutorialTableController extends Controller
 {
-    use DataTable;
+    use Datatable, Excel;
 
-    protected $tableStructureClass = TutorialsTableStructure::class;
+    private const Template = __DIR__ . '/../../Tables/tutorials.json';
 
-    public function getTableQuery()
+    public function query()
     {
-        return Tutorial::select(\DB::raw('tutorials.id as DT_RowId, permissions.name as permissionName,
-                tutorials.element, tutorials.title, tutorials.placement, tutorials.`order`,
-                tutorials.created_at, tutorials.updated_at'))
-            ->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
+        return Tutorial::select(\DB::raw(
+            'tutorials.id as DT_RowId, permissions.name as permissionName,
+            tutorials.element, tutorials.title, tutorials.placement, tutorials.`order`,
+            tutorials.created_at, tutorials.updated_at'
+        ))->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
     }
 }

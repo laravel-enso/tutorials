@@ -6,11 +6,11 @@ Route::middleware(['web', 'auth', 'core'])
     ->group(function () {
         Route::prefix('tutorials')->as('tutorials.')
             ->group(function () {
-                Route::get('initTable', 'TutorialTableController@initTable')
+                Route::get('initTable', 'TutorialTableController@init')
                     ->name('initTable');
-                Route::get('getTableData', 'TutorialTableController@getTableData')
+                Route::get('getTableData', 'TutorialTableController@data')
                     ->name('getTableData');
-                Route::get('exportExcel', 'TutorialTableController@exportExcel')
+                Route::get('exportExcel', 'TutorialTableController@excel')
                     ->name('exportExcel');
             });
 

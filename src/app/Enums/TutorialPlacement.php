@@ -2,17 +2,14 @@
 
 namespace LaravelEnso\TutorialManager\app\Enums;
 
-use LaravelEnso\Helpers\Classes\AbstractEnum;
+use LaravelEnso\Helpers\Classes\Enum;
 
-class TutorialPlacement extends AbstractEnum
+class TutorialPlacement extends Enum
 {
-    public function __construct()
-    {
-        $this->data = [
-            0 => __('top'),
-            1 => __('bottom'),
-            2 => __('right'),
-            3 => __('left'),
-        ];
-    }
+    protected static $data = [
+        0 => 'top',
+        1 => 'bottom',
+        2 => 'right',
+        3 => 'left',
+    ];
 }
