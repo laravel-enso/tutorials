@@ -10,47 +10,39 @@
         {
             "label": "Permission Name",
             "name": "permissionName",
-            "meta": [
-                "searchable",
-                "sortable"
-            ]
+            "data": "tutorials.name",
+            "meta": ["searchable", "sortable"]
         },
         {
             "label": "Element",
             "name": "element",
-            "meta": [
-                "searchable",
-                "sortable"
-            ]
+            "data": "tutorials.element",
+            "meta": ["searchable", "sortable"]
         },
         {
             "label": "Title",
             "name": "title",
-            "meta": [
-                "searchable",
-                "sortable"
-            ]
+            "data": "tutorials.title",
+            "meta": ["searchable", "sortable"]
         },
         {
             "label": "Placement",
             "name": "placement",
+            "data": "tutorials.placement",
             "enum": "\\LaravelEnso\\TutorialManager\\app\\Enums\\TutorialPlacement",
             "meta": ["render", "sortable"]
         },
         {
             "label": "Order",
             "name": "order",
-            "meta": [
-                "searchable",
-                "sortable"
-            ]
+            "data": "tutorials.order",
+            "meta": ["searchable", "sortable"]
         },
         {
             "label": "Created At",
             "name": "created_at",
-            "meta": [
-                "sortable"
-            ]
+            "data": "tutorials.created_at",
+            "meta": ["sortable"]
         }
     ]
 }
