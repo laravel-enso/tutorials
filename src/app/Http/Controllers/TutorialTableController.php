@@ -3,15 +3,15 @@
 namespace LaravelEnso\TutorialManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\VueDatatable\app\Traits\Excel;
-use LaravelEnso\VueDatatable\app\Traits\Datatable;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
+use LaravelEnso\VueDatatable\app\Traits\Datatable;
+use LaravelEnso\VueDatatable\app\Traits\Excel;
 
 class TutorialTableController extends Controller
 {
     use Datatable, Excel;
 
-    private const Template = __DIR__ . '/../../Tables/tutorials.json';
+    private const Template = __DIR__.'/../../Tables/tutorials.json';
 
     public function query()
     {

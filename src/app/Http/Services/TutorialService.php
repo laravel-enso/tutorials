@@ -12,7 +12,7 @@ class TutorialService
 {
     const HomePermissionId = 1;
 
-    const FormPath = __DIR__ . '/../../Forms/tutorial.json';
+    const FormPath = __DIR__.'/../../Forms/tutorial.json';
 
     public function create()
     {
@@ -31,9 +31,9 @@ class TutorialService
         $tutorial = Tutorial::create($request->all());
 
         return [
-            'message' => __('The tutorial was created!'),
+            'message'  => __('The tutorial was created!'),
             'redirect' => 'system.tutorials.edit',
-            'id' => $tutorial->id,
+            'id'       => $tutorial->id,
         ];
     }
 
@@ -72,7 +72,7 @@ class TutorialService
         $tutorial->delete();
 
         return [
-            'message' => __(config('enso.labels.successfulOperation')),
+            'message'  => __(config('enso.labels.successfulOperation')),
             'redirect' => 'system.tutorials.index',
         ];
     }
@@ -81,9 +81,9 @@ class TutorialService
     {
         return $tutorials->reduce(function ($tutorials, $tutorial) use ($placement) {
             $tutorials->push([
-                'intro' => __($tutorial->content),
-                'element' => $tutorial->element,
-                'position' => TutorialPlacement::get($tutorial->placement),
+                'intro'               => __($tutorial->content),
+                'element'             => $tutorial->element,
+                'position'            => TutorialPlacement::get($tutorial->placement),
                 'disable-interaction' => true,
             ]);
 
