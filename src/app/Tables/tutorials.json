@@ -10,7 +10,7 @@
         {
             "label": "Permission Name",
             "name": "permissionName",
-            "data": "tutorials.name",
+            "data": "permissions.name",
             "meta": ["searchable", "sortable"]
         },
         {
