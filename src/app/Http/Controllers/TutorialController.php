@@ -3,9 +3,9 @@
 namespace LaravelEnso\TutorialManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\TutorialManager\app\Http\Requests\ValidateTutorialRequest;
-use LaravelEnso\TutorialManager\app\Http\Services\TutorialService;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
+use LaravelEnso\TutorialManager\app\Http\Services\TutorialService;
+use LaravelEnso\TutorialManager\app\Http\Requests\ValidateTutorialRequest;
 
 class TutorialController extends Controller
 {

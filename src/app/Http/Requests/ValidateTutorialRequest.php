@@ -15,11 +15,11 @@ class ValidateTutorialRequest extends FormRequest
     {
         return [
             'permission_id' => 'required',
-            'element'       => 'required',
-            'title'         => 'required',
-            'content'       => 'required',
-            'placement'     => 'required|numeric',
-            'order'         => 'numeric',
+            'element' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+            'placement' => 'required|numeric',
+            'order' => 'numeric',
         ];
     }
 }
