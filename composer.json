@@ -23,9 +23,11 @@
         "laravel/framework": "5.5.*",
         "laravel-enso/vuedatatable": "1.0.*",
         "laravel-enso/formbuilder": "2.1.*",
-        "laravel-enso/helpers": "1.5.*",
+        "laravel-enso/helpers": "1.6.*",
         "laravel-enso/permissionmanager": "2.1.*",
-        "laravel-enso/structuremanager": "2.1.*",
+        "laravel-enso/structuremanager": "2.1.*"
+    },
+    "require-dev": {
         "laravel-enso/testhelper": "1.4.*"
     },
     "autoload": {
