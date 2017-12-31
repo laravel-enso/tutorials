@@ -4,7 +4,7 @@ namespace LaravelEnso\TutorialManager;
 
 use Illuminate\Support\ServiceProvider;
 
-class TutorialsServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
