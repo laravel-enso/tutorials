@@ -22,7 +22,7 @@
         "php": ">=7.1.0",
         "laravel/framework": "5.5.*",
         "laravel-enso/vuedatatable": "1.0.*",
-        "laravel-enso/formbuilder": "2.1.*",
+        "laravel-enso/formbuilder": "2.2.*",
         "laravel-enso/helpers": "1.6.*",
         "laravel-enso/permissionmanager": "2.1.*",
         "laravel-enso/structuremanager": "2.1.*"
@@ -38,7 +38,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelEnso\\TutorialManager\\TutorialsServiceProvider"
+                "LaravelEnso\\TutorialManager\\AppServiceProvider"
             ],
             "aliases": {}
         }
