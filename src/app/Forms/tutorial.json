@@ -1,12 +1,9 @@
 {
-    "title": null,
-    "method": null,
-    "prefix": "system.tutorials",
-    "icon": "fa fa-book",
+    "routePrefix": "system.tutorials",
     "columns": "1",
     "fields": [{
         "label": "Permission",
-        "column": "permission_id",
+        "name": "permission_id",
         "value": null,
         "meta": {
             "type": "select",
@@ -15,7 +12,7 @@
         }
     }, {
         "label": "Element",
-        "column": "element",
+        "name": "element",
         "value": null,
         "meta": {
             "type": "input",
@@ -23,7 +20,7 @@
         }
     }, {
         "label": "Title",
-        "column": "title",
+        "name": "title",
         "value": null,
         "meta": {
             "type": "input",
@@ -31,7 +28,7 @@
         }
     }, {
         "label": "Placement",
-        "column": "placement",
+        "name": "placement",
         "value": null,
         "meta": {
             "type": "select",
@@ -40,7 +37,7 @@
         }
     }, {
         "label": "Order",
-        "column": "order",
+        "name": "order",
         "value": false,
         "meta": {
             "type": "input",
@@ -48,7 +45,7 @@
         }
     }, {
         "label": "Content",
-        "column": "content",
+        "name": "content",
         "value": null,
         "meta": {
             "type": "textarea",

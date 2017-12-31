@@ -42,7 +42,13 @@
             "label": "Created At",
             "name": "created_at",
             "data": "tutorials.created_at",
-            "meta": ["sortable"]
+            "meta": ["sortable", "date"]
+        },
+        {
+            "label": "Updated At",
+            "name": "updated_at",
+            "data": "permissions.updated_at",
+            "meta": ["sortable", "date"]
         }
     ]
 }

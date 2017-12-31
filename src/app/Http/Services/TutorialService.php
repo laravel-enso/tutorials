@@ -3,7 +3,7 @@
 namespace LaravelEnso\TutorialManager\app\Http\Services;
 
 use Illuminate\Http\Request;
-use LaravelEnso\FormBuilder\app\Classes\FormBuilder;
+use LaravelEnso\FormBuilder\app\Classes\Form;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\TutorialManager\app\Enums\TutorialPlacement;
@@ -16,12 +16,11 @@ class TutorialService
 
     public function create()
     {
-        $form = (new FormBuilder(self::FormPath))
-            ->setMethod('POST')
-            ->setTitle('Create Tutorial')
-            ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
-            ->setSelectOptions('placement', TutorialPlacement::object())
-            ->getData();
+        $form = (new Form(self::FormPath))
+            ->create()
+            ->options('permission_id', Permission::pluck('name', 'id'))
+            ->options('placement', TutorialPlacement::object())
+            ->get();
 
         return compact('form');
     }
@@ -48,12 +47,11 @@ class TutorialService
 
     public function edit(Tutorial $tutorial)
     {
-        $form = (new FormBuilder(self::FormPath, $tutorial))
-            ->setMethod('PATCH')
-            ->setTitle('Edit Tutorial')
-            ->setSelectOptions('permission_id', Permission::pluck('name', 'id'))
-            ->setSelectOptions('placement', TutorialPlacement::object())
-            ->getData();
+        $form = (new Form(self::FormPath))
+            ->edit($tutorial)
+            ->options('permission_id', Permission::pluck('name', 'id'))
+            ->options('placement', TutorialPlacement::object())
+            ->get();
 
         return compact('form');
     }
