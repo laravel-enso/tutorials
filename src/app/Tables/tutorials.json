@@ -5,7 +5,7 @@
     "name": "Tutorials",
     "icon": "fa fa-book",
     "crtNo": true,
-    "buttons": ["create", "edit", "destroy", "excel"],
+    "buttons": ["excel", "create", "edit", "destroy"],
     "columns": [
         {
             "label": "Permission Name",
