@@ -1,4 +1,4 @@
-import TutorialEdit from '../../../../pages/enso/system/tutorials/Edit.vue';
+const TutorialEdit = () => import('../../../pages/system/tutorials/Edit.vue');
 
 export default {
     name: 'system.tutorials.edit',

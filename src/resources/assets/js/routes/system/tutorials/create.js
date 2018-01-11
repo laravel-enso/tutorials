@@ -1,4 +1,4 @@
-import TutorialCreate from '../../../../pages/enso/system/tutorials/Create.vue';
+const TutorialCreate = () => import('../../../pages/system/tutorials/Create.vue');
 
 export default {
     name: 'system.tutorials.create',

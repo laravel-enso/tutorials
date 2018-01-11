@@ -1,4 +1,4 @@
-import TutorialsIndex from '../../../../pages/enso/system/tutorials/Index.vue';
+const TutorialsIndex = () => import('../../../pages/system/tutorials/Index.vue');
 
 export default {
     name: 'system.tutorials.index',
