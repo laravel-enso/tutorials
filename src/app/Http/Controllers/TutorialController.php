@@ -9,40 +9,33 @@ use LaravelEnso\TutorialManager\app\Http\Requests\ValidateTutorialRequest;
 
 class TutorialController extends Controller
 {
-    private $service;
-
-    public function __construct(TutorialService $service)
+    public function create(TutorialService $service)
     {
-        $this->service = $service;
+        return $service->create();
     }
 
-    public function create()
+    public function store(ValidateTutorialRequest $request, TutorialService $service)
     {
-        return $this->service->create();
+        return $service->store($request);
     }
 
-    public function store(ValidateTutorialRequest $request)
+    public function show(string $route, TutorialService $service)
     {
-        return $this->service->store($request);
+        return $service->show($route);
     }
 
-    public function show(string $route)
+    public function edit(Tutorial $tutorial, TutorialService $service)
     {
-        return $this->service->show($route);
+        return $service->edit($tutorial);
     }
 
-    public function edit(Tutorial $tutorial)
+    public function update(ValidateTutorialRequest $request, Tutorial $tutorial, TutorialService $service)
     {
-        return $this->service->edit($tutorial);
+        return $service->update($request, $tutorial);
     }
 
-    public function update(ValidateTutorialRequest $request, Tutorial $tutorial)
+    public function destroy(Tutorial $tutorial, TutorialService $service)
     {
-        return $this->service->update($request, $tutorial);
-    }
-
-    public function destroy(Tutorial $tutorial)
-    {
-        return $this->service->destroy($tutorial);
+        return $service->destroy($tutorial);
     }
 }
