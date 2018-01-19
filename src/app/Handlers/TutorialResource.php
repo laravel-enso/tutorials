@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\TutorialManager\app\Handlers;
 
-use LaravelEnso\TutorialManager\app\Models\Tutorial;
 use LaravelEnso\TutorialManager\app\Enums\Placement;
+use LaravelEnso\TutorialManager\app\Models\Tutorial;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 
 class TutorialResource
