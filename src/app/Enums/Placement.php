@@ -4,7 +4,7 @@ namespace LaravelEnso\TutorialManager\app\Enums;
 
 use LaravelEnso\Helpers\app\Classes\Enum;
 
-class TutorialPlacement extends Enum
+class Placement extends Enum
 {
     protected static $data = [
         0 => 'top',

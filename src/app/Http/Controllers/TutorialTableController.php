@@ -16,7 +16,7 @@ class TutorialTableController extends Controller
     public function query()
     {
         return Tutorial::select(\DB::raw(
-            'tutorials.id as DT_RowId, permissions.name as permissionName,
+            'tutorials.id as dtRowId, permissions.name as permissionName,
             tutorials.element, tutorials.title, tutorials.placement, tutorials.`order`,
             tutorials.created_at, tutorials.updated_at'
         ))->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');

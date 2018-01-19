@@ -29,7 +29,7 @@
             "label": "Placement",
             "name": "placement",
             "data": "tutorials.placement",
-            "enum": "\\LaravelEnso\\TutorialManager\\app\\Enums\\TutorialPlacement",
+            "enum": "\\LaravelEnso\\TutorialManager\\app\\Enums\\Placement",
             "meta": ["render", "sortable"]
         },
         {

@@ -4,38 +4,48 @@ namespace LaravelEnso\TutorialManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
-use LaravelEnso\TutorialManager\app\Http\Services\TutorialService;
+use LaravelEnso\TutorialManager\app\Forms\Builders\TutorialForm;
 use LaravelEnso\TutorialManager\app\Http\Requests\ValidateTutorialRequest;
 
 class TutorialController extends Controller
 {
-    public function create(TutorialService $service)
+    public function create(TutorialForm $form)
     {
-        return $service->create();
+        return ['form' => $form->create()];
     }
 
-    public function store(ValidateTutorialRequest $request, TutorialService $service)
+    public function store(ValidateTutorialRequest $request)
     {
-        return $service->store($request);
+        $tutorial = Tutorial::create($request->all());
+
+        return [
+            'message' => __('The tutorial was created!'),
+            'redirect' => 'system.tutorials.edit',
+            'id' => $tutorial->id,
+        ];
     }
 
-    public function show(string $route, TutorialService $service)
+    public function edit(Tutorial $tutorial, TutorialForm $form)
     {
-        return $service->show($route);
+        return ['form' => $form->edit($tutorial)];
     }
 
-    public function edit(Tutorial $tutorial, TutorialService $service)
+    public function update(ValidateTutorialRequest $request, Tutorial $tutorial)
     {
-        return $service->edit($tutorial);
+        $tutorial->update($request->all());
+
+        return [
+            'message' => __(config('enso.labels.savedChanges')),
+        ];
     }
 
-    public function update(ValidateTutorialRequest $request, Tutorial $tutorial, TutorialService $service)
+    public function destroy(Tutorial $tutorial)
     {
-        return $service->update($request, $tutorial);
-    }
+        $tutorial->delete();
 
-    public function destroy(Tutorial $tutorial, TutorialService $service)
-    {
-        return $service->destroy($tutorial);
+        return [
+            'message' => __(config('enso.labels.successfulOperation')),
+            'redirect' => 'system.tutorials.index',
+        ];
     }
 }

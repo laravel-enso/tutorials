@@ -12,7 +12,10 @@ Route::middleware(['web', 'auth', 'core'])
                     ->name('getTableData');
                 Route::get('exportExcel', 'TutorialTableController@excel')
                     ->name('exportExcel');
+
+                Route::get('show/{route}', 'RouteTutorialController')
+                    ->name('show');
             });
 
-        Route::resource('tutorials', 'TutorialController');
+        Route::resource('tutorials', 'TutorialController', ['except' => ['show']]);
     });
