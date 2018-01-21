@@ -1,6 +1,6 @@
 {
     "routePrefix": "system.tutorials",
-    "columns": "1",
+    "columns": "2",
     "fields": [{
         "label": "Permission",
         "name": "permission_id",
