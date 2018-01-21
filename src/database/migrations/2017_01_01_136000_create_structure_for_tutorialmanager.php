@@ -22,7 +22,7 @@ class CreateStructureForTutorialManager extends StructureMigration
     ];
 
     protected $menu = [
-        'name' => 'Tutorials', 'icon' => 'fa fa-fw fa-book', 'link' => 'system.tutorials.index', 'has_children' => false,
+        'name' => 'Tutorials', 'icon' => 'fas fa-fw fa-book', 'link' => 'system.tutorials.index', 'has_children' => false,
     ];
 
     protected $parentMenu = 'System';

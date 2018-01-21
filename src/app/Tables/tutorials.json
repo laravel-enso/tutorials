@@ -3,7 +3,7 @@
     "readSuffix": "getTableData",
     "writeSuffix": null,
     "name": "Tutorials",
-    "icon": "fa fa-book",
+    "icon": "fas fa-book",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
     "columns": [
