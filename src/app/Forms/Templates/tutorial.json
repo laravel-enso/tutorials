@@ -8,7 +8,7 @@
         "meta": {
             "type": "select",
             "multiple": false,
-            "options": null
+            "options": []
         }
     }, {
         "label": "Element",
@@ -33,7 +33,7 @@
         "meta": {
             "type": "select",
             "multiple": false,
-            "options": null
+            "options": []
         }
     }, {
         "label": "Order",

@@ -21,16 +21,16 @@ class TutorialForm
     public function create()
     {
         return $this->form
-            ->options('permission_id', Permission::pluck('name', 'id'))
-            ->options('placement', Placement::object())
+            ->options('permission_id', Permission::get(['name', 'id']))
+            ->options('placement', Placement::select())
             ->create();
     }
 
     public function edit(Tutorial $tutorial)
     {
         return $this->form
-            ->options('permission_id', Permission::pluck('name', 'id'))
-            ->options('placement', Placement::object())
+            ->options('permission_id', Permission::get(['name', 'id']))
+            ->options('placement', Placement::select())
             ->edit($tutorial);
     }
 }
