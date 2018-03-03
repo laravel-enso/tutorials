@@ -37,9 +37,9 @@ class TutorialTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonFragment([
-                'message'  => 'The tutorial was created!',
+                'message' => 'The tutorial was created!',
                 'redirect' => 'system.tutorials.edit',
-                'id'       => $tutorial->id,
+                'id' => $tutorial->id,
             ]);
     }
 
@@ -102,11 +102,11 @@ class TutorialTest extends TestCase
     {
         return [
             'permission_id' => $this->homePermission->id,
-            'element'       => $this->faker->word,
-            'title'         => $this->faker->word,
-            'content'       => $this->faker->sentence,
-            'placement'     => '1',
-            'order'         => '1',
+            'element' => $this->faker->word,
+            'title' => $this->faker->word,
+            'content' => $this->faker->sentence,
+            'placement' => '1',
+            'order' => '1',
         ];
     }
 }
