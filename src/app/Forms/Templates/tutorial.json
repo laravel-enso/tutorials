@@ -1,55 +1,63 @@
 {
     "routePrefix": "system.tutorials",
-    "columns": "2",
-    "fields": [{
-        "label": "Permission",
-        "name": "permission_id",
-        "value": null,
-        "meta": {
-            "type": "select",
-            "multiple": false,
-            "options": []
-        }
+    "sections": [{
+        "columns": "2",
+        "fields": [{
+            "label": "Permission",
+            "name": "permission_id",
+            "value": null,
+            "meta": {
+                "type": "select",
+                "multiple": false,
+                "options": []
+            }
+        }, {
+            "label": "Element",
+            "name": "element",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "text"
+            }
+        }]
     }, {
-        "label": "Element",
-        "name": "element",
-        "value": null,
-        "meta": {
-            "type": "input",
-            "content": "text"
-        }
+        "columns": "3",
+        "fields": [{
+            "label": "Title",
+            "name": "title",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "text"
+            }
+        }, {
+            "label": "Placement",
+            "name": "placement",
+            "value": null,
+            "meta": {
+                "type": "select",
+                "multiple": false,
+                "options": []
+            }
+        }, {
+            "label": "Order",
+            "name": "order",
+            "value": false,
+            "meta": {
+                "type": "input",
+                "content": "number"
+            }
+        }]
     }, {
-        "label": "Title",
-        "name": "title",
-        "value": null,
-        "meta": {
-            "type": "input",
-            "content": "text"
-        }
-    }, {
-        "label": "Placement",
-        "name": "placement",
-        "value": null,
-        "meta": {
-            "type": "select",
-            "multiple": false,
-            "options": []
-        }
-    }, {
-        "label": "Order",
-        "name": "order",
-        "value": false,
-        "meta": {
-            "type": "input",
-            "content": "number"
-        }
-    }, {
-        "label": "Content",
-        "name": "content",
-        "value": null,
-        "meta": {
-            "type": "textarea",
-            "rows": 5
-        }
+        "columns": "1",
+        "fields": [{
+            "label": "Content",
+            "name": "content",
+            "value": null,
+            "meta": {
+                "type": "textarea",
+                "rows": 3
+            }
+        }]
     }]
 }
