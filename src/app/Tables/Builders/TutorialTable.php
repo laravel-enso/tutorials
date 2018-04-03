@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\TutorialManager\app\Tables\Builders;
 
-use LaravelEnso\TutorialManager\app\Models\Tutorial;
 use LaravelEnso\VueDatatable\app\Classes\Table;
+use LaravelEnso\TutorialManager\app\Models\Tutorial;
 
 class TutorialTable extends Table
 {
