@@ -13,7 +13,7 @@ class TutorialTable extends Table
     {
         return Tutorial::select(\DB::raw(
             'tutorials.id as "dtRowId", permissions.name as permissionName,
-            tutorials.element, tutorials.title, tutorials.placement, tutorials.order,
+            tutorials.element, tutorials.title, tutorials.placement, tutorials.`order`,
             tutorials.created_at, tutorials.updated_at'
         ))->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
     }
