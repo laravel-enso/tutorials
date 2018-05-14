@@ -63,7 +63,7 @@ class TutorialTest extends TestCase
 
         $this->patch(route('system.tutorials.update', $tutorial->id, false), $tutorial->toArray())
             ->assertStatus(200)
-            ->assertJson(['message' => __(config('enso.labels.savedChanges'))]);
+            ->assertJsonFragment(['message']);
 
         $this->assertEquals('edited', Tutorial::first(['title'])->title);
     }

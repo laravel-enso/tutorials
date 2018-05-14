@@ -35,7 +35,7 @@ class TutorialController extends Controller
         $tutorial->update($request->all());
 
         return [
-            'message' => __(config('enso.labels.savedChanges')),
+            'message' => __('The tutorial was successfully updated'),
         ];
     }
 
@@ -44,7 +44,7 @@ class TutorialController extends Controller
         $tutorial->delete();
 
         return [
-            'message' => __(config('enso.labels.successfulOperation')),
+            'message' => __('The tutorial was successfully deleted'),
             'redirect' => 'system.tutorials.index',
         ];
     }
