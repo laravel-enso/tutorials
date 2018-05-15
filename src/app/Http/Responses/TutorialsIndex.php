@@ -1,25 +1,21 @@
 <?php
 
-namespace LaravelEnso\TutorialManager\app\Classes;
+namespace LaravelEnso\TutorialManager\app\Http\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
 use LaravelEnso\TutorialManager\app\Enums\Placement;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 
-class TutorialResource implements Responsable
+class TutorialsIndex implements Responsable
 {
     const HomePermissionId = 1;
 
     private $route;
 
-    public function __construct(string $route)
-    {
-        $this->route = $route;
-    }
-
     public function toResponse($request)
     {
+        $this->route = $request->get('route');
         return $this->tutorials()
             ->reduce(function ($tutorials, $tutorial) {
                 $tutorials->push([
@@ -52,8 +48,7 @@ class TutorialResource implements Responsable
             ->first();
 
         return $permission
-            ? $permission->tutorials
-                ->sortBy('order')
+            ? $permission->tutorials->sortBy('order')
             : collect();
     }
 }
