@@ -16,6 +16,7 @@ class TutorialsIndex implements Responsable
     public function toResponse($request)
     {
         $this->route = $request->get('route');
+
         return $this->tutorials()
             ->reduce(function ($tutorials, $tutorial) {
                 $tutorials->push([
