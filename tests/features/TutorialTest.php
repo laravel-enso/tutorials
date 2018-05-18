@@ -93,8 +93,11 @@ class TutorialTest extends TestCase
         $secondTutorial['permission_id'] = $secondPermission->id;
         Tutorial::create($secondTutorial);
 
-        $this->get(route('system.tutorials.show', $secondPermission->name, false))
-            ->assertJsonFragment([$firstTutorial['element']])
+        $this->get(route(
+            'system.tutorials.show',
+            ['route' => $secondPermission->name],
+            false
+        ))->assertJsonFragment([$firstTutorial['element']])
             ->assertJsonFragment([$secondTutorial['element']]);
     }
 
