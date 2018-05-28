@@ -39,7 +39,7 @@ class TutorialsIndex implements Responsable
     private function homeTutorials()
     {
         return Tutorial::wherePermissionId(self::HomePermissionId)
-            ->orderBy('order')
+            ->orderBy('order_index')
             ->get();
     }
 
@@ -49,7 +49,9 @@ class TutorialsIndex implements Responsable
             ->first();
 
         return $permission
-            ? $permission->tutorials->sortBy('order')
+            ? $permission->tutorials()
+                ->orderBy('order_index')
+                ->get()
             : collect();
     }
 }

@@ -17,7 +17,7 @@ class CreateTutorialsTable extends Migration
             $table->string('title');
             $table->text('content', 65535);
             $table->tinyInteger('placement');
-            $table->integer('order');
+            $table->integer('order_index');
 
             $table->timestamps();
         });

@@ -34,8 +34,8 @@
         },
         {
             "label": "Order",
-            "name": "order",
-            "data": "tutorials.order",
+            "name": "order_index",
+            "data": "tutorials.order_index",
             "meta": ["searchable", "sortable"]
         },
         {

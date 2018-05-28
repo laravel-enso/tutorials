@@ -109,7 +109,7 @@ class TutorialTest extends TestCase
             'title' => $this->faker->word,
             'content' => $this->faker->sentence,
             'placement' => 1,
-            'order' => 1,
+            'order_index' => 1,
         ];
     }
 }

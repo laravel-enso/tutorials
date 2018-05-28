@@ -19,7 +19,7 @@ class ValidateTutorialRequest extends FormRequest
             'title' => 'required',
             'content' => 'required',
             'placement' => 'required|numeric',
-            'order' => 'numeric',
+            'order_index' => 'numeric',
         ];
     }
 }

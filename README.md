@@ -31,7 +31,7 @@ Tutorial management dependency for [Laravel Enso](https://github.com/laravel-ens
    prefixed with a `#` or a class, in which case it should be prefixed with `.` or a combination of these
    - `placement` -  sets the position of the tutorial dialog, relative to the DOM element, 
    and can be: `top`, `bottom`, `left` or `right`
-   - `order` - gives the order in which a particular tutorial element should be displayed, 
+   - `order_index` - gives the order in which a particular tutorial element should be displayed, 
    in the context of the available tutorials for a certain page
 - tutorial entries are displayed using [Intro.js](http://introjs.com)
 

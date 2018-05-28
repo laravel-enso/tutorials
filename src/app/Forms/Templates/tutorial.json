@@ -41,7 +41,7 @@
             }
         }, {
             "label": "Order",
-            "name": "order",
+            "name": "order_index",
             "value": false,
             "meta": {
                 "type": "input",
