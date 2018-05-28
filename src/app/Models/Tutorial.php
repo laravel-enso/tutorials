@@ -8,7 +8,7 @@ use LaravelEnso\PermissionManager\app\Models\Permission;
 class Tutorial extends Model
 {
     protected $fillable = [
-        'permission_id', 'element', 'title', 'content', 'placement', 'order_index'
+        'permission_id', 'element', 'title', 'content', 'placement', 'order_index',
     ];
 
     public function permission()
