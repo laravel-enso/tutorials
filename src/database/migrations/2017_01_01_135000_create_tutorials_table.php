@@ -13,6 +13,7 @@ class CreateTutorialsTable extends Migration
             $table->integer('permission_id')->unsigned()->index();
             $table->foreign('permission_id')->references('id')->on('permissions')
                 ->onUpdate('cascade')->onDelete('cascade');
+
             $table->string('element');
             $table->string('title');
             $table->text('content', 65535);
