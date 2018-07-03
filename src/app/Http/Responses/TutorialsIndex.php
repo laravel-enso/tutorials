@@ -9,7 +9,7 @@ use LaravelEnso\PermissionManager\app\Models\Permission;
 
 class TutorialsIndex implements Responsable
 {
-    const HomePermissionId = 1;
+    const HomePermission = 'core.index';
 
     private $route;
 
@@ -38,8 +38,12 @@ class TutorialsIndex implements Responsable
 
     private function homeTutorials()
     {
-        return Tutorial::wherePermissionId(self::HomePermissionId)
-            ->orderBy('order_index')
+        return Tutorial::query()
+            ->wherePermissionId(
+                optional(Permission::whereName(self::HomePermission))
+                    ->first()
+                    ->id
+            )->orderBy('order_index')
             ->get();
     }
 
