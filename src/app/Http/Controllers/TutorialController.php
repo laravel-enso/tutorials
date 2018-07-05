@@ -16,7 +16,7 @@ class TutorialController extends Controller
 
     public function store(ValidateTutorialRequest $request)
     {
-        $tutorial = Tutorial::create($request->all());
+        $tutorial = Tutorial::create($request->validated());
 
         return [
             'message' => __('The tutorial was created!'),
@@ -32,7 +32,7 @@ class TutorialController extends Controller
 
     public function update(ValidateTutorialRequest $request, Tutorial $tutorial)
     {
-        $tutorial->update($request->all());
+        $tutorial->update($request->validated());
 
         return [
             'message' => __('The tutorial was successfully updated'),
