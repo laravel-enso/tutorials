@@ -1,7 +1,6 @@
 {
     "routePrefix": "system.tutorials",
     "readSuffix": "getTableData",
-    "writeSuffix": null,
     "name": "Tutorials",
     "icon": "book",
     "crtNo": true,
