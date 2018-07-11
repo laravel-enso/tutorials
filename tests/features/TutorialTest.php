@@ -37,7 +37,7 @@ class TutorialTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonFragment([
-                'message' => 'The tutorial was created!',
+                'message',
                 'redirect' => 'system.tutorials.edit',
                 'id' => $tutorial->id,
             ]);
