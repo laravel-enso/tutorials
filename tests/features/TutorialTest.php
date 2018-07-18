@@ -37,9 +37,10 @@ class TutorialTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonFragment([
-                'message',
                 'redirect' => 'system.tutorials.edit',
                 'id' => $tutorial->id,
+            ])->assertJsonStructure([
+                'message',
             ]);
     }
 
@@ -63,7 +64,7 @@ class TutorialTest extends TestCase
 
         $this->patch(route('system.tutorials.update', $tutorial->id, false), $tutorial->toArray())
             ->assertStatus(200)
-            ->assertJsonFragment(['message']);
+            ->assertJsonStructure(['message']);
 
         $this->assertEquals('edited', Tutorial::first(['title'])->title);
     }
@@ -76,7 +77,7 @@ class TutorialTest extends TestCase
 
         $this->delete(route('system.tutorials.destroy', $tutorial->id, false))
             ->assertStatus(200)
-            ->assertJsonFragment(['message']);
+            ->assertJsonStructure(['message']);
 
         $this->assertNull($tutorial->fresh());
     }
