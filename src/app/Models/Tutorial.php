@@ -14,6 +14,11 @@ class Tutorial extends Model
         'permission_id', 'element', 'title', 'content', 'placement', 'order_index',
     ];
 
+    protected $casts = [
+      'permission_id' => 'integer',
+      'placement' => 'integer',
+    ];
+
     protected $loggableLabel = 'title';
 
     protected $loggable = ['title', 'content', 'placement', 'order_index'];
