@@ -1,8 +1,6 @@
 {
     "routePrefix": "system.tutorials",
     "readSuffix": "getTableData",
-    "name": "Tutorials",
-    "icon": "book",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
     "columns": [
