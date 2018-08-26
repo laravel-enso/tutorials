@@ -23,16 +23,19 @@ class TutorialTest extends TestCase
         parent::setUp();
 
         // $this->withoutExceptionHandling();
+
+        $this->seed()
+            ->signIn(User::first());
+
         $this->faker = Factory::create();
         $this->homePermission = Permission::whereName('core.index')->first();
-
-        $this->signIn(User::first());
     }
 
     /** @test */
     public function store()
     {
         $response = $this->post(route('system.tutorials.store', [], false), $this->postParams());
+
         $tutorial = Tutorial::first(['id']);
 
         $response->assertStatus(200)
@@ -48,6 +51,7 @@ class TutorialTest extends TestCase
     public function edit()
     {
         Tutorial::create($this->postParams());
+
         $tutorial = Tutorial::first();
 
         $this->get(route('system.tutorials.edit', $tutorial->id, false))
@@ -59,7 +63,9 @@ class TutorialTest extends TestCase
     public function update()
     {
         Tutorial::create($this->postParams());
+
         $tutorial = Tutorial::first();
+
         $tutorial->title = 'edited';
 
         $this->patch(route('system.tutorials.update', $tutorial->id, false), $tutorial->toArray())
@@ -73,6 +79,7 @@ class TutorialTest extends TestCase
     public function destroy()
     {
         Tutorial::create($this->postParams());
+
         $tutorial = Tutorial::first(['id']);
 
         $this->delete(route('system.tutorials.destroy', $tutorial->id, false))
@@ -86,12 +93,15 @@ class TutorialTest extends TestCase
     public function show()
     {
         $firstTutorial = $this->postParams();
+
         Tutorial::create($firstTutorial);
 
         $secondPermission = Permission::orderBy('id', 'desc')->first();
+
         $secondTutorial = $this->postParams();
 
         $secondTutorial['permission_id'] = $secondPermission->id;
+
         Tutorial::create($secondTutorial);
 
         $this->get(route(
