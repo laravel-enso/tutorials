@@ -15,22 +15,18 @@ class TutorialForm
 
     public function __construct()
     {
-        $this->form = new Form(self::FormPath);
+        $this->form = (new Form(self::FormPath))
+            ->options('permission_id', Permission::get(['name', 'id']))
+            ->options('placement', Placement::select());
     }
 
     public function create()
     {
-        return $this->form
-            ->options('permission_id', Permission::get(['name', 'id']))
-            ->options('placement', Placement::select())
-            ->create();
+        return $this->form->create();
     }
 
     public function edit(Tutorial $tutorial)
     {
-        return $this->form
-            ->options('permission_id', Permission::get(['name', 'id']))
-            ->options('placement', Placement::select())
-            ->edit($tutorial);
+        return $this->form->edit($tutorial);
     }
 }
