@@ -20,9 +20,9 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/core": "2.14.*",
-        "laravel-enso/vuedatatable": "1.4.*",
-        "laravel-enso/formbuilder": "2.7.*",
+        "laravel-enso/core": "2.15.*",
+        "laravel-enso/vuedatatable": "1.5.*",
+        "laravel-enso/formbuilder": "2.8.*",
         "laravel-enso/helpers": "1.8.*",
         "laravel-enso/permissionmanager": "2.1.*",
         "laravel-enso/structuremanager": "2.2.*"
