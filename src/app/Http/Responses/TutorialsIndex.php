@@ -20,10 +20,12 @@ class TutorialsIndex implements Responsable
         return $this->tutorials()
             ->reduce(function ($tutorials, $tutorial) {
                 $tutorials->push([
-                    'intro' => __($tutorial->content),
                     'element' => $tutorial->element,
-                    'position' => Placement::get($tutorial->placement),
-                    'disable-interaction' => true,
+                    'popover' => [
+                        'title' => __($tutorial->title),
+                        'description' => __($tutorial->content),
+                        'position' => Placement::get($tutorial->placement),
+                    ],
                 ]);
 
                 return $tutorials;
