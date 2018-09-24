@@ -2,13 +2,16 @@
 
 namespace LaravelEnso\TutorialManager\app\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use LaravelEnso\TutorialManager\app\Forms\Builders\TutorialForm;
 use LaravelEnso\TutorialManager\app\Http\Requests\ValidateTutorialRequest;
 
 class TutorialController extends Controller
 {
+    use ValidatesRequests;
+
     public function create(TutorialForm $form)
     {
         return ['form' => $form->create()];

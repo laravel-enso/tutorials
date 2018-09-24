@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\TutorialManager\app\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use LaravelEnso\TutorialManager\app\Http\Responses\TutorialsIndex;
 
 class RouteTutorialController extends Controller
