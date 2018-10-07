@@ -6,5 +6,8 @@ use LaravelEnso\Helpers\app\Classes\Enum;
 
 class Placement extends Enum
 {
-    protected static $data = ['top', 'bottom', 'right', 'left'];
+    const Top = 1;
+    const Bottom = 2;
+    const Right = 3;
+    const Left = 4;
 }
