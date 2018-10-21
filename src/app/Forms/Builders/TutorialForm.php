@@ -3,7 +3,6 @@
 namespace LaravelEnso\TutorialManager\app\Forms\Builders;
 
 use LaravelEnso\FormBuilder\app\Classes\Form;
-use LaravelEnso\TutorialManager\app\Enums\Placement;
 use LaravelEnso\TutorialManager\app\Models\Tutorial;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 
@@ -16,8 +15,7 @@ class TutorialForm
     public function __construct()
     {
         $this->form = (new Form(self::FormPath))
-            ->options('permission_id', Permission::get(['name', 'id']))
-            ->options('placement', Placement::select());
+            ->options('permission_id', Permission::get(['name', 'id']));
     }
 
     public function create()

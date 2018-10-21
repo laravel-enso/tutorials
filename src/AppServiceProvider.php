@@ -8,11 +8,11 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->load()
-            ->publish();
+        $this->loadDependencies()
+            ->publishDependencies();
     }
 
-    private function load()
+    private function loadDependencies()
     {
         $this->loadRoutesFrom(__DIR__.'/routes/api.php');
 
@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         return $this;
     }
 
-    private function publish()
+    private function publishDependencies()
     {
         $this->publishes([
             __DIR__.'/database/factories' => database_path('factories'),
