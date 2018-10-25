@@ -4,12 +4,8 @@ use LaravelEnso\StructureManager\app\Classes\StructureMigration;
 
 class CreateStructureForTutorialManager extends StructureMigration
 {
-    protected $permissionGroup = [
-        'name' => 'system.tutorials', 'description' => 'Tuturials permissions group',
-    ];
-
     protected $permissions = [
-        ['name' => 'system.tutorials.getTableData', 'description' => 'Get table data for tutorials', 'type' => 0, 'is_default' => false],
+        ['name' => 'system.tutorials.tableData', 'description' => 'Get table data for tutorials', 'type' => 0, 'is_default' => false],
         ['name' => 'system.tutorials.exportExcel', 'description' => 'Export excel for tutorials', 'type' => 0, 'is_default' => false],
         ['name' => 'system.tutorials.initTable', 'description' => 'Init table data for tutorials', 'type' => 0, 'is_default' => false],
         ['name' => 'system.tutorials.create', 'description' => 'Create tutorial', 'type' => 1, 'is_default' => false],
@@ -22,7 +18,7 @@ class CreateStructureForTutorialManager extends StructureMigration
     ];
 
     protected $menu = [
-        'name' => 'Tutorials', 'icon' => 'book', 'link' => 'system.tutorials.index', 'order_index' => 999, 'has_children' => false,
+        'name' => 'Tutorials', 'icon' => 'book', 'route' => 'system.tutorials.index', 'order_index' => 999, 'has_children' => false,
     ];
 
     protected $parentMenu = 'System';

@@ -21,7 +21,7 @@ class TutorialController extends Controller
         return [
             'message' => __('The tutorial was created!'),
             'redirect' => 'system.tutorials.edit',
-            'id' => $tutorial->id,
+            'param' => ['tutorial' => $tutorial->id],
         ];
     }
 

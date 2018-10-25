@@ -9,7 +9,7 @@ use LaravelEnso\PermissionManager\app\Models\Permission;
 
 class TutorialsIndex implements Responsable
 {
-    const HomePermission = 'core.index';
+    const HomePermission = 'core.home.index';
 
     private $route;
 

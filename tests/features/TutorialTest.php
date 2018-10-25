@@ -44,7 +44,7 @@ class TutorialTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'redirect' => 'system.tutorials.edit',
-                'id' => $tutorial->id,
+                'param' => ['tutorial' => $tutorial->id],
             ])->assertJsonStructure([
                 'message',
             ]);
@@ -79,7 +79,7 @@ class TutorialTest extends TestCase
     /** @test */
     public function can_display_tutorial()
     {
-        $homePermission = Permission::whereName('core.index')->first();
+        $homePermission = Permission::whereName('core.home.index')->first();
 
         $this->testModel->permission_id = $homePermission->id;
 
