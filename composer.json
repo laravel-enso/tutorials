@@ -26,7 +26,7 @@
         "laravel-enso/formbuilder": "2.12.*",
         "laravel-enso/helpers": "1.10.*",
         "laravel-enso/permissionmanager": "2.3.*",
-        "laravel-enso/structuremanager": "2.4.*"
+        "laravel-enso/structuremanager": "2.5.*"
     },
     "autoload": {
         "psr-4": {
