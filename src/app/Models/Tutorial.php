@@ -5,10 +5,11 @@ namespace LaravelEnso\TutorialManager\app\Models;
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\ActivityLog\app\Traits\LogsActivity;
 use LaravelEnso\PermissionManager\app\Models\Permission;
+use LaravelEnso\Multitenancy\app\Traits\SystemConnection;
 
 class Tutorial extends Model
 {
-    use LogsActivity;
+    use LogsActivity, SystemConnection;
 
     protected $fillable = [
         'permission_id', 'element', 'title', 'content', 'placement', 'order_index',
