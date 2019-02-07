@@ -40,11 +40,9 @@ class TutorialsIndex implements Responsable
 
     private function homeTutorials()
     {
-        return Tutorial::query()
-            ->wherePermissionId(
-                optional(Permission::whereName(self::HomePermission))
-                    ->first()
-                    ->id
+        return Tutorial::wherePermissionId(
+            optional(Permission::whereName(self::HomePermission))
+                ->first()->id
             )->orderBy('order_index')
             ->get();
     }
