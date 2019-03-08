@@ -15,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
     private function loadDependencies()
     {
         $this->loadRoutesFrom(__DIR__.'/routes/api.php');
-
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         return $this;
@@ -30,14 +29,6 @@ class AppServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/database/factories' => database_path('factories'),
         ], 'enso-factories');
-
-        $this->publishes([
-            __DIR__.'/resources/js' => resource_path('js'),
-        ], 'tutorials-assets');
-
-        $this->publishes([
-            __DIR__.'/resources/js' => resource_path('js'),
-        ], 'enso-assets');
     }
 
     public function register()
