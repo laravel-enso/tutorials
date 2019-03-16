@@ -22,7 +22,7 @@ Tutorial management dependency for [Laravel Enso](https://github.com/laravel-ens
 
 ### Configuration & Usage
 
-Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/packages/tutorial-manager.html)
+Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/backend/tutorial-manager.html)
 
 
 ### Contributions
