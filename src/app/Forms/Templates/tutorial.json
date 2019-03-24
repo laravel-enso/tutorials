@@ -1,7 +1,7 @@
 {
     "routePrefix": "system.tutorials",
     "sections": [{
-        "columns": "2",
+        "columns": 2,
         "fields": [{
             "label": "Permission",
             "name": "permission_id",
@@ -21,7 +21,7 @@
             }
         }]
     }, {
-        "columns": "3",
+        "columns": 3,
         "fields": [{
             "label": "Title",
             "name": "title",
@@ -49,7 +49,7 @@
             }
         }]
     }, {
-        "columns": "1",
+        "columns": 1,
         "fields": [{
             "label": "Content",
             "name": "content",
