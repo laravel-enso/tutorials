@@ -17,5 +17,6 @@ Route::middleware(['web', 'auth', 'core'])
                     ->name('show');
             });
 
-        Route::resource('tutorials', 'TutorialController', ['except' => ['show', 'index']]);
+        Route::resource('tutorials', 'TutorialController')
+            ->except('show', 'index');
     });

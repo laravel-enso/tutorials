@@ -23,8 +23,6 @@ class Tutorial extends Model
 
     protected $loggable = ['title', 'content', 'placement', 'order_index'];
 
-    protected $cachedTable = 'tutorials';
-
     public function permission()
     {
         return $this->belongsTo(Permission::class);
