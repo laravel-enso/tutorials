@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelEnso\TutorialManager\app\Tables\Builders;
+namespace LaravelEnso\Tutorials\app\Tables\Builders;
 
-use LaravelEnso\VueDatatable\app\Classes\Table;
-use LaravelEnso\TutorialManager\app\Models\Tutorial;
+use LaravelEnso\Tutorials\app\Models\Tutorial;
+use LaravelEnso\Tables\app\Services\Table;
 
 class TutorialTable extends Table
 {
@@ -11,10 +11,10 @@ class TutorialTable extends Table
 
     public function query()
     {
-        return Tutorial::select(\DB::raw(
-            'tutorials.id as "dtRowId", permissions.name as permissionName,
-            tutorials.element, tutorials.title, tutorials.placement,
-            tutorials.order_index, tutorials.created_at'
-        ))->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
+        return Tutorial::selectRaw('
+                tutorials.id as "dtRowId", permissions.name as permissionName,
+                tutorials.element, tutorials.title, tutorials.placement,
+                tutorials.order_index, tutorials.created_at
+            ')->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
     }
 }

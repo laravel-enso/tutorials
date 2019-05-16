@@ -31,7 +31,7 @@
         "label": "Placement",
         "name": "placement",
         "data": "tutorials.placement",
-        "enum": "\\LaravelEnso\\TutorialManager\\app\\Enums\\Placement",
+        "enum": "\\LaravelEnso\\Tutorials\\app\\Enums\\Placement",
         "meta": [
             "slot",
             "sortable"

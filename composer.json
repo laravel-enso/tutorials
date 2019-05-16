@@ -1,13 +1,13 @@
 {
-    "name": "laravel-enso/tutorialmanager",
+    "name": "laravel-enso/tutorials",
     "description": "Tutorial management dependency for Laravel Enso",
     "keywords": [
         "laravel-enso",
-        "tutorialmanager",
+        "tutorials",
         "tutorial-manager",
         "bootstrap-tour"
     ],
-    "homepage": "https://github.com/laravel-enso/TutorialManager",
+    "homepage": "https://github.com/laravel-enso/Tutorials",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -20,23 +20,22 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/activitylog": "2.0.*",
-        "laravel-enso/core": "4.2.*",
-        "laravel-enso/vuedatatable": "2.0.*",
-        "laravel-enso/formbuilder": "3.0.*",
-        "laravel-enso/helpers": "1.10.*",
-        "laravel-enso/permissionmanager": "3.0.*",
-        "laravel-enso/structuremanager": "3.0.*"
+        "laravel-enso/core": "4.3.*",
+        "laravel-enso/tables": "2.1.*",
+        "laravel-enso/forms": "3.1.*",
+        "laravel-enso/helpers": "1.11.*",
+        "laravel-enso/permissions": "3.1.*",
+        "laravel-enso/cli": "3.1.*"
     },
     "autoload": {
         "psr-4": {
-            "LaravelEnso\\TutorialManager\\": "src/"
+            "LaravelEnso\\Tutorials\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelEnso\\TutorialManager\\AppServiceProvider"
+                "LaravelEnso\\Tutorials\\AppServiceProvider"
             ],
             "aliases": {}
         }

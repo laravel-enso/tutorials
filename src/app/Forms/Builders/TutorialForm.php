@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\TutorialManager\app\Forms\Builders;
+namespace LaravelEnso\Tutorials\app\Forms\Builders;
 
-use LaravelEnso\FormBuilder\app\Classes\Form;
-use LaravelEnso\TutorialManager\app\Models\Tutorial;
-use LaravelEnso\PermissionManager\app\Models\Permission;
+use LaravelEnso\Forms\app\Services\Form;
+use LaravelEnso\Tutorials\app\Models\Tutorial;
+use LaravelEnso\Permissions\app\Models\Permission;
 
 class TutorialForm
 {

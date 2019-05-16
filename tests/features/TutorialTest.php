@@ -2,13 +2,13 @@
 
 use Tests\TestCase;
 use LaravelEnso\Core\app\Models\User;
+use LaravelEnso\Tutorials\app\Models\Tutorial;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelEnso\FormBuilder\app\TestTraits\EditForm;
-use LaravelEnso\TutorialManager\app\Models\Tutorial;
-use LaravelEnso\FormBuilder\app\TestTraits\CreateForm;
-use LaravelEnso\FormBuilder\app\TestTraits\DestroyForm;
-use LaravelEnso\PermissionManager\app\Models\Permission;
-use LaravelEnso\VueDatatable\app\Traits\Tests\Datatable;
+use LaravelEnso\Permissions\app\Models\Permission;
+use LaravelEnso\Forms\app\TestTraits\EditForm;
+use LaravelEnso\Forms\app\TestTraits\CreateForm;
+use LaravelEnso\Forms\app\TestTraits\DestroyForm;
+use LaravelEnso\Tables\app\Traits\Tests\Datatable;
 
 class TutorialTest extends TestCase
 {

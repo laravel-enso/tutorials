@@ -1,8 +1,8 @@
 <?php
 
-use LaravelEnso\StructureManager\app\Classes\StructureMigration;
+use LaravelEnso\Migrator\app\Database\Migration;
 
-class CreateStructureForTutorialManager extends StructureMigration
+class CreateStructureForTutorialManager extends Migration
 {
     protected $permissions = [
         ['name' => 'system.tutorials.tableData', 'description' => 'Get table data for tutorials', 'type' => 0, 'is_default' => false],

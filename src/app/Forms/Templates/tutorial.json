@@ -37,7 +37,7 @@
             "meta": {
                 "type": "select",
                 "multiple": false,
-                "options": "LaravelEnso\\TutorialManager\\app\\Enums\\Placement"
+                "options": "LaravelEnso\\Tutorials\\app\\Enums\\Placement"
             }
         }, {
             "label": "Order",
