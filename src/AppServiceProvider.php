@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config' => config_path('enso'),
         ], 'tutorials-config');
-        
+
         $this->publishes([
             __DIR__.'/config' => config_path('enso'),
         ], 'enso-config');

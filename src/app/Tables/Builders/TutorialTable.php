@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\Tutorials\app\Tables\Builders;
 
-use LaravelEnso\Tutorials\app\Models\Tutorial;
 use LaravelEnso\Tables\app\Services\Table;
+use LaravelEnso\Tutorials\app\Models\Tutorial;
 
 class TutorialTable extends Table
 {
