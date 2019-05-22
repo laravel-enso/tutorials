@@ -14,7 +14,7 @@
         }, {
             "label": "Element",
             "name": "element",
-            "value": null,
+            "value": "",
             "meta": {
                 "type": "input",
                 "content": "text"
@@ -25,7 +25,7 @@
         "fields": [{
             "label": "Title",
             "name": "title",
-            "value": null,
+            "value": "",
             "meta": {
                 "type": "input",
                 "content": "text"
