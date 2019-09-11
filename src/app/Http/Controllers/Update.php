@@ -12,8 +12,6 @@ class Update extends Controller
     {
         $tutorial->update($request->validated());
 
-        return [
-            'message' => __('The tutorial was successfully updated'),
-        ];
+        return ['message' => __('The tutorial was successfully updated')];
     }
 }

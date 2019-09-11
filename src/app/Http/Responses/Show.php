@@ -28,21 +28,18 @@ class Show implements Responsable
     {
         return Tutorial::wherePermissionId(
             optional(Permission::whereName(
-                    config('enso.tutorials.homePermission'))
-                )->first()->id
-            )->orderBy('order_index')
-            ->get();
+                config('enso.tutorials.homePermission'))
+            )->first()->id
+        )->orderBy('order_index')
+        ->get();
     }
 
     private function routeTutorials()
     {
-        $permission = Permission::whereName($this->route)
-            ->first();
+        $permission = Permission::whereName($this->route)->first();
 
         return $permission
-            ? $permission->tutorials()
-                ->orderBy('order_index')
-                ->get()
+            ? $permission->tutorials()->orderBy('order_index')->get()
             : collect();
     }
 }

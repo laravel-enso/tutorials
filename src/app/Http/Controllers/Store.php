@@ -10,8 +10,7 @@ class Store extends Controller
 {
     public function __invoke(ValidateTutorialRequest $request, Tutorial $tutorial)
     {
-        tap($tutorial)->fill($request->validated())
-            ->save();
+        $tutorial->fill($request->validated())->save();
 
         return [
             'message' => __('The tutorial was created!'),

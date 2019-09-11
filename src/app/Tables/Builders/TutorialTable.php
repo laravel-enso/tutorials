@@ -12,9 +12,8 @@ class TutorialTable extends Table
     public function query()
     {
         return Tutorial::selectRaw('
-                tutorials.id as "dtRowId", permissions.name as permissionName,
-                tutorials.element, tutorials.title, tutorials.placement,
-                tutorials.order_index, tutorials.created_at
-            ')->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
+            tutorials.id, permissions.name as permissionName, tutorials.element,
+            tutorials.title, tutorials.placement, tutorials.order_index, tutorials.created_at
+        ')->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
     }
 }
