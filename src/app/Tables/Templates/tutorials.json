@@ -2,7 +2,6 @@
     "routePrefix": "system.tutorials",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
-    "cache": true,
     "columns": [{
         "label": "Permission Name",
         "name": "permissionName",
