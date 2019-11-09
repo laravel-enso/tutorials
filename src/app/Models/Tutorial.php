@@ -3,8 +3,8 @@
 namespace LaravelEnso\Tutorials\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\Tables\app\Traits\TableCache;
 use LaravelEnso\Permissions\app\Models\Permission;
+use LaravelEnso\Tables\app\Traits\TableCache;
 
 class Tutorial extends Model
 {

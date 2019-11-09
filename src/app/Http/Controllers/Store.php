@@ -3,8 +3,8 @@
 namespace LaravelEnso\Tutorials\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Tutorials\app\Models\Tutorial;
 use LaravelEnso\Tutorials\app\Http\Requests\ValidateTutorialRequest;
+use LaravelEnso\Tutorials\app\Models\Tutorial;
 
 class Store extends Controller
 {

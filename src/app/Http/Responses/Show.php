@@ -3,9 +3,9 @@
 namespace LaravelEnso\Tutorials\app\Http\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
-use LaravelEnso\Tutorials\app\Models\Tutorial;
 use LaravelEnso\Permissions\app\Models\Permission;
 use LaravelEnso\Tutorials\app\Http\Resources\Tutorial as Resource;
+use LaravelEnso\Tutorials\app\Models\Tutorial;
 
 class Show implements Responsable
 {
