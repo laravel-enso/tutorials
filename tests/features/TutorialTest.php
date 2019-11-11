@@ -1,14 +1,14 @@
 <?php
 
-use Tests\TestCase;
-use LaravelEnso\Core\app\Models\User;
-use LaravelEnso\Tutorials\app\Models\Tutorial;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelEnso\Permissions\app\Models\Permission;
-use LaravelEnso\Forms\app\TestTraits\EditForm;
+use LaravelEnso\Core\app\Models\User;
 use LaravelEnso\Forms\app\TestTraits\CreateForm;
 use LaravelEnso\Forms\app\TestTraits\DestroyForm;
+use LaravelEnso\Forms\app\TestTraits\EditForm;
+use LaravelEnso\Permissions\app\Models\Permission;
 use LaravelEnso\Tables\app\Traits\Tests\Datatable;
+use LaravelEnso\Tutorials\app\Models\Tutorial;
+use Tests\TestCase;
 
 class TutorialTest extends TestCase
 {
@@ -92,7 +92,7 @@ class TutorialTest extends TestCase
         ]);
 
         $this->get(route(
-            'system.tutorials.show',
+            'system.tutorials.load',
             ['route' => $secondPermission->name],
             false
         ))->assertJsonFragment([$this->testModel->element])

@@ -13,7 +13,7 @@ class CreateStructureForTutorials extends Migration
         ['name' => 'system.tutorials.index', 'description' => 'Show tutorials index', 'type' => 0, 'is_default' => false],
         ['name' => 'system.tutorials.store', 'description' => 'Store newly created tutorial', 'type' => 1, 'is_default' => false],
         ['name' => 'system.tutorials.update', 'description' => 'Update edited tutorial', 'type' => 1, 'is_default' => false],
-        ['name' => 'system.tutorials.show', 'description' => 'Load tutorial', 'type' => 0, 'is_default' => true],
+        ['name' => 'system.tutorials.load', 'description' => 'Load tutorial', 'type' => 0, 'is_default' => true],
         ['name' => 'system.tutorials.destroy', 'description' => 'Delete tutorial', 'type' => 1, 'is_default' => false],
     ];
 

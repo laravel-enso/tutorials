@@ -3,12 +3,12 @@
 namespace LaravelEnso\Tutorials\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Tutorials\app\Http\Responses\Show as Response;
+use LaravelEnso\Tutorials\app\Http\Responses\Index;
 
-class Show extends Controller
+class Load extends Controller
 {
     public function __invoke()
     {
-        return new Response;
+        return new Index;
     }
 }
