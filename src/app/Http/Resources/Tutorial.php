@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\Tutorials\app\Http\Resources;
 
-use LaravelEnso\Tutorials\app\Enums\Placement;
 use Illuminate\Http\Resources\Json\JsonResource;
+use LaravelEnso\Tutorials\app\Enums\Placement;
 
 class Tutorial extends JsonResource
 {

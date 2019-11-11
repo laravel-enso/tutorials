@@ -3,8 +3,8 @@
 namespace LaravelEnso\Tutorials\app\Forms\Builders;
 
 use LaravelEnso\Forms\app\Services\Form;
-use LaravelEnso\Tutorials\app\Models\Tutorial;
 use LaravelEnso\Permissions\app\Models\Permission;
+use LaravelEnso\Tutorials\app\Models\Tutorial;
 
 class TutorialForm
 {
