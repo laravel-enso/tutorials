@@ -15,7 +15,7 @@ class Tutorial extends Model
     ];
 
     protected $casts = [
-      'permission_id' => 'integer', 'placement' => 'integer',
+        'permission_id' => 'integer', 'placement' => 'integer',
     ];
 
     public function permission()
