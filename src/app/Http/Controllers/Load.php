@@ -9,6 +9,6 @@ class Load extends Controller
 {
     public function __invoke()
     {
-        return new Index;
+        return new Index();
     }
 }
