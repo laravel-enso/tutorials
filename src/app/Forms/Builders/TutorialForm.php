@@ -1,16 +1,16 @@
 <?php
 
-namespace LaravelEnso\Tutorials\app\Forms\Builders;
+namespace LaravelEnso\Tutorials\App\Forms\Builders;
 
-use LaravelEnso\Forms\app\Services\Form;
-use LaravelEnso\Permissions\app\Models\Permission;
-use LaravelEnso\Tutorials\app\Models\Tutorial;
+use LaravelEnso\Forms\App\Services\Form;
+use LaravelEnso\Permissions\App\Models\Permission;
+use LaravelEnso\Tutorials\App\Models\Tutorial;
 
 class TutorialForm
 {
     protected const FormPath = __DIR__.'/../Templates/tutorial.json';
 
-    protected $form;
+    protected Form $form;
 
     public function __construct()
     {

@@ -1,14 +1,14 @@
 <?php
 
-namespace LaravelEnso\Tutorials\app\Http\Controllers;
+namespace LaravelEnso\Tutorials\App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Tables\app\Traits\Init;
-use LaravelEnso\Tutorials\app\Tables\Builders\TutorialTable;
+use LaravelEnso\Tables\App\Traits\Init;
+use LaravelEnso\Tutorials\App\Tables\Builders\TutorialTable;
 
 class InitTable extends Controller
 {
     use Init;
 
-    protected $tableClass = TutorialTable::class;
+    protected string $tableClass = TutorialTable::class;
 }

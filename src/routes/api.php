@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::middleware(['web', 'auth', 'core'])
     ->prefix('api/system/tutorials')
     ->as('system.tutorials.')
-    ->namespace('LaravelEnso\Tutorials\app\Http\Controllers')
-    ->group(function () {
+    ->namespace('LaravelEnso\Tutorials\App\Http\Controllers')
+    ->group(static function () {
         Route::get('create', 'Create')->name('create');
         Route::post('', 'Store')->name('store');
         Route::get('{tutorial}/edit', 'Edit')->name('edit');
