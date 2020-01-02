@@ -1,17 +1,18 @@
 <?php
 
-namespace LaravelEnso\Tutorials\app\Models;
+namespace LaravelEnso\Tutorials\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\Permissions\app\Models\Permission;
-use LaravelEnso\Tables\app\Traits\TableCache;
+use LaravelEnso\Permissions\App\Models\Permission;
+use LaravelEnso\Tables\App\Traits\TableCache;
 
 class Tutorial extends Model
 {
     use TableCache;
 
     protected $fillable = [
-        'permission_id', 'element', 'title', 'content', 'placement', 'order_index',
+        'permission_id', 'element', 'title', 'content', 'placement',
+        'order_index',
     ];
 
     protected $casts = [

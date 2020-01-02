@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\Tutorials\app\Http\Controllers;
+namespace LaravelEnso\Tutorials\App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Tables\app\Traits\Excel;
-use LaravelEnso\Tutorials\app\Tables\Builders\TutorialTable;
+use LaravelEnso\Tables\App\Traits\Excel;
+use LaravelEnso\Tutorials\App\Tables\Builders\TutorialTable;
 
 class ExportExcel extends Controller
 {

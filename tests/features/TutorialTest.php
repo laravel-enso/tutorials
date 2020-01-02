@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelEnso\Core\app\Models\User;
-use LaravelEnso\Forms\app\TestTraits\CreateForm;
-use LaravelEnso\Forms\app\TestTraits\DestroyForm;
-use LaravelEnso\Forms\app\TestTraits\EditForm;
-use LaravelEnso\Permissions\app\Models\Permission;
-use LaravelEnso\Tables\app\Traits\Tests\Datatable;
-use LaravelEnso\Tutorials\app\Models\Tutorial;
+use LaravelEnso\Core\App\Models\User;
+use LaravelEnso\Forms\App\TestTraits\CreateForm;
+use LaravelEnso\Forms\App\TestTraits\DestroyForm;
+use LaravelEnso\Forms\App\TestTraits\EditForm;
+use LaravelEnso\Permissions\App\Models\Permission;
+use LaravelEnso\Tables\App\Traits\Tests\Datatable;
+use LaravelEnso\Tutorials\App\Models\Tutorial;
 use Tests\TestCase;
 
 class TutorialTest extends TestCase
@@ -59,7 +59,7 @@ class TutorialTest extends TestCase
             route('system.tutorials.update', $this->testModel->id, false),
             $this->testModel->toArray()
         )->assertStatus(200)
-        ->assertJsonStructure(['message']);
+            ->assertJsonStructure(['message']);
 
         $this->assertEquals($this->testModel->title, $this->testModel->fresh()->title);
     }

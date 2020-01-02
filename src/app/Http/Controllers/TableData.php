@@ -1,14 +1,14 @@
 <?php
 
-namespace LaravelEnso\Tutorials\app\Http\Controllers;
+namespace LaravelEnso\Tutorials\App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Tables\app\Traits\Data;
-use LaravelEnso\Tutorials\app\Tables\Builders\TutorialTable;
+use LaravelEnso\Tables\App\Traits\Data;
+use LaravelEnso\Tutorials\App\Tables\Builders\TutorialTable;
 
 class TableData extends Controller
 {
     use Data;
 
-    protected $tableClass = TutorialTable::class;
+    protected string $tableClass = TutorialTable::class;
 }
