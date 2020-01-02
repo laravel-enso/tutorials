@@ -6,7 +6,7 @@ Route::middleware(['web', 'auth', 'core'])
     ->prefix('api/system/tutorials')
     ->as('system.tutorials.')
     ->namespace('LaravelEnso\Tutorials\App\Http\Controllers')
-    ->group(static function () {
+    ->group(function () {
         Route::get('create', 'Create')->name('create');
         Route::post('', 'Store')->name('store');
         Route::get('{tutorial}/edit', 'Edit')->name('edit');

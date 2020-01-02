@@ -11,13 +11,13 @@ class Placement extends Enum
     public const Right = 3;
     public const Left = 4;
 
-    protected static function attributes()
+    protected static function data(): array
     {
         return [
             self::Top => 'top',
-            self:: Bottom => 'bottom',
-            self:: Right => 'right',
-            self:: Left => 'left',
+            self::Bottom => 'bottom',
+            self::Right => 'right',
+            self::Left => 'left',
         ];
     }
 }
