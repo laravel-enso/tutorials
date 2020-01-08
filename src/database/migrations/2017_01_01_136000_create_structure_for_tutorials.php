@@ -1,7 +1,7 @@
 <?php
 
 use LaravelEnso\Migrator\App\Database\Migration;
-use LaravelEnso\Permissions\app\Enums\Types;
+use LaravelEnso\Permissions\App\Enums\Types;
 
 class CreateStructureForTutorials extends Migration
 {
