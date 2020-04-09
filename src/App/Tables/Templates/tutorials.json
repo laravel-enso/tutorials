@@ -10,7 +10,7 @@
     "columns": [
         {
             "label": "Permission Name",
-            "name": "permissionName",
+            "name": "permission",
             "data": "permissions.name",
             "meta": [
                 "searchable",

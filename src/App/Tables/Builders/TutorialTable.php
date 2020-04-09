@@ -13,9 +13,8 @@ class TutorialTable implements Table
     public function query(): Builder
     {
         return Tutorial::selectRaw('
-            tutorials.id, permissions.name as permissionName,
-            tutorials.element, tutorials.title, tutorials.placement,
-            tutorials.order_index, tutorials.created_at
+            tutorials.id, permissions.name as permission, tutorials.element,
+            tutorials.title, tutorials.placement, tutorials.order_index, tutorials.created_at
         ')->join('permissions', 'permissions.id', '=', 'tutorials.permission_id');
     }
 
