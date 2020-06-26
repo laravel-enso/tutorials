@@ -10,11 +10,11 @@ class Tutorials implements Method
 {
     public function name(): string
     {
-        return 'comments';
+        return 'tutorials';
     }
 
     public function closure(): Closure
     {
-        return fn () => $this->hasMany(Tutorial::class, 'created_by');
+        return fn () => $this->hasMany(Tutorial::class, 'permission_id');
     }
 }
