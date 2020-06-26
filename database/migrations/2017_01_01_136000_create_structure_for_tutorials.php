@@ -21,5 +21,5 @@ class CreateStructureForTutorials extends Migration
         'name' => 'Tutorials', 'icon' => 'book', 'route' => 'system.tutorials.index', 'order_index' => 999, 'has_children' => false,
     ];
 
-    protected string $parentMenu = 'System';
+    protected ?string $parentMenu = 'System';
 }
