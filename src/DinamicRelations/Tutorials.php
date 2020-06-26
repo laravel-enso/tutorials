@@ -4,7 +4,7 @@ namespace LaravelEnso\Tutorials\DynamicsRelations;
 
 use Closure;
 use LaravelEnso\DynamicMethods\Contracts\Method;
-use LaravelEnso\Tutorials\App\Models\Tutorial;
+use LaravelEnso\Tutorials\Models\Tutorial;
 
 class Tutorials implements Method
 {
