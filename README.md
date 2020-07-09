@@ -1,6 +1,6 @@
 # Tutorials
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1d5b542a2d014afea54a5bcf315e0d9c)](https://www.codacy.com/gh/laravel-enso/versioning?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/versioning&amp;utm_campaign=Badge_Grade) 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a5b617aafcc24ff1a3da6c99c343e1bd)](https://www.codacy.com/gh/laravel-enso/tutorials?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/tutorials&amp;utm_campaign=Badge_Grade) 
 [![StyleCI](https://github.styleci.io/repos/85628545/shield?branch=master)](https://github.styleci.io/repos/85628545)
 [![License](https://poser.pugx.org/laravel-enso/tutorials/license)](https://packagist.org/packages/laravel-enso/tutorials)
 [![Total Downloads](https://poser.pugx.org/laravel-enso/tutorials/downloads)](https://packagist.org/packages/laravel-enso/tutorials)
