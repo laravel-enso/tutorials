@@ -5,7 +5,7 @@ namespace LaravelEnso\Tutorials;
 use Illuminate\Support\ServiceProvider;
 use LaravelEnso\DynamicMethods\Services\Methods;
 use LaravelEnso\Permissions\Models\Permission;
-use LaravelEnso\Tutorials\DynamicsRelations\Tutorials;
+use LaravelEnso\Tutorials\DynamicRelations\Tutorials;
 
 class AppServiceProvider extends ServiceProvider
 {
