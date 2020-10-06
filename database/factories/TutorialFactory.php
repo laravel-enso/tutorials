@@ -1,15 +1,25 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace LaravelEnso\Tutorials\Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
 use LaravelEnso\Permissions\Models\Permission;
 use LaravelEnso\Tutorials\Enums\Placement;
 use LaravelEnso\Tutorials\Models\Tutorial;
 
-$factory->define(Tutorial::class, fn (Faker $faker) => [
-    'permission_id' => fn () => factory(Permission::class)->create()->id,
-    'element' => $faker->word,
-    'title' => $faker->word,
-    'content' => $faker->sentence,
-    'placement' => Placement::keys()->random(),
-    'order_index' => $faker->randomNumber(2),
-]);
+class TutorialFactory extends Factory
+{
+    protected $model = Tutorial::class;
+
+    public function definition()
+    {
+        return [
+            'permission_id' => Permission::factory(),
+            'element' => $this->faker->word,
+            'title' => $this->faker->word,
+            'content' => $this->faker->sentence,
+            'placement' => Placement::keys()->random(),
+            'order_index' => $this->faker->randomNumber(2),
+        ];
+    }
+}
