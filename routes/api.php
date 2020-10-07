@@ -14,7 +14,6 @@ use LaravelEnso\Tutorials\Http\Controllers\Update;
 Route::middleware(['api', 'auth', 'core'])
     ->prefix('api/system/tutorials')
     ->as('system.tutorials.')
-    ->namespace('LaravelEnso\Tutorials\Http\Controllers')
     ->group(function () {
         Route::get('create', Create::class)->name('create');
         Route::post('', Store::class)->name('store');
