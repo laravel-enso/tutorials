@@ -1,21 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use LaravelEnso\Tutorials\Http\Controllers\Create;
+use LaravelEnso\Tutorials\Http\Controllers\Destroy;
+use LaravelEnso\Tutorials\Http\Controllers\Edit;
+use LaravelEnso\Tutorials\Http\Controllers\ExportExcel;
+use LaravelEnso\Tutorials\Http\Controllers\InitTable;
+use LaravelEnso\Tutorials\Http\Controllers\Load;
+use LaravelEnso\Tutorials\Http\Controllers\Store;
+use LaravelEnso\Tutorials\Http\Controllers\TableData;
+use LaravelEnso\Tutorials\Http\Controllers\Update;
 
 Route::middleware(['api', 'auth', 'core'])
     ->prefix('api/system/tutorials')
     ->as('system.tutorials.')
     ->namespace('LaravelEnso\Tutorials\Http\Controllers')
     ->group(function () {
-        Route::get('create', 'Create')->name('create');
-        Route::post('', 'Store')->name('store');
-        Route::get('{tutorial}/edit', 'Edit')->name('edit');
-        Route::patch('{tutorial}', 'Update')->name('update');
-        Route::delete('{tutorial}', 'Destroy')->name('destroy');
+        Route::get('create', Create::class)->name('create');
+        Route::post('', Store::class)->name('store');
+        Route::get('{tutorial}/edit', Edit::class)->name('edit');
+        Route::patch('{tutorial}', Update::class)->name('update');
+        Route::delete('{tutorial}', Destroy::class)->name('destroy');
 
-        Route::get('initTable', 'InitTable')->name('initTable');
-        Route::get('tableData', 'TableData')->name('tableData');
-        Route::get('exportExcel', 'ExportExcel')->name('exportExcel');
+        Route::get('initTable', InitTable::class)->name('initTable');
+        Route::get('tableData', TableData::class)->name('tableData');
+        Route::get('exportExcel', ExportExcel::class)->name('exportExcel');
 
-        Route::get('load', 'Load')->name('load');
+        Route::get('load', Load::class)->name('load');
     });
