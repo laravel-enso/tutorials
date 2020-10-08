@@ -3,12 +3,13 @@
 namespace LaravelEnso\Tutorials\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use LaravelEnso\Helpers\Traits\HasFactory;
 use LaravelEnso\Permissions\Models\Permission;
 use LaravelEnso\Tables\Traits\TableCache;
 
 class Tutorial extends Model
 {
-    use TableCache;
+    use HasFactory, TableCache;
 
     protected $guarded = ['id'];
 

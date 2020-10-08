@@ -26,7 +26,7 @@ class TutorialTest extends TestCase
         $this->seed()
             ->actingAs(User::first());
 
-        $this->testModel = factory(Tutorial::class)
+        $this->testModel = Tutorial::factory()
             ->make();
     }
 
@@ -87,7 +87,7 @@ class TutorialTest extends TestCase
 
         $secondPermission = Permission::orderBy('id', 'desc')->first();
 
-        $secondTutorial = factory(Tutorial::class)->create([
+        $secondTutorial = Tutorial::factory()->create([
             'permission_id' => $secondPermission->id,
         ]);
 
