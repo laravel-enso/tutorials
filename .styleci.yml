@@ -10,6 +10,7 @@ enabled:
 
 disabled:
   - short_array_syntax
+  - static_access
 
 finder:
   exclude:
