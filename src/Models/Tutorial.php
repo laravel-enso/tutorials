@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\Tutorials\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\Helpers\Traits\HasFactory;
 use LaravelEnso\Permissions\Models\Permission;
 use LaravelEnso\Tables\Traits\TableCache;
 
