@@ -29,7 +29,7 @@ class Index implements Responsable
     {
         $home = Permission::whereName(config('enso.tutorials.homePermission'))->first();
 
-        return Tutorial::wherePermissionId(optional($home)->id)
+        return Tutorial::wherePermissionId($home?->id)
             ->orderBy('order_index')
             ->get();
     }

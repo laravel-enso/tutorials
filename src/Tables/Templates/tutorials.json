@@ -7,16 +7,19 @@
         "edit",
         "destroy"
     ],
-    "filters": [{
-        "label": "Permission",
-        "data": "permissions.id",
-        "type": "select",
-        "value": [],
-        "route": "system.roles.options",
-        "multiple": true,
-        "slot": false
-    }],
-    "columns": [{
+    "filters": [
+        {
+            "label": "Permission",
+            "data": "permissions.id",
+            "type": "select",
+            "value": [],
+            "route": "system.roles.options",
+            "multiple": true,
+            "slot": false
+        }
+    ],
+    "columns": [
+        {
             "label": "Permission",
             "name": "permission",
             "data": "permissions.name",
@@ -66,7 +69,7 @@
                 "filterable",
                 "sortable"
             ],
-            "money": {}
+            "number": {}
         },
         {
             "label": "Created At",

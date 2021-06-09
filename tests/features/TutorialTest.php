@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelEnso\Core\Models\User;
 use LaravelEnso\Forms\TestTraits\CreateForm;
 use LaravelEnso\Forms\TestTraits\DestroyForm;
 use LaravelEnso\Forms\TestTraits\EditForm;
 use LaravelEnso\Permissions\Models\Permission;
 use LaravelEnso\Tables\Traits\Tests\Datatable;
 use LaravelEnso\Tutorials\Models\Tutorial;
+use LaravelEnso\Users\Models\User;
 use Tests\TestCase;
 
 class TutorialTest extends TestCase
@@ -20,8 +20,6 @@ class TutorialTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        // $this->withoutExceptionHandling();
 
         $this->seed()
             ->actingAs(User::first());
