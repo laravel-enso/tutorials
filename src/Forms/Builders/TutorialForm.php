@@ -14,8 +14,7 @@ class TutorialForm
 
     public function __construct()
     {
-        $this->form = (new Form(static::FormPath))
-            ->options('permission_id', Permission::get(['name', 'id']));
+        $this->form = (new Form(static::FormPath));
     }
 
     public function create()

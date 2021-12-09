@@ -1,15 +1,17 @@
 {
     "routePrefix": "system.tutorials",
-    "sections": [{
+    "sections": [
+        {
             "columns": 2,
-            "fields": [{
+            "fields": [
+                {
                     "label": "Permission",
                     "name": "permission_id",
                     "value": null,
                     "meta": {
                         "type": "select",
                         "multiple": false,
-                        "options": []
+                        "source": "system.permissions.options"
                     }
                 },
                 {
@@ -25,7 +27,8 @@
         },
         {
             "columns": 3,
-            "fields": [{
+            "fields": [
+                {
                     "label": "Title",
                     "name": "title",
                     "value": "",
@@ -57,15 +60,17 @@
         },
         {
             "columns": 1,
-            "fields": [{
-                "label": "Content",
-                "name": "content",
-                "value": null,
-                "meta": {
-                    "type": "textarea",
-                    "rows": 3
+            "fields": [
+                {
+                    "label": "Content",
+                    "name": "content",
+                    "value": null,
+                    "meta": {
+                        "type": "textarea",
+                        "rows": 3
+                    }
                 }
-            }]
+            ]
         }
     ]
 }
