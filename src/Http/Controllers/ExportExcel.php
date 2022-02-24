@@ -4,11 +4,11 @@ namespace LaravelEnso\Tutorials\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use LaravelEnso\Tables\Traits\Excel;
-use LaravelEnso\Tutorials\Tables\Builders\TutorialTable;
+use LaravelEnso\Tutorials\Tables\Builders\Tutorial;
 
 class ExportExcel extends Controller
 {
     use Excel;
 
-    protected $tableClass = TutorialTable::class;
+    protected $tableClass = Tutorial::class;
 }
