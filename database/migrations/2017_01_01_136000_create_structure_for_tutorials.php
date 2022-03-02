@@ -2,7 +2,7 @@
 
 use LaravelEnso\Migrator\Database\Migration;
 
-class CreateStructureForTutorials extends Migration
+return new class extends Migration
 {
     protected array $permissions = [
         ['name' => 'system.tutorials.tableData', 'description' => 'Get table data for tutorials', 'is_default' => false],
@@ -22,4 +22,4 @@ class CreateStructureForTutorials extends Migration
     ];
 
     protected ?string $parentMenu = 'System';
-}
+};
