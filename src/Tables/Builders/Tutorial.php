@@ -20,6 +20,6 @@ class Tutorial implements Table
 
     public function templatePath(): string
     {
-        return static::TemplatePath;
+        return self::TemplatePath;
     }
 }
