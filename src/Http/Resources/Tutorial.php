@@ -3,7 +3,6 @@
 namespace LaravelEnso\Tutorials\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use LaravelEnso\Tutorials\Enums\Placement;
 
 class Tutorial extends JsonResource
 {
@@ -14,7 +13,7 @@ class Tutorial extends JsonResource
             'popover' => [
                 'title' => __($this->title),
                 'description' => __($this->content),
-                'position' => Placement::get($this->placement),
+                'position' => $this->placement->name,
             ],
         ];
     }

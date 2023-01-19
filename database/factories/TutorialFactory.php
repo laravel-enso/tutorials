@@ -18,7 +18,7 @@ class TutorialFactory extends Factory
             'element' => $this->faker->word,
             'title' => $this->faker->word,
             'content' => $this->faker->sentence,
-            'placement' => Placement::keys()->random(),
+            'placement' => Placement::random(),
             'order_index' => $this->faker->randomNumber(2),
         ];
     }

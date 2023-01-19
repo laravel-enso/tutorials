@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\Permissions\Models\Permission;
 use LaravelEnso\Tables\Traits\TableCache;
+use LaravelEnso\Tutorials\Enums\Placement;
 
 class Tutorial extends Model
 {
@@ -14,7 +15,8 @@ class Tutorial extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'permission_id' => 'integer', 'placement' => 'integer',
+        'permission_id' => 'integer',
+        'placement' => Placement::class,
     ];
 
     public function permission()
