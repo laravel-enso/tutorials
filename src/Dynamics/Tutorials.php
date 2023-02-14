@@ -21,6 +21,6 @@ class Tutorials implements Relation
 
     public function closure(): Closure
     {
-        return fn ($model) => $model->hasMany(Tutorial::class, 'permission_id');
+        return fn (Permission $model) => $model->hasMany(Tutorial::class, 'permission_id');
     }
 }
