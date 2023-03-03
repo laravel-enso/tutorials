@@ -2,11 +2,11 @@
 
 namespace LaravelEnso\Tutorials\Enums;
 
-use LaravelEnso\Enums\Traits\Enum;
+use LaravelEnso\Enums\Traits\Random;
 
 enum Placement: int
 {
-    use Enum;
+    use Random;
 
     case Top = 1;
     case Bottom = 2;
