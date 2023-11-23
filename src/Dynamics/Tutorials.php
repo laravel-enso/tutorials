@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Tutorials\DynamicRelations;
+namespace LaravelEnso\Tutorials\Dynamics;
 
 use Closure;
 use LaravelEnso\DynamicMethods\Contracts\Method;
