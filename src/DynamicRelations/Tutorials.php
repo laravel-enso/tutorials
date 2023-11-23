@@ -4,10 +4,16 @@ namespace LaravelEnso\Tutorials\DynamicRelations;
 
 use Closure;
 use LaravelEnso\DynamicMethods\Contracts\Method;
+use LaravelEnso\Permissions\Models\Permission;
 use LaravelEnso\Tutorials\Models\Tutorial;
 
 class Tutorials implements Method
 {
+    public function bindTo(): array
+    {
+        return [Permission::class];
+    }
+
     public function name(): string
     {
         return 'tutorials';
@@ -15,6 +21,7 @@ class Tutorials implements Method
 
     public function closure(): Closure
     {
-        return fn () => $this->hasMany(Tutorial::class, 'permission_id');
+        return fn (Permission $permission) => $permission
+            ->hasMany(Tutorial::class, 'permission_id');
     }
 }
