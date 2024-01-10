@@ -3,9 +3,6 @@
 namespace LaravelEnso\Tutorials;
 
 use Illuminate\Support\ServiceProvider;
-use LaravelEnso\DynamicMethods\Services\Methods;
-use LaravelEnso\Permissions\Models\Permission;
-use LaravelEnso\Tutorials\DynamicRelations\Tutorials;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,8 +10,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->load()
             ->publish();
-
-        Methods::bind(Permission::class, [Tutorials::class]);
     }
 
     private function load()
