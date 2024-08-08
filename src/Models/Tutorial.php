@@ -13,12 +13,15 @@ class Tutorial extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = [
-        'permission_id' => 'integer', 'placement' => 'integer',
-    ];
-
     public function permission()
     {
         return $this->belongsTo(Permission::class);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'permission_id' => 'integer', 'placement' => 'integer',
+        ];
     }
 }
