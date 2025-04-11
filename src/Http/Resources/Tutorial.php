@@ -14,7 +14,7 @@ class Tutorial extends JsonResource
             'popover' => [
                 'title' => __($this->title),
                 'description' => __($this->content),
-                'position' => Placement::get($this->placement),
+                'position' => Placement::from($this->placement)->name,
             ],
         ];
     }
