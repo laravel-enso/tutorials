@@ -2,11 +2,12 @@
 
 namespace LaravelEnso\Tutorials\Enums;
 
-use LaravelEnso\Enums\Services\Enums\Select;
+use LaravelEnso\Enums\Contracts\Select;
+use LaravelEnso\Enums\Services\Enums\Select as Options;
 
-enum Placement: int 
+enum Placement: int implements Select
 {
-    use Select as Options;
+    use Options;
 
     case Top = 1;
     case Bottom = 2;
