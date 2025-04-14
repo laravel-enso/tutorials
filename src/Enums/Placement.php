@@ -3,7 +3,8 @@
 namespace LaravelEnso\Tutorials\Enums;
 
 use LaravelEnso\Enums\Contracts\Select;
-use LaravelEnso\Enums\Services\Enums\Select as Options;
+use LaravelEnso\Enums\Traits\Select as Options;
+
 
 enum Placement: int implements Select
 {
