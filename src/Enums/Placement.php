@@ -5,7 +5,6 @@ namespace LaravelEnso\Tutorials\Enums;
 use LaravelEnso\Enums\Contracts\Select;
 use LaravelEnso\Enums\Traits\Select as Options;
 
-
 enum Placement: int implements Select
 {
     use Options;
