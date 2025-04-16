@@ -2,12 +2,10 @@
 
 namespace LaravelEnso\Tutorials\Enums;
 
-use LaravelEnso\Enums\Services\Enum;
-
-class Placement extends Enum
+enum Placement: int
 {
-    public const Top = 1;
-    public const Bottom = 2;
-    public const Right = 3;
-    public const Left = 4;
+    case Top = 1;
+    case Bottom = 2;
+    case Right = 3;
+    case Left = 4;
 }
