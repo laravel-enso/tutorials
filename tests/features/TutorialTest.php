@@ -9,6 +9,7 @@ use LaravelEnso\Tables\Traits\Tests\Datatable;
 use LaravelEnso\Tutorials\Models\Tutorial;
 use LaravelEnso\Users\Models\User;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class TutorialTest extends TestCase
 {
@@ -28,7 +29,7 @@ class TutorialTest extends TestCase
             ->make();
     }
 
-    /** @test */
+    #[Test]
     public function can_store_tutorial()
     {
         $response = $this->post(
@@ -46,7 +47,7 @@ class TutorialTest extends TestCase
             ])->assertJsonStructure(['message']);
     }
 
-    /** @test */
+    #[Test]
     public function can_update_tutorial()
     {
         $this->testModel->save();
@@ -62,7 +63,7 @@ class TutorialTest extends TestCase
         $this->assertEquals($this->testModel->title, $this->testModel->fresh()->title);
     }
 
-    /** @test */
+    #[Test]
     public function can_destroy_tutorial()
     {
         $this->testModel->save();
@@ -74,7 +75,7 @@ class TutorialTest extends TestCase
         $this->assertNull($this->testModel->fresh());
     }
 
-    /** @test */
+    #[Test]
     public function can_display_tutorial()
     {
         $homePermission = Permission::whereName('core.home.index')->first();
