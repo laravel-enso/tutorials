@@ -1,13 +1,13 @@
 {
     "name": "laravel-enso/tutorials",
-    "description": "Tutorial management dependency for Laravel Enso",
+    "description": "Tutorial management backend for Laravel Enso",
     "keywords": [
         "laravel-enso",
         "tutorials",
         "tutorial-manager",
         "bootstrap-tour"
     ],
-    "homepage": "https://github.com/laravel-enso/Tutorials",
+    "homepage": "https://github.com/laravel-enso/tutorials",
     "type": "library",
     "license": "MIT",
     "authors": [
