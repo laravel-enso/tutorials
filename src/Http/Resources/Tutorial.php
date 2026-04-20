@@ -12,9 +12,9 @@ class Tutorial extends JsonResource
         return [
             'element' => $this->element,
             'popover' => [
-                'title' => __($this->title),
+                'title'       => __($this->title),
                 'description' => __($this->content),
-                'position' => Placement::get($this->placement),
+                'position'    => Placement::get($this->placement),
             ],
         ];
     }

@@ -12,7 +12,7 @@ class Destroy extends Controller
         $tutorial->delete();
 
         return [
-            'message' => __('The tutorial was successfully deleted'),
+            'message'  => __('The tutorial was successfully deleted'),
             'redirect' => 'system.tutorials.index',
         ];
     }

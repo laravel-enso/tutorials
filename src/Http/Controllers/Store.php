@@ -13,9 +13,9 @@ class Store extends Controller
         $tutorial->fill($request->validated())->save();
 
         return [
-            'message' => __('The tutorial was created!'),
+            'message'  => __('The tutorial was created!'),
             'redirect' => 'system.tutorials.edit',
-            'param' => ['tutorial' => $tutorial->id],
+            'param'    => ['tutorial' => $tutorial->id],
         ];
     }
 }

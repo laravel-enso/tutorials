@@ -15,11 +15,11 @@ class TutorialFactory extends Factory
     {
         return [
             'permission_id' => Permission::factory(),
-            'element' => $this->faker->word,
-            'title' => $this->faker->word,
-            'content' => $this->faker->sentence,
-            'placement' => Placement::keys()->random(),
-            'order_index' => $this->faker->randomNumber(2),
+            'element'       => $this->faker->word,
+            'title'         => $this->faker->word,
+            'content'       => $this->faker->sentence,
+            'placement'     => Placement::keys()->random(),
+            'order_index'   => $this->faker->randomNumber(2),
         ];
     }
 }

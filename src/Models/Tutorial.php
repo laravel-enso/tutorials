@@ -9,7 +9,8 @@ use LaravelEnso\Tables\Traits\TableCache;
 
 class Tutorial extends Model
 {
-    use HasFactory, TableCache;
+    use HasFactory;
+    use TableCache;
 
     protected $guarded = ['id'];
 
