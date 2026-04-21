@@ -101,4 +101,37 @@ class TutorialTest extends TestCase
         ))->assertJsonFragment([$this->testModel->element])
             ->assertJsonFragment([$secondTutorial->element]);
     }
+
+    #[Test]
+    public function load_returns_only_home_tutorials_when_route_permission_is_missing()
+    {
+        $homePermission = Permission::whereName('core.home.index')->first();
+        $homeTutorial = Tutorial::factory()->create([
+            'permission_id' => $homePermission->id,
+        ]);
+        $routeTutorial = Tutorial::factory()->create();
+
+        $this->get(route('system.tutorials.load', [
+            'route' => 'missing.permission',
+        ], false))->assertStatus(200)
+            ->assertJsonCount(1)
+            ->assertJsonFragment(['element' => $homeTutorial->element])
+            ->assertJsonMissing(['element' => $routeTutorial->element]);
+    }
+
+    #[Test]
+    public function validates_required_fields_on_store()
+    {
+        $this->post(route('system.tutorials.store', [], false), [
+            'permission_id' => null,
+            'element' => null,
+            'title' => null,
+            'content' => null,
+            'placement' => null,
+            'order_index' => null,
+        ])->assertStatus(302)
+            ->assertSessionHasErrors([
+                'permission_id', 'element', 'title', 'content', 'placement',
+            ]);
+    }
 }
