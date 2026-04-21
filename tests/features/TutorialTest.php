@@ -124,11 +124,11 @@ class TutorialTest extends TestCase
     {
         $this->post(route('system.tutorials.store', [], false), [
             'permission_id' => null,
-            'element' => null,
-            'title' => null,
-            'content' => null,
-            'placement' => null,
-            'order_index' => null,
+            'element'       => null,
+            'title'         => null,
+            'content'       => null,
+            'placement'     => null,
+            'order_index'   => null,
         ])->assertStatus(302)
             ->assertSessionHasErrors([
                 'permission_id', 'element', 'title', 'content', 'placement',
