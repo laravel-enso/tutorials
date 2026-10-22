@@ -108,8 +108,11 @@ class TutorialTest extends TestCase
         $homePermission = Permission::whereName('core.home.index')->first();
         $homeTutorial = Tutorial::factory()->create([
             'permission_id' => $homePermission->id,
+            'element'       => 'home-tutorial',
         ]);
-        $routeTutorial = Tutorial::factory()->create();
+        $routeTutorial = Tutorial::factory()->create([
+            'element' => 'route-tutorial',
+        ]);
 
         $this->get(route('system.tutorials.load', [
             'route' => 'missing.permission',
